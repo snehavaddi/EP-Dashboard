@@ -1,0 +1,12 @@
+<core:View xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="epdash.epdash.message_views.shutdown">
+	<MessagePage showHeader="false" text="Your browser can't load this page ." enableFormattedText="true"
+		description="&lt;strong&gt;Dashboard is down because of maintanance .&lt;/strong&gt;"
+		icon="sap-icon://message-warning">
+		<buttons>
+
+		</buttons>
+	</MessagePage>
+</core:View>
+
+
