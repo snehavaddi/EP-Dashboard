@@ -1,0 +1,94 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:chart="sap.suite.ui.microchart">
+	<Dialog title="Assembly Phase Status" id="item_assem" contentWidth="78%" contentHeight="80%" draggable="true" resizable="true"
+		class="Bar5 sapUiSizeCompact">
+		<content>
+			<Table id="itemassembinqueue" inset="false" class="sapUiSizeCompact" items="{item_of_assem>/path}">
+				<headerToolbar>
+					<OverflowToolbar>
+						<Title id="assemsteptitle" level="H2"/>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column mergeDuplicates="true">
+						<Text text="Items"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" width="5%">
+						<Text text="System ID"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" width="5%">
+						<Text text="Client"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" width="17%">
+						<Text text="Activity / Status "/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" width="25%">
+						<Text text="Comments"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="Change Status"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" width="5%">
+						<Text text="Update Entry"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" width="10%">
+						<Text text="User+Date+Time "/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem id="itemstepinqueue" class="sapUiSizeCompact">
+						<cells>
+							<Text text="{item_of_assem>Phase}"/>
+							<Input value="{item_of_assem>SystemId}" placeholder="System ID"/>
+							<Input value="{item_of_assem>Client}" placeholder="Clients" liveChange="validateClient" Type="Number"/>
+							<Button id="itembuttontext" text="{path:'item_of_assem>Status',formatter:'.formatter.buttontext'}"
+								icon="{path:'item_of_assem>Status',formatter:'.formatter.buttonicon'}" tooltip="{item_of_assem>Status}"/>
+							<TextArea value="{item_of_assem>CommentByUser}" placeholder="Comment Log " growing="false" rows='3' width="100%"/>
+							<!--<Text  text="{ChangeUser} {ChangeDate} {ChangeTime}"/>-->
+							<Select change="onChangevalue" name="{path:'item_of_assem>Status',formatter:'.formatter.buttontext'}"
+								enabled="{path:'item_of_assem>EnableStatus',formatter:'.formatter.EnableStatus'}">
+								<core:Item key="9898" text=""/>
+								<core:Item key="0000" text="Finished"/>
+								<core:Item key="0002" text="Manually set to finished"/>
+								<core:Item key="0004" text="Finished with warning"/>
+								<core:Item key="0006" text="Not processed"/>
+								<core:Item key="0007" text="Reset"/>
+								<core:Item key="0008" text="Terminated"/>
+								<core:Item key="0012" text="Aborted"/>
+								<core:Item key="0400" text="Initial"/>
+								<core:Item key="0800" text="Reset"/>
+								<core:Item key="4000" text="In process"/>
+								<core:Item key="4100" text="Waiting for return of process"/>
+								<core:Item key="8888" text="Workflow Confirmed"/>
+								<core:Item key="9999" text="Workflow aborted completely"/>
+							</Select>
+							<Button text="Save" type="Emphasized" press="update_form"/>
+							<VBox>
+								<ObjectIdentifier
+									text="{path : 'item_of_assem>ChangeDate',type: 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'dd MMM yyyy' ,source :'yyyy-MM-dd\'T\'HH:mm:ss'}}"
+									title="{item_of_assem>ChangeUser}"/>
+								<Text text="{path:'item_of_assem>ChangeTime',formatter:'.formatter.ChangeTime'}"/>
+							</VBox>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+			<Label text=""></Label>
+			<Title level="H2" text="Time Graph for Items"/>
+			<FlexBox width="100%" height="3rem" alignItems="Center" justifyContent="SpaceBetween">
+				<items>
+					<chart:StackedBarMicroChart  press="press" class="sapUiSmallMargin" bars="{time_model>/}">
+						<chart:bars>
+							<chart:StackedBarMicroChartBar displayValue="{time_model>Phase}-{time_model>Time}%" value="{time_model>Time}"
+								valueColor="{time_model>valueColor}"/>
+						</chart:bars>
+					</chart:StackedBarMicroChart>
+				</items>
+			</FlexBox>
+		</content>
+		<buttons>
+			<Button id="add_item_assembly" text="Add Items" type="Default" icon="sap-icon://add" press="add_item_assembly"/>
+			<!--<Button id="procedd_assem_item" text="Update Entry" type="Emphasized" icon="sap-icon://write-new" press="procced_assembly_item"/>-->
+			<Button id="cancelassemitem" text="Close" type="Reject" icon="sap-icon://decline" press="cancel_assembly_item"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

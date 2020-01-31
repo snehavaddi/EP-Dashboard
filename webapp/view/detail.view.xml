@@ -1,0 +1,203 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout"
+    controllerName="epdash.epdash.controller.detail" xmlns:html="http://www.w3.org/1999/xhtml">
+  <Page showHeader="false" showNavButton="true" navButtonPress="onNavBack">
+   <content>
+      <Bar class="Bar1"></Bar>
+      <Bar class="Bar2">
+    <contentLeft>
+     <core:Icon
+     src="sap-icon://home" height ="30px" width = "40px" color="black"/>
+     <Image xmlns="sap.m"
+       src="{imageModel>/path}/logo.png" Height="60px" width = "70px">
+     </Image>
+    </contentLeft>
+    <contentMiddle>
+       <Text id="head11" text="Emergency Patch Dash Board" design="H1" class="label1" />
+    </contentMiddle>
+    <contentRight>
+     <core:Icon
+      src="sap-icon://employee"
+      height ="30px" width = "40px" color="black"/>
+     <Text id="user1" class="label2" />
+     <Button icon="sap-icon://log" id="logIn"
+      press="logout" class="logout"/>
+    </contentRight>
+     </Bar>
+   </content>
+
+   <Panel>
+
+    <Panel expandable="true" expanded="true" width="auto" class="sapUiResponsiveMargin">
+    <headerToolbar>
+      <Toolbar height="3rem">
+        <Title text="List of Patches In Process" class="compledpatch" design="H2" />
+        <ToolbarSpacer />
+      </Toolbar>
+    </headerToolbar>
+    <content>
+     <Table id="idProductsTabletwo"
+      inset="false" visible="true"
+      class="title"
+      items="{}"
+        growingScrollToLoad="false">
+
+       <columns >
+          <Column   hAlign="Center" demandPopin="true" width="80px" mergeDuplicates="true">
+        <header>
+          <Text text="Group ID" />
+        </header>
+      </Column>
+
+      <Column mergeDuplicates="false"  hAlign="Center" demandPopin="true" width="80px" >
+        <header>
+          <Text text="EP Req ID" />
+        </header>
+      </Column>
+
+      <Column mergeDuplicates="false"  hAlign="Center" demandPopin="true" width="auto" >
+        <header>
+          <Text text="Product Version" />
+        </header>
+      </Column>
+
+       <Column mergeDuplicates="false" demandPopin="true" width="80px"  hAlign="Center">
+        <header>
+          <Text text="HotFix ID" />
+        </header>
+      </Column>
+
+       <Column mergeDuplicates="false" demandPopin="true" width="auto" hAlign="Center">
+        <header>
+          <Text text="Hotfix Requester" />
+        </header>
+      </Column>
+
+       <Column mergeDuplicates="false" demandPopin="true" width="80px"  hAlign="Center">
+        <header>
+          <Text text="Header Status" />
+        </header>
+      </Column>
+
+      <Column mergeDuplicates="false" demandPopin="true" width="auto"  hAlign="Center">
+        <header>
+          <Text text="EP Header Status" />
+        </header>
+      </Column>
+
+       <Column mergeDuplicates="false" demandPopin="true" width="auto" hAlign="Center">
+        <header>
+          <Text text= "Approver (RM)" />
+        </header>
+      </Column>
+
+       <Column mergeDuplicates="false" demandPopin="true" width="80px" hAlign="Center">
+        <header>
+          <Text text= "Approver Status(RM)" />
+        </header>
+      </Column>
+
+      <Column mergeDuplicates="false" demandPopin="true" width="auto" hAlign="Center">
+        <header>
+          <Text text= "Approver(HFG)" />
+        </header>
+      </Column>
+
+     <Column mergeDuplicates="false" demandPopin="true" width="80px" hAlign="Center">
+        <header>
+          <Text text= "Status(HFG)" />
+        </header>
+      </Column>
+
+       <Column mergeDuplicates="flase" demandPopin="true" width="auto" hAlign="Center">
+        <header>
+          <Text text= "Action" />
+        </header>
+      </Column>
+    </columns>
+
+    <items >
+      <ColumnListItem id="coloumid1" >
+
+        <cells >
+          <Text  text="{ProductTriggerId}" />
+          <Link  text="{EpRequestId}" href="http://localhost:8080/webidedispatcher/destinations/PQE/sap/bc/gui/sap/its/webgui?~TRANSACTION=za84" target="_blank"/>
+
+             <ObjectIdentifier  title="{ProdVersName}" />
+             <Link id="HotfixId" text="{HotfixId}" href="http://localhost:8080/webidedispatcher/destinations/PQE/sap/bc/gui/sap/its/webgui?~TRANSACTION=za84" target="_blank"/>
+             <Text  text="{Requester}" />
+            <Text  text="{path:'HeaderStatus',formatter:'.formatter.statusText'}" />
+            <Text  text="{path:'Status',formatter:'.formatter.statusText3'}" />
+            <Text  text="{ApproverRm}" />
+            <Text  text="{path:'StatusRm',formatter:'.formatter.statusText2'}" />
+            <Text  text="{ApproverHf}" />
+            <Text  text="{path:'StatusHf',formatter:'.formatter.statusText1'}" />
+            <Button text = "DONE" />
+       </cells>
+
+        </ColumnListItem>
+
+
+
+    </items>
+
+   </Table>
+
+
+
+
+    </content>
+    </Panel>
+    </Panel>
+
+    <ToolbarSpacer />
+    <ToolbarSpacer />
+    <ToolbarSpacer />
+    <ToolbarSpacer />
+    <ToolbarSpacer />
+    <ToolbarSpacer />
+    <ToolbarSpacer />
+    <ToolbarSpacer />
+    <ToolbarSpacer />
+    <ToolbarSpacer />
+
+    <Panel>
+    <Panel expandable="true" expanded="false" width="auto" class="sapUiResponsiveMargin">
+    <headerToolbar>
+      <Toolbar height="3rem">
+        <Title text="List of Patches Completed" design="H2" class="patchcomplete"/>
+        <ToolbarSpacer />
+      </Toolbar>
+    </headerToolbar>
+    </Panel>
+    </Panel>
+    <ToolbarSpacer />
+    <ToolbarSpacer />
+    <ToolbarSpacer />
+    <ToolbarSpacer />
+    <ToolbarSpacer />
+    <ToolbarSpacer />
+    <ToolbarSpacer />
+    <ToolbarSpacer />
+    <ToolbarSpacer />
+    <ToolbarSpacer />
+    <Panel>
+    <Panel expandable="true" expanded="false" width="auto" class="sapUiResponsiveMargin">
+    <headerToolbar>
+      <Toolbar height="3rem">
+        <Title text="List of Patches Rejected" design="H2" class="patchrejected" />
+        <ToolbarSpacer />
+      </Toolbar>
+    </headerToolbar>
+    </Panel>
+    </Panel>
+
+    <footer>
+        <Toolbar id = "footer">
+        <ToolbarSpacer/>
+
+        <Button type="Up" width="200px" text="Go Back" press="onNavBack" class="buttonStyle1"/>
+         <Button type="Reject" width="200px" text="Delete" press="ondelete"/>
+      </Toolbar>
+    </footer>
+  </Page>
+</core:View>

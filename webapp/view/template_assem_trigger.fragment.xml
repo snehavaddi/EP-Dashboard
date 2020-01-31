@@ -1,0 +1,64 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog title="Pick Assembly Items" id="assem_steps" contentWidth="900px" contentHeight="800px" draggable="true" resizable="true"
+		class="Bar5 sapUiSizeCompact">
+		<content>
+			<Page showHeader="false" floatingFooter="true">
+				<Table id="itemassemb" inset="false" class="sapUiSizeCompact" items="{}">
+					<headerToolbar>
+						<Toolbar>
+							<Title text="Select Assembly Items" level="H2"/>
+						</Toolbar>
+					</headerToolbar>
+					<columns>
+						<Column width="30%" mergeDuplicates="true">
+							<Text text="Items"/>
+						</Column>
+						<Column width="10%" vAlign="Middle">
+							<Text text="Reqs"/>
+						</Column>
+						<Column width="15%">
+							<Text text="System"/>
+						</Column>
+						<Column width="15%">
+							<Text text="Client"/>
+						</Column>
+						<Column width="30%">
+							<Text text="Comments"/>
+						</Column>
+						<Column width="10%">
+							<Text text="Add Items"/>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem id="itemstepcoloum" class="sapUiSizeCompact" vAlign="Middle">
+							<cells>
+								<!--<TextArea value="{Phase}" growing="true" width="100%" class="sapUiSizeCompact"/>-->
+								<Text text="{Phase}"/>
+								<!--	<TextArea value="{mandatory_field}" rows="1" class="sapUiSizeCompact textarea_width"/> -->
+								<Switch state="{path:'mandatory_field',formatter:'.formatter.retestsuccess_switch'}" customTextOn="Yes" customTextOff="No"
+									change="change_form">
+									<layoutData>
+										<FlexItemData growFactor="1"/>
+									</layoutData>
+								</Switch>
+								<Input value="{System_id}" class="sapUiSizeCompact textarea_width_clnt"/>
+								<Input value="{Client}" class="sapUiSizeCompact textarea_width_clnt" liveChange="validateClient"/>
+								<TextArea value="" growing="true" width="100%" class="sapUiSizeCompact"/>
+								<Button icon="sap-icon://add" press="onaddrowsassem" tooltip="Add Items" class="sapUiSizeCompact"/>
+								<Text text="{ItemId}"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+				<footer>
+					<OverflowToolbar >
+						<Button id="skip_form" text="Skip Form" type="Emphasized" press="skip_assembly_form" textDirection="RTL" icon="sap-icon://step"/>
+						<ToolbarSpacer/>
+						<Button id="procedd_assem" text="Procced" type="Accept" press="procced_assembly" textDirection="LTR" icon="sap-icon://accept"/>
+						<Button id="cancelassem" text="Cancel" type="Reject" press="cancel_assembly" textDirection="LTR" icon="sap-icon://sys-cancel-2"/>
+					</OverflowToolbar >
+				</footer>
+			</Page>
+		</content>
+	</Dialog>
+</core:FragmentDefinition>

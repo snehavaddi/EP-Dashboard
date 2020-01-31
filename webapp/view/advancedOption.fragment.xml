@@ -1,0 +1,12 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified">
+	<u:Menu>
+		<u:MenuItem text="Search Assembly Form" class="right_align" select="search_assembly_form" tooltip="Search Assembly Form"
+			icon="sap-icon://search"/>
+		<u:MenuItem text="Products Landscape" type="Transparent" class="right_align" select="navlandscape" tooltip="landscape detail"
+			icon="sap-icon://it-system"/>
+		<u:MenuItem icon="sap-icon://general-leave-request" text="Holiday Calendar" width="100%" type="{Controls>/data/hot_btn}"
+			select="holiday_calendar"/>
+		<u:MenuItem text="Systems" icon="sap-icon://it-system" class="sapUiSizeCompact" tooltip="Backend System Status"
+			select="beckend_system_status"/>
+	</u:Menu>
+</core:FragmentDefinition>

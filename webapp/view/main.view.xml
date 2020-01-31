@@ -1,0 +1,927 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:u="sap.ui.commons" xmlns:l="sap.ui.layout"
+	xmlns:form="sap.ui.layout.form" xmlns:f="sap.ui.unified" xmlns:tnt="sap.tnt" controllerName="epdash.epdash.controller.main"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:tab="sap.ui.table" xmlns:fa="sap.f"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:m="sap.m">
+	<App id="epdash.epdash">
+		<f:SplitContainer id="mySplitContainer" showSecondaryContent="false" secondaryContentSize="610px">
+			<f:secondaryContent >
+				<Bar translucent="false" class="sapUiSizeCompact topBar">
+					<contentLeft>
+						<Button id="openb1" class="openhot" text="Info" type="Transparent" icon="sap-icon://close-command-field" press="onCollapseExapandPressBack"/>
+					</contentLeft>
+					<contentMiddle>
+						<Text text="List of cloud member on-duty (CMoD)"/>
+					</contentMiddle>
+					<contentRight>
+						<ComboBox items="{product_s_name>/product_s_name}" change="onHotlinerInfo" selectedKey="S4">
+							<core:Item text="{product_s_name>text}" key="{product_s_name>key}"/>
+						</ComboBox>
+					</contentRight>
+				</Bar>
+				<Panel width="600px" id="headpanel" backgroundDesign="Solid">
+					<l:HorizontalLayout>
+						<Panel width="550px" class="shiftup" backgroundDesign="Solid">
+							<headerToolbar>
+								<Toolbar>
+									<Image xmlns="sap.m" src="{imageModel>/path}/India.png" height="25px" width="40px" class="img1"/>
+									<Image xmlns="sap.m" src="{imageModel>/path}/german.png" height="25px" width="40px" class="img2"/>
+									<Image xmlns="sap.m" src="{imageModel>/path}/canada.png" height="25px" width="40px" class="img3"/>
+								</Toolbar>
+							</headerToolbar>
+							<content class="colour">
+								<l:HorizontalLayout visible="{= ${visible_hot>/visible} === 'true'}">
+									<l:VerticalLayout class="verticalone">
+										<l:HorizontalLayout class="horizontal">
+											<Button id="blr" type="Transparent" icon="sap-icon://employee" press="onPress" width="140px" class="text2"/>
+											<Button text=" " type="Transparent" enabled="false" class="flagclass1"/>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout >
+											<Button id="blrback" tooltip="Backup Hotliner in BLR" width="140px" type="Transparent" icon="sap-icon://group" press="onPress" class="up"/>
+										</l:HorizontalLayout>
+									</l:VerticalLayout>
+									<l:VerticalLayout class="verticallay">
+										<l:HorizontalLayout class="horizontal">
+											<Button id="rot" tooltip="Hotliner in ROT" type="Transparent" icon="sap-icon://employee" press="onPress" class="text2 hotlineclass"
+												width="140px"/>
+											<Button text=" " type="Transparent" enabled="false" class="flagclass1"/>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout>
+											<Button id="rotback" tooltip="Backup Hotliner in BLR" type="Transparent" icon="sap-icon://group" press="onPress" width="140px"
+												class="up hotlineclass"/>
+										</l:HorizontalLayout>
+									</l:VerticalLayout>
+									<l:VerticalLayout class="verticallay3">
+										<l:HorizontalLayout class="horizontal">
+											<Button id="can" tooltip="Hotliner in Canada" type="Transparent" icon="sap-icon://employee" press="onPress" class="text2 hotlineclass1"
+												width="120px"/>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout class="hori3rd">
+											<Button id="canback" tooltip="Backup Hotliner in Can" type="Transparent" icon="sap-icon://group" press="onPress" width="120px"
+												class="up hotlineclass1"/>
+										</l:HorizontalLayout>
+									</l:VerticalLayout>
+								</l:HorizontalLayout>
+							</content>
+						</Panel>
+					</l:HorizontalLayout>
+				</Panel>
+				<Bar translucent="false" class="topBarhot">
+					<contentLeft></contentLeft>
+					<contentMiddle>
+						<Link text="Assign Hotliners" class="topBarhotT" href="https://flpnwc-a95972b99.dispatcher.hana.ondemand.com/sites/aresflp#Hotline-Display"
+							target="_blank"/>
+					</contentMiddle>
+				</Bar>
+				<Bar translucent="false" class="topBar">
+					<contentLeft></contentLeft>
+					<contentMiddle>
+						<Text text="Quick Links"/>
+					</contentMiddle>
+				</Bar>
+				<Panel width="600px" backgroundDesign="Solid">
+					<l:VerticalLayout id="containerLayout" width="100%">
+						<l:BlockLayout id="BlockLayout" background="Dashboard">
+							<l:BlockLayoutRow >
+								<l:BlockLayoutCell >
+									<l:HorizontalLayout>
+										<tnt:NavigationList width="270px" items="{/dl_parent_nodeSet}">
+											<tnt:NavigationListItem id="DLparentNode" icon="sap-icon://email" expanded="false" class="navigation" text="{DlParentText}"
+												select="expandDLNode" hasExpander="true"></tnt:NavigationListItem>
+										</tnt:NavigationList>
+										<tnt:NavigationList width="270px" items="{/wiki_parent_nodeSet}">
+											<tnt:NavigationListItem id="WikiparentNode" icon="sap-icon://chain-link" expanded="false" class="navigation" text="{WikiLinkText}"
+												select="expandWikiNode" hasExpander="true"></tnt:NavigationListItem>
+										</tnt:NavigationList>
+									</l:HorizontalLayout>
+								</l:BlockLayoutCell>
+							</l:BlockLayoutRow>
+						</l:BlockLayout>
+					</l:VerticalLayout>
+				</Panel>
+				<Button text="Genrate Your log" type="Emphasized" width="100%" press="openLogofUser" class="sapUiSizeCompact" visible="false"/>
+				<Button id="epd_admin" text="Dashboard Admin Page" type="Emphasized" width="100%" press="onNavToEDPAdmin" visible="false"
+					class="sapUiSizeCompact"/>
+				<Button id="video_button" text="Change Video Setting" type="Emphasized" width="100%" press="onChangeVideo" visible="false"
+					class="sapUiSizeCompact"/>
+			</f:secondaryContent>
+			<m:Page showHeader="false" floatingFooter="true" class="app_class">
+				<content>
+					<Bar class="Bar2">
+						<contentLeft>
+							<Button type="Transparent" id="closeb1" text="Info" icon="sap-icon://open-command-field" width="80px" class="openhot"
+								press="onCollapseExapandPress"/>
+							<Image xmlns="sap.m" src="{imageModel>/path}/logo.png" class="sapwall" width="70px"></Image>
+						</contentLeft>
+						<contentMiddle>
+							<Text id="head1" text="Emergency Patch Dashboard" class="label1"/>
+						</contentMiddle>
+						<contentRight width="300px">
+							<Text text="Bangalore -" class="Timetext"/>
+							<Text id='ISTTime' text="09:00:00" class="Timeclass1"/>
+							<Text text="Walldorf -" class="Timetext"/>
+							<Text id='CETTime' text="09:00:00" class="Timeclass1"/>
+							<Text text="Vancouver -" class="Timetext"/>
+							<Text id='PSTTime' text="09:00:00" class="Timeclass"/>
+							<!--<core:Icon src="sap-icon://account" height="20px" width="30px" color="black"/>-->
+							<!--<Text id="user" class="label2"/>-->
+							<fa:Avatar id="user" displaySize="XS" class="btn btn-success"></fa:Avatar>
+							<Button icon="sap-icon://sys-help" tooltip="Help" id="logIn" press="logout" class="logout"/>
+							<html:br/>
+						</contentRight>
+					</Bar>
+				</content>
+				<content></content>
+				<content>
+					<Toolbar class="info_tab sapUiSizeCompact">
+						<Label text="Product Selection" width="auto" class="label sapUiSizeCompact"/>
+						<Button text="Product List" type="Transparent" icon="sap-icon://arrow-down" press="onOpenProduct_list" class="variant sapUiSizeCompact"
+							tooltip="Save Variant"/>
+						<MessageStrip id="msgTrip" showIcon="true" showCloseButton="true" type="Success"></MessageStrip>
+						<ToolbarSpacer></ToolbarSpacer>
+						<!--<Button text="HFC Tasks" type="Transparent" class="topbutton" press="open_hfc_page" tooltip="Open HFC Page"/>-->
+						<Button type="Default" text="Handover" class="topbutton sapUiSizeCompact" press="goto_handover_page" tooltip="Genrate Handover Mail"
+							icon="sap-icon://email"/>
+						<Button type="Transparent" icon="sap-icon://appointment-2" class="topbutton sapUiSizeCompact" press="hfc_view" text="HFC"
+							tooltip="HFC/Cloud calender"/>
+						<Button id="openAdvanceMenu" text="Advanced Option" class="topbutton sapUiSizeCompact" press="handlePressOpenAdvanceMenu"/>
+						<SearchField placeholder="Single Smart Search" id="searchid" width="auto" class="topbutton sapUiSizeCompact" search="single_smart_search"></SearchField>
+						<!--<MenuButton text="Advanced Option" class="topbutton sapUiSizeCompact">
+							<menu>
+								<Menu>
+									<items>
+										<MenuItem text="Search Assembly Form" class="right_align" press="search_assembly_form" tooltip="Search Assembly Form"
+											icon="sap-icon://search"/>
+										<MenuItem text="Single Smart Search" class="right_align" press="single_smart_search" tooltip="Search Assembly Form" icon="sap-icon://search"/>
+										<MenuItem text="Products Landscape" type="Transparent" class="right_align" press="navlandscape" tooltip="landscape detail"
+											icon="sap-icon://it-system"/>
+										<MenuItem icon="sap-icon://general-leave-request" text="Holiday Calendar" width="100%" type="{Controls>/data/hot_btn}"
+											press="holiday_calendar"/>
+										<MenuItem text="Systems" icon="sap-icon://it-system" class="sapUiSizeCompact" tooltip="Backend System Status" press="beckend_system_status"/>
+									</items>
+								</Menu>
+							</menu>
+						</MenuButton>
+						-->
+						<!--<Button type="Emphasized" text="Systems" icon="sap-icon://it-system" class="sapUiSizeCompact" press="beckend_system_status"-->
+						<!--	tooltip="Backend System Status"/>-->
+						<!--<Button id="bcp_count" type="Accept" icon="sap-icon://bell" class="topbutton sapUiSizeCompact" press="open_bcp_ares_incidents"-->
+						<!--	 tooltip="BCP Incidents"/>-->
+						<Switch id="switch" type="AcceptReject" class="sapUiSizeCompact" state="true" change="onchangeswitch" customTextOn="OFF" customTextOff="ON"
+							tooltip="Change State of Notification"></Switch>
+					</Toolbar>
+				</content>
+				<Panel width="auto" backgroundDesign="Solid">
+					<content>
+						<l:HorizontalLayout id="notification_panel" content="{product_noti_model>/}">
+							<l:VerticalLayout >
+								<NotificationListItem title="{product_noti_model>Product_l_name}" description="{product_noti_model>CommentOwner}" showCloseButton="false"
+									datetime="{product_noti_model>FormatDate}" unread="true" priority="Low" authorName="{product_noti_model>NameText}"
+									hideShowMoreButton="false" class="notcomment sapUiSizeCompact">
+									<buttons>
+										<Button icon="sap-icon://message-popup" text="Comments" tooltip="History of Comment" type="Emphasized" press="handleMessageViewPress"/>
+									</buttons>
+								</NotificationListItem>
+								<Panel id="codeline_display_panel" expandable="true" expanded="false" headerText="{product_noti_model>Product_l_name} Codeline Status"
+									width="auto" class="sapUiResponsiveMargin" backgroundDesign="Solid">
+									<content>
+										<tab:Table id="" width="350px" rows="{}" selectionMode="None" visibleRowCount="5" ariaLabelledBy="title">
+											<tab:columns>
+												<tab:Column width="240px">
+													<Label text="SPS Name"/>
+													<tab:template >
+														<Link text="{codeline>SpsName}" wrapping="false" press="openLandscape" tooltip="{codeline>ProductName}"/>
+													</tab:template>
+												</tab:Column>
+												<tab:Column hAlign="Center" width="60px">
+													<Label text="Phase"/>
+													<tab:template >
+														<Link text="{codeline>PhaseShortText}" wrapping="false" tooltip="{StatusProcess}"/>
+													</tab:template>
+												</tab:Column>
+												<tab:Column hAlign="Center" width="120px">
+													<Label text="Cutoff Start Date"/>
+													<tab:template >
+														<Text
+															text="{path : 'codeline>Cutoffdatestart',type: 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'dd MMM yyyy' ,source :'yyyy-MM-dd\'T\'HH:mm:ss'}}"
+															wrapping="false"/>
+													</tab:template>
+												</tab:Column>
+												<tab:Column hAlign="Center" width="120px">
+													<Label text="RTH Date"/>
+													<tab:template >
+														<Text
+															text="{path : 'codeline>RthDate',type: 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'dd MMM yyyy' ,source :'yyyy-MM-dd\'T\'HH:mm:ss'}}"
+															wrapping="false"/>
+													</tab:template>
+												</tab:Column>
+											</tab:columns>
+										</tab:Table>
+									</content>
+								</Panel>
+							</l:VerticalLayout>
+						</l:HorizontalLayout>
+					</content>
+				</Panel>
+				<ToolbarSpacer/>
+				<ToolbarSpacer/><ToolbarSpacer/><ToolbarSpacer/><ToolbarSpacer/><ToolbarSpacer/>
+				<ToolbarSpacer/>
+				<Panel width="auto" backgroundDesign="Solid">
+					<HBox class="designon">
+						<Button id="Default" text="All EP" press="onPressDefault" tooltip="Press Here to see all Data" class="buttonStyle"/>
+						<Button id="awaRmApproval" text="EP Awaiting RM Approval" press="onPressRM_Approval"
+							tooltip="approval status(RM) = not yet decided and header status = In Approval(74)"
+							ariaDescribedBy="acceptButtonDescription genericButtonDescription" class="buttonStyle"/>
+						<Button id="awaHfgApproval" text="EP Awaiting HFG Approval" width="auto" press="onPressHFG_Approval"
+							tooltip="approval status(RM) = Approved and header status = In Approval(74)" class="buttonStyle"/>
+						<Button id="vp_awaiting" text="Follow up VP" width="auto" press="awaiting_vps" tooltip="VP's waiting for Transport Request"
+							class="buttonStylevppending" visible="false"/>
+						<Button id="Ready_EP" text=" EP in Process" press=".onPressCodeline_In_Process($event, 'true','')" tooltip="EP's In Process"
+							class="buttonStyle"/>
+						<Button id="Queue_EP" text=" Assembly Queue" press="onPress_Assembly_in_Queue" tooltip="EP's In Queue" class="buttonStyle"/>
+						<Toolbar id="SearchHead" active="true" enabled="true" class="Headertool">
+							<Title text="Search EP"/>
+							<ToolbarSpacer/>
+							<SearchField id="Search" search="onFilterInvoices" selectOnFocus="true"/>
+						</Toolbar>
+					</HBox>
+				</Panel>
+				<ToolbarSpacer/>
+				<ToolbarSpacer/><ToolbarSpacer/><ToolbarSpacer/><ToolbarSpacer/><ToolbarSpacer/>
+				<ToolbarSpacer/>
+				<Panel id="idTablePanel" width="auto" backgroundDesign="Solid">
+					<m:content>
+						<Table id="idProductsTable" inset="false" visible="true" select="handleSelectionChange" items="{}" class="title sapUiSizeCompact"
+							itemPress="handleItemPress" growingScrollToLoad="false">
+							<headerToolbar>
+								<OverflowToolbar>
+									<Title text="List Of Patches" level="H2"/>
+									<ToolbarSpacer></ToolbarSpacer>
+									<!--  Add the Personalization button -->
+									<!--  Add the Personalization button -->
+									<Button icon="sap-icon://action-settings" press="onPersoButtonPressed">
+										<layoutData>
+											<OverflowToolbarLayoutData priority="NeverOverflow"/>
+										</layoutData>
+									</Button>
+									<!--    <Button id="viewsetting" tooltip="View Settings" icon="sap-icon://drop-down-list" press="handleViewSettingsDialogButtonPressed" visible="false"/> -->
+									<Button tooltip="Help" icon="sap-icon://notes" press="onPersoButtonNote"/>
+									<Button tooltip="filter" icon="sap-icon://filter" press="onPersofilterProduct"/>
+								</OverflowToolbar>
+							</headerToolbar>
+							<infoToolbar>
+								<Toolbar id="vsdFilterBar" active="true" visible="false"
+									press="[handleViewSettingsDialogFilterBarPressed, views.control.table1ViewSettingsDialog]">
+									<Label id="vsdFilterLabel" text="?"/>
+								</Toolbar>
+							</infoToolbar>
+							<columns>
+								<Column id="Epid" hAlign="Center" width="100px">
+									<ToggleButton id="EpSortBut" width="auto" text="EP Req ID" type="Transparent" pressed="false" press="onsortEP" icon="sap-icon://sort"/>
+								</Column>
+								<Column id="Proid" hAlign="Center" width="150px">
+									<ToggleButton id="ProdName" width="auto" text="Product Version" type="Transparent" pressed="false" press="onsortProduct"
+										icon="sap-icon://sort"/>
+								</Column>
+								<Column id="Hotid" hAlign="Center" width="80px">
+									<ToggleButton id="HotSortBut" width="auto" text="HotFix ID" type="Transparent" pressed="false" press="onsortHot" icon="sap-icon://sort"/>
+								</Column>
+								<Column id="Hotreqid" minScreenWidth="Tablet" demandPopin="true" width="80px" hAlign="Center">
+									<Text text="Hotfix Requester"/>
+								</Column>
+								<Column id="headid" hAlign="Center" demandPopin="true" width="150px" minScreenWidth="Tablet">
+									<ToggleButton id="HeadStatus" width="auto" tooltip="Header Status" text="Header Status" type="Transparent" pressed="false"
+										press="onsortHstatus" icon="sap-icon://sort"/>
+								</Column>
+								<Column id="Appstaid" minScreenWidth="Tablet" hAlign="Center" demandPopin="true" width="150px">
+									<ToggleButton id="ApprovSta" width="auto" text="RM Appr Status" type="Transparent" pressed="false" press="onsortApStatus"
+										icon="sap-icon://sort"/>
+								</Column>
+								<Column id="Stahfgid" minScreenWidth="Tablet" hAlign="Center" demandPopin="true" width="160px">
+									<ToggleButton id="StatHFG" width="auto" text="HFG Appr Status" type="Transparent" pressed="false" press="onsortStaHFG"
+										icon="sap-icon://sort"/>
+								</Column>
+								<Column hAlign="Center" id="Codelineid" minScreenWidth="Tablet" demandPopin="true" width="120px">
+									<Text text="MAO Codeline Status"/>
+								</Column>
+								<!--              <Column hAlign="Center" id="actionHFG" minScreenWidth="Tablet" demandPopin="true">
+                                                                                                                                  <Text text="Action"/>
+                                                                                                                   </Column>-->
+							</columns>
+							<items >
+								<ColumnListItem id="coloumid">
+									<customData>
+										<core:CustomData key="red" value="foo" writeToDom="{= ${Urgency} === '3'}"/>
+										<core:CustomData key="white" value="foo" writeToDom="{= ${Urgency} === '5'}"/>
+										<core:CustomData key="yellow" value="foo" writeToDom="{= ${Urgency} === '7'}"/>
+									</customData>
+									<cells id="colourofcell">
+										<Link id="EpRequestId" text="{= parseFloat(${EpRequestId})}" press=".open_hfs_hfx_EP($event, '')" target="_blank"/>
+										<Text id="ProductVer" text="{ProdVersName}"/>
+										<Link id="HotfixId" text="{= parseFloat(${HotfixId})}" press=".open_hfs_hfx_Hot($event, '')" target="_blank"/>
+										<!--<Text id="requester" text="{Requester}"></Text>-->
+										<Link id="requester1" text="{Requester}" press="clickSkypeToChatReq"/>
+										<Text id="headerstatus" text="{path:'HeaderStatus',formatter:'.formatter.statusText'}"/>
+										<Text id="statusrm" text="{path:'StatusRm',formatter:'.formatter.statusText2'}"/>
+										<Text id="statushf" text="{path:'StatusHf',formatter:'.formatter.statusText1'}"/>
+										<Text id="codelinestatus" text="{path:'CodelineStatus',formatter:'.formatter.statusText10'}"/>
+										<Text id="urgency" text="{Urgency}"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+						<!-- Table added by Raman -->
+						<Table id="idProductsTable23" inset="false" select="handleSelectionChange" items="{ep_under_rm_hfg>/}" visible="false"
+							class="title sapUiSizeCompact" itemPress="handleItemPress" growingScrollToLoad="false">
+							<headerToolbar>
+								<OverflowToolbar>
+									<Title text="List Of Patches" level="H2"/>
+									<ToolbarSpacer></ToolbarSpacer>
+									<!--  Add the Personalization button -->
+									<!--  Add the Personalization button -->
+									<Button icon="sap-icon://action-settings" press="onPersoButtonPressed23">
+										<layoutData>
+											<OverflowToolbarLayoutData priority="NeverOverflow"/>
+										</layoutData>
+									</Button>
+									<Button tooltip="Help" icon="sap-icon://notes" press="onPersoButtonNote"/>
+									<Button tooltip="filter" icon="sap-icon://filter" press="onPersofilterProduct"/>
+								</OverflowToolbar>
+							</headerToolbar>
+							<infoToolbar>
+								<Toolbar id="vsdFilterBar23" active="true" visible="false"
+									press="[handleViewSettingsDialogFilterBarPressed, views.control.table1ViewSettingsDialog]">
+									<Label id="vsdFilterLabel23" text="?"/>
+								</Toolbar>
+							</infoToolbar>
+							<columns >
+								<Column id="Epid23" hAlign="Center" width="70px">
+									<ToggleButton id="EpSortBut23" width="auto" text="EP Req ID" type="Transparent" pressed="false" press="onsortEP" icon="sap-icon://sort"/>
+								</Column>
+								<Column id="Proid23" hAlign="Center" width="130px">
+									<ToggleButton id="ProdName23" width="auto" text="Product Version" type="Transparent" pressed="false" press="onsortProduct"
+										icon="sap-icon://sort"/>
+								</Column>
+								<Column id="Hotid23" hAlign="Center" width="100px">
+									<ToggleButton id="HotSortBut23" width="auto" text="HotFix ID" type="Transparent" pressed="false" press="onsortHot" icon="sap-icon://sort"/>
+								</Column>
+								<Column id="rmsysRole" hAlign="Center" demandPopin="true" width="100px">
+									<Text text="System Role"/>
+								</Column>
+								<Column id="Hotreqid23" minScreenWidth="Tablet" demandPopin="true" width="80px" hAlign="Center">
+									<Text text="Hotfix Requester"/>
+								</Column>
+								<Column id="headid23" hAlign="Center" demandPopin="true" width="120px">
+									<ToggleButton id="HeadStatus23" width="auto" tooltip="Header Status" text="Header Status" type="Transparent" pressed="false"
+										press="onsortHstatus" icon="sap-icon://sort"/>
+								</Column>
+								<Column id="Appstaid23" minScreenWidth="Tablet" hAlign="Center" demandPopin="false" width="80px">
+									<Text id="ApprovSta23" width="auto" text="RM Approval"/>
+								</Column>
+								<Column id="Stahfgid23" minScreenWidth="Tablet" hAlign="Center" demandPopin="false" width="80px">
+									<Text id="StatHFG23" width="auto" text="HFG Approval"/>
+								</Column>
+								<Column hAlign="Center" id="Codelineid23" minScreenWidth="Tablet" demandPopin="true" width="100px">
+									<Text text="MAO Codeline Status"/>
+								</Column>
+								<Column hAlign="Center" id="Correctiontype23" minScreenWidth="Tablet" demandPopin="true" width="60px">
+									<ToggleButton id="sortcorrection23" text="C# Correction" type="Transparent" pressed="false" press="onsortcorrection" icon="sap-icon://sort"/>
+								</Column>
+								<Column hAlign="Center" vAlign="Top" id="Comentrm23" width="180px" demandPopin="true">
+									<Text text="Comment From RM"/>
+								</Column>
+								<Column hAlign="Center" vAlign="Top" id="Commenthfg23" width="180px" demandPopin="true">
+									<Text text="Comment From HFG"/>
+								</Column>
+								<Column hAlign="Left" vAlign="Middle" id="actionHFG23" width="300px" demandPopin="true">
+									<Text text="Action"/>
+								</Column>
+							</columns>
+							<items >
+								<ColumnListItem id="coloumid23" class="coloumepcolor">
+									<customData>
+										<core:CustomData key="red" value="foo" writeToDom="{= ${ep_under_rm_hfg>Urgency} === '3'}"/>
+										<core:CustomData key="white" value="foo" writeToDom="{= ${ep_under_rm_hfg>Urgency} === '5'}"/>
+										<core:CustomData key="yellow" value="foo" writeToDom="{= ${ep_under_rm_hfg>Urgency} === '7'}"/>
+									</customData>
+									<cells id="colourofcell23">
+										<Link id="EpRequestId23" text="{= parseFloat(${ep_under_rm_hfg>EpRequestId})}" press=".open_hfs_hfx_EP($event, 'ep_under_rm_hfg')"
+											target="_blank"/>
+										<Text id="ProductVer23" text="{ep_under_rm_hfg>ProdVersName}"/>
+										<Link id="HotfixId23" text="{= parseFloat(${ep_under_rm_hfg>HotfixId})}" press=".open_hfs_hfx_Hot($event, 'ep_under_rm_hfg')"
+											target="_blank"/>
+										<Text id="rm_sysRole_val" text="{ep_under_rm_hfg>CollectionSystemRole}"/>
+										<Text id="requester23" text="{ep_under_rm_hfg>Requester}"/>
+										<ObjectStatus id="headerstatus23" text="{path:'ep_under_rm_hfg>HeaderStatus',formatter:'.formatter.statusText'}"
+											state="{parts : [ 'ep_under_rm_hfg>HeaderStatus', 'ep_under_rm_hfg>StatusRm' ,'ep_under_rm_hfg>StatusHf','ep_under_rm_hfg>Urgency','ep_under_rm_hfg>CodelineStatus'],formatter:'.formatter.hfgapproval_state'}"
+											icon="{parts : [ 'ep_under_rm_hfg>HeaderStatus', 'ep_under_rm_hfg>StatusRm' ,'ep_under_rm_hfg>StatusHf','ep_under_rm_hfg>Urgency','ep_under_rm_hfg>CodelineStatus'],formatter:'.formatter.hfgapproval_icon'}"/>
+										<ObjectStatus id="statusrm23" text="{path:'ep_under_rm_hfg>StatusRm',formatter:'.formatter.statusText2'}"
+											state="{parts : [ 'ep_under_rm_hfg>HeaderStatus', 'ep_under_rm_hfg>StatusRm' ,'ep_under_rm_hfg>StatusHf','ep_under_rm_hfg>Urgency','ep_under_rm_hfg>CodelineStatus'],formatter:'.formatter.hfgapproval_state'}"
+											icon="{parts : [ 'ep_under_rm_hfg>HeaderStatus', 'ep_under_rm_hfg>StatusRm' ,'ep_under_rm_hfg>StatusHf','ep_under_rm_hfg>Urgency','ep_under_rm_hfg>CodelineStatus'],formatter:'.formatter.hfgapproval_icon'}"/>
+										<ObjectStatus id="statushf23" text="{path:'ep_under_rm_hfg>StatusHf',formatter:'.formatter.statusText1'}"
+											state="{parts : [ 'ep_under_rm_hfg>HeaderStatus', 'ep_under_rm_hfg>StatusRm' ,'ep_under_rm_hfg>StatusHf','ep_under_rm_hfg>Urgency','ep_under_rm_hfg>CodelineStatus'],formatter:'.formatter.hfgapproval_state'}"
+											icon="{parts : [ 'ep_under_rm_hfg>HeaderStatus', 'ep_under_rm_hfg>StatusRm' ,'ep_under_rm_hfg>StatusHf','ep_under_rm_hfg>Urgency','ep_under_rm_hfg>CodelineStatus'],formatter:'.formatter.hfgapproval_icon'}"/>
+										<!--<Text id="headerstatus23" text=/>
+                                                                                                                                                <Text id="statusrm23" text=/>
+                                                                                                                                                <Text id="statushf23" />-->
+										<Text id="codelinestatus23" text="{path:'ep_under_rm_hfg>CodelineStatus',formatter:'.formatter.statusText10'}"/>
+										<Text id="correction23" text="{path:'ep_under_rm_hfg>Chash',formatter:'.formatter.statusText11'}"/>
+										<TextArea id="commentarearm23"
+											value="{parts : [ 'ep_under_rm_hfg>LastChangeRm', 'ep_under_rm_hfg>RejectCommentR' ],formatter:'.formatter.CommentFormat'}"
+											class="tabletextarea" editable="false" width="90%" valueLiveUpdate="false" liveChange="handleLiveChange"/>
+										<TextArea id="commntareahfg23"
+											value="{parts : [ 'ep_under_rm_hfg>LastChangeHf', 'ep_under_rm_hfg>RejectCommentH' ],formatter:'.formatter.CommentFormat'}"
+											class="tabletextarea" editable="false" width="90%" valueLiveUpdate="false" liveChange="handleLiveChange"/>
+										<l:HorizontalLayout >
+											<Button id="takeover23" text="{path:'ep_under_rm_hfg>ActionVorna',formatter:'.formatter.buttonTextPick'}" press="ontake_overEP_by_RM_HFG"
+												type="{path:'ep_under_rm_hfg>ActionVorna',formatter:'.formatter.buttonType'}" tooltip="TakeOver This Project" width="auto" class="tableb1"/>
+											<Button id="commentview23" text="" type="{path:'ep_under_rm_hfg>Commentsc',formatter:'.formatter.buttonType'}"
+												icon="sap-icon://write-new-document" press="write_comment_by_RM_HFG" tooltip="Comment" width="auto" class="tableb1"/>
+											<Text id="textassembly23"
+												text="{parts : [ 'ep_under_rm_hfg>CommentVorna', 'ep_under_rm_hfg>Commentsc' ],formatter:'.formatter.CommentFormat'}" maxLines="2"
+												width="200px" textAlign="Initial"/>
+										</l:HorizontalLayout>
+										<Text id="urgency23" visible="false" text="{ep_under_rm_hfg>Urgency}"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</m:content>
+					<content>
+						<Table id="idEPTable" inset="false" visible="false"
+							items="{ path: 'codeline_in_process>/', sorter: [{ path: 'ProductName', group: true }, { path: 'Status', descending: true}], groupHeaderFactory: '.getGroupHeader_for_codeline_tab' }"
+							class="title sapUiSizeCompact" growingScrollToLoad="false">
+							<!--updateFinished="onLoadEPTable"-->
+							<headerToolbar>
+								<OverflowToolbar>
+									<Title text="List Of Patches" level="H2"/>
+									<ToolbarSpacer></ToolbarSpacer>
+									<Button id="Remindbutt" type="Emphasized" width="200px" text="Send Reminder Mail" press="onPressAcceptReminder"/>
+									<Button id="Triggerbutt" type="Accept" width="200px" text="Trigger Patch Assembly" press="onPressTriggerAssembly"/>
+									<Button icon="sap-icon://action-settings" press="onPersoButtonPressed1">
+										<layoutData>
+											<OverflowToolbarLayoutData priority="NeverOverflow"/>
+										</layoutData>
+									</Button>
+									<!--    <Button tooltip="View Settings" icon="sap-icon://drop-down-list" press="handleViewSettingsDialogButtonPressedEPtable" visible="false"/> -->
+									<Button icon="sap-icon://notes" press="onPersoButtonNote"/>
+									<Button tooltip="filter" icon="sap-icon://filter" press="onPersofilterProduct"/>
+								</OverflowToolbar>
+							</headerToolbar>
+							<columns >
+								<Column id="Epidep" hAlign="Center" demandPopin="true" width="100px">
+									<ToggleButton id="EpSortButEP" width="auto" text="EP Req ID" type="Transparent" pressed="false" press="onsortEP" icon="sap-icon://sort"/>
+								</Column>
+								<Column id="prodidep" minScreenWidth="Tablet" demandPopin="true" hAlign="Begin" width="200px">
+									<ToggleButton id="ProdNameEP" width="auto" text="Supp.Pack.Stack" type="Transparent" pressed="false" press="onsortProduct"
+										icon="sap-icon://sort"/>
+								</Column>
+								<Column id="hotidep" minScreenWidth="Tablet" demandPopin="true" hAlign="Center" width="120px">
+									<ToggleButton id="HotSortButEP" width="auto" text="HotFix ID" type="Transparent" pressed="false" press="onsortHot" icon="sap-icon://sort"/>
+								</Column>
+								<Column id="sysRole" hAlign="Center" demandPopin="true" width="100px">
+									<Text text="System Role"/>
+								</Column>
+								<Column id="fasidep" hAlign="Center" demandPopin="true" width="100px">
+									<Text text="FA System"/>
+								</Column>
+								<Column id="chashtypeep" hAlign="Center" demandPopin="true" width="100px">
+									<Text text="C# "/>
+								</Column>
+								<Column id="codelineidep" hAlign="Center" demandPopin="true" width="200px">
+									<Text text="Codeline Type"/>
+								</Column>
+								<Column id="statusepidep" hAlign="Center" demandPopin="true" width="200px">
+									<ToggleButton id="StatusEPNew" width="auto" text="Codeline Status" type="Transparent" pressed="false" press="onsortstatus"
+										icon="sap-icon://sort"/>
+								</Column>
+								<Column id="headeridep" hAlign="Center" demandPopin="true" width="120px">
+									<ToggleButton id="HeadStatusEP" width="auto" text="Header Status" type="Transparent" pressed="false" press="onsortHstatus"
+										icon="sap-icon://sort"/>
+								</Column>
+								<Column id="actionidep" vAlign="Center" hAlign="Center" demandPopin="true">
+									<Text text="Action"/>
+								</Column>
+							</columns>
+							<items >
+								<ColumnListItem id="coloumidEP">
+									<customData>
+										<core:CustomData key="red" value="foo" writeToDom="{= ${codeline_in_process>Urgency} === '3'}"/>
+										<core:CustomData key="white" value="foo" writeToDom="{= ${codeline_in_process>Urgency} === '5'}"/>
+										<core:CustomData key="yellow" value="foo" writeToDom="{= ${codeline_in_process>Urgency} === '7'}"/>
+									</customData>
+									<cells >
+										<l:VerticalLayout >
+											<Link id="EpRequestIdEP" text="{= parseFloat(${codeline_in_process>EpRequestId})}" press=".open_hfs_hfx_EP($event, 'codeline_in_process')"
+												target="_blank"/>
+											<Button icon="{imageModel>/path}/subscibe.png" type="{path:'codeline_in_process>Changedn',formatter:'.formatter.Subscribetext'}"
+												press="onPressTitleEp" class="sapUiSizeCompact" tooltip="{path:'codeline_in_process>Changedn',formatter:'.formatter.Subscribetooltip'}"/>
+										</l:VerticalLayout >
+										<ObjectIdentifier id="SpsNameEP" title="{codeline_in_process>SpsName}"/>
+										<!--titlePress="onPressTitleEp" titleActive="true" tooltip="Please Click SPS to Notify yourself about Codeline Status"/> -->
+										<Link id="HotfixIdEP" text="{= parseFloat(${codeline_in_process>HotfixId})}" press=".open_hfs_hfx_Hot($event, 'codeline_in_process')"
+											target="_blank"/>
+										<Text id="sysRole_val" text="{codeline_in_process>CollectionSystemRole}"/>
+										<Text id="FasEP" text="{codeline_in_process>FinalASystem}"/>
+										<Text id="chashresEP" text="{path:'codeline_in_process>Chash',formatter:'.formatter.statusText11'}"/>
+										<Text id="CodeTyEP" text="{path:'codeline_in_process>CodelineType',formatter:'.formatter.statusText5'}"/>
+										<Text id="CodeStaEP" text="{path:'codeline_in_process>Status',formatter:'.formatter.statusText6'}"/>
+										<Text id="HeadStaEP" text="{path:'codeline_in_process>HeaderStatus',formatter:'.formatter.statusText'}"/>
+										<l:HorizontalLayout >
+											<Button id="takeoverEP" text="{path:'codeline_in_process>ActionVorna',formatter:'.formatter.buttonTextPick'}"
+												type="{path:'codeline_in_process>ActionVorna',formatter:'.formatter.buttonType'}" press="On_Take_Over_Codeline_Assembly"
+												tooltip="Takeover codeline" width="auto" class="tableb1"/>
+											<Button id="noteEP" text="" type="{path:'codeline_in_process>CommentVorna',formatter:'.formatter.buttonType'}"
+												icon="sap-icon://write-new-document" press="On_Comment_Codeline_Assembly" tooltip="Comment" width="auto" class="tableb1"/>
+											<Text id="ep_textarea"
+												text="{parts : [ 'codeline_in_process>CommentVorna', 'codeline_in_process>Commentsc' ],formatter:'.formatter.CommentFormat'}" maxLines="2"
+												width="300px"/>
+										</l:HorizontalLayout >
+										<Text id="urgencyEP" text="{codeline_in_process>Urgency}"/>
+										<Text id="check1" text="codeline_in_process>CheckBox}"/>
+										<Text id="sys_role" text="{codeline_in_process>SystemRole}"/>
+										<Text id="ep_product_name" text="{codeline_in_process>ProductName}"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</content>
+				</Panel>
+				<Panel visible="false" expandable="true" expanded="true" id="requestep" width="auto" backgroundDesign="Solid"
+					class="sapUiResponsiveMargin sapUiSizeCompact">
+					<!--<form:SimpleForm id="SimpleFormDisplay354wide" editable="false" layout="ResponsiveGridLayout" labelSpanXL="1" labelSpanL="3" labelSpanM="4"
+                                                                                      labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="4" columnsL="1" columnsM="1"
+                                                                                      singleContainerFullSize="false">
+                                                                                      <form:content>
+                                                                                                     <Label id="backgroundLabel"/>
+                                                                                                     <SegmentedButton selectedKey="{/selectedBackground}" ariaDescribedBy="backgroundLabel" ariaLabelledBy="backgroundLabel">
+                                                                                                                   <items>
+                                                                                                                                 <SegmentedButtonItem key="Default" text="Ready for/in Assembly"/>
+                                                                                                                                 <SegmentedButtonItem key="Light" text="In Assembly"/>
+                                                                                                                                 <SegmentedButtonItem key="Accent" text="Assembly Completed"/>
+                                                                                                                   </items>
+                                                                                                     </SegmentedButton>
+                                                                                      </form:content>
+                                                                        </form:SimpleForm>-->
+					<headerToolbar>
+						<OverflowToolbar>
+							<Title text="Ready for/in Assembly" level="H2"/>
+							<ToolbarSpacer></ToolbarSpacer>
+							<!--<Button text="Start Assembly" icon="sap-icon://car-rental" type="Accept" press="onStartAssembly">-->
+							<!--        <layoutData>-->
+							<!--                      <OverflowToolbarLayoutData priority="NeverOverflow"/>-->
+							<!--              </layoutData>-->
+							<!--</Button>-->
+							<Button text="Move Reuse" id="moveReuseProj" icon="sap-icon://open-command-field" type="Emphasized" press="moveReuseToCompletedList">
+								<layoutData>
+									<OverflowToolbarLayoutData priority="NeverOverflow"/>
+								</layoutData>
+							</Button>
+							<Button text="Login to PQP" icon="sap-icon://open-command-field" type="Emphasized" press="onpatchassemblypqp">
+								<layoutData>
+									<OverflowToolbarLayoutData priority="NeverOverflow"/>
+								</layoutData>
+							</Button>
+							<Button text="Login to HFS" icon="sap-icon://open-command-field" type="Emphasized" press="onpatchassembly">
+								<layoutData>
+									<OverflowToolbarLayoutData priority="NeverOverflow"/>
+								</layoutData>
+							</Button>
+						</OverflowToolbar>
+					</headerToolbar>
+					<content>
+						<Table id="EP_req_table" inset="false" visible="false"
+							items="{path:'',sorter: { path: '{ProductId}{= parseFloat(${ProductTriggerId})}', group: true} }" class="title sapUiSizeCompact"
+							mode="SingleSelectLeft" updateFinished="assemblyLoadComplete" updateStarted="assemblyLoadStart">
+							<!--  -->
+							<columns>
+								<Column mergeDuplicates="true" hAlign="Center" demandPopin="true" width="70px">
+									<header>
+										<Text width="auto" text="Trigger ID"/>
+									</header>
+								</Column>
+								<Column mergeDuplicates="false" hAlign="Center" demandPopin="true" width="70px">
+									<header>
+										<Text id="EpSortButEP_REQ" width="auto" text="EP Req"/>
+									</header>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" width="110px">
+									<header>
+										<Text id="ProdNameEP_REQ" width="auto" text="SPS Name"/>
+									</header>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" width="70px">
+									<header>
+										<Text id="HotSortButEP_REQ" width="auto" text="Hotfix"/>
+									</header>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" width="50px">
+									<header>
+										<Text id="assem_sysRole" width="auto" text="System Role"/>
+									</header>
+								</Column>
+								<Column hAlign="Center" demandPopin="true" width="50px">
+									<Text text="FAS"/>
+								</Column>
+								<Column hAlign="Center" demandPopin="true" width="80px">
+									<header>
+										<Text text="Codeline Type"/>
+									</header>
+								</Column>
+								<Column hAlign="Center" demandPopin="true" width="90px" mergeDuplicates="true">
+									<header>
+										<Text text="Projgrp ID"/>
+									</header>
+								</Column>
+								<Column hAlign="Center" vAlign="Center" demandPopin="true" mergeDuplicates="true" width="120px">
+									<header>
+										<Text text="Trigger User/Time"/>
+									</header>
+								</Column>
+								<Column hAlign="Center" demandPopin="true" width="10px">
+									<header>
+										<Text text="DT"/>
+									</header>
+								</Column>
+								<Column hAlign="Center" demandPopin="true" mergeDuplicates="true" width="70px">
+									<header>
+										<Text text="Comment for Hotliner"/>
+									</header>
+								</Column>
+								<Column hAlign="Center" vAlign="Middle" mergeDuplicates="true" demandPopin="true" width="80px">
+									<header>
+										<Text text="Action"/>
+									</header>
+								</Column>
+								<Column hAlign="Left" vAlign="Middle" mergeDuplicates="true" demandPopin="true" width="60px" class="sapUiTinyMarginBeginEnd"></Column>
+								<Column hAlign="Left" vAlign="Middle" mergeDuplicates="true" demandPopin="true" width="160px" class="sapUiTinyMarginBeginEnd"></Column>
+								<!--              <Column hAlign="Left" vAlign="Middle" mergeDuplicates="true" demandPopin="true" width="120px"></Column> -->
+								<Column demandPopin="true" width="100px" hAlign="Begin" mergeDuplicates="false">
+									<Text text="Trigger Type"/>
+								</Column>
+								<Column hAlign="Begin" mergeDuplicates="true" vAlign="Middle" demandPopin="false" width="60px" class="sapUiTinyMarginBeginEnd">
+									<Text text="Start Assembly"/>
+								</Column>
+							</columns>
+							<items >
+								<ColumnListItem id="coloumidEP_req" type="Inactive">
+									<!--press="onPressTableEPs"-->
+									<customData>
+										<core:CustomData key="red" value="foo" writeToDom="{= ${Urgency} === '3'}"/>
+										<core:CustomData key="white" value="foo" writeToDom="{= ${Urgency} === '5'}"/>
+										<core:CustomData key="yellow" value="foo" writeToDom="{= ${Urgency} === '7'}"/>
+									</customData>
+									<cells>
+										<Link id="GrID" text="{ProductId}{= parseFloat(${ProductTriggerId})}" class="form_link" press="onPressTableEPs"
+											tooltip="{ProductId}{= parseFloat(${ProductTriggerId})}"/>
+										<Link id="assemEP_com" text="{= parseFloat(${EpRequestId})}" target="_blank" press="open_hfs_hfx_EP" class="myCustomOrange">
+											<customData>
+												<core:CustomData key="orange" value="foo"
+													writeToDom="{= ${ProductName} === 'S4HANA CLOUD' &amp;&amp; ( ${CollectionSystemRole}.includes('SCP_ABAP') || ${CollectionSystemRole}.includes('IBP_OD') )}"/>
+												<core:CustomData key="green" value="foo"
+													writeToDom="{= ${ProductName} === 'SAPA1S' &amp;&amp; ( (( ${CollectionSystemRole}.includes('COD') || ${CollectionSystemRole}.includes('C4C') ) === true) &amp;&amp; ((${CollectionSystemRole}.includes('BYD') || ${CollectionSystemRole}.includes('TEM')) === false))}"/>
+												<core:CustomData key="grey" value="foo"
+													writeToDom="{= ${ProductName} === 'SAPA1S' &amp;&amp; ( (( ${CollectionSystemRole}.includes('COD') || ${CollectionSystemRole}.includes('C4C') ) === true) &amp;&amp; ((${CollectionSystemRole}.includes('BYD') || ${CollectionSystemRole}.includes('TEM')) === true))}"/>
+											</customData>
+										</Link>
+										<Text id="assemSPS_com" text="{SpsName}" class="myCustomOrange">
+											<customData>
+												<core:CustomData key="orange" value="foo"
+													writeToDom="{= ${ProductName} === 'S4HANA CLOUD' &amp;&amp; ( ${CollectionSystemRole}.includes('SCP_ABAP') || ${CollectionSystemRole}.includes('IBP_OD') )}"/>
+												<core:CustomData key="green" value="foo"
+													writeToDom="{= ${ProductName} === 'SAPA1S' &amp;&amp; ( (( ${CollectionSystemRole}.includes('COD') || ${CollectionSystemRole}.includes('C4C') ) === true) &amp;&amp; ((${CollectionSystemRole}.includes('BYD') || ${CollectionSystemRole}.includes('TEM')) === false))}"/>
+												<core:CustomData key="grey" value="foo"
+													writeToDom="{= ${ProductName} === 'SAPA1S' &amp;&amp; ( (( ${CollectionSystemRole}.includes('COD') || ${CollectionSystemRole}.includes('C4C') ) === true) &amp;&amp; ((${CollectionSystemRole}.includes('BYD') || ${CollectionSystemRole}.includes('TEM')) === true))}"/>
+											</customData>
+										</Text>
+										<Link id="assemhot_com" text="{= parseFloat(${HotfixId})}" target="_blank" press="open_hfs_hfx_Hot" class="myCustomOrange"
+											tooltip="{HotfixId}">
+											<customData>
+												<core:CustomData key="orange" value="foo"
+													writeToDom="{= ${ProductName} === 'S4HANA CLOUD' &amp;&amp; ( ${CollectionSystemRole}.includes('SCP_ABAP') || ${CollectionSystemRole}.includes('IBP_OD') )}"/>
+												<core:CustomData key="green" value="foo"
+													writeToDom="{= ${ProductName} === 'SAPA1S' &amp;&amp; ( (( ${CollectionSystemRole}.includes('COD') || ${CollectionSystemRole}.includes('C4C') ) === true) &amp;&amp; ((${CollectionSystemRole}.includes('BYD') || ${CollectionSystemRole}.includes('TEM')) === false))}"/>
+												<core:CustomData key="grey" value="foo"
+													writeToDom="{= ${ProductName} === 'SAPA1S' &amp;&amp; ( (( ${CollectionSystemRole}.includes('COD') || ${CollectionSystemRole}.includes('C4C') ) === true) &amp;&amp; ((${CollectionSystemRole}.includes('BYD') || ${CollectionSystemRole}.includes('TEM')) === true))}"/>
+											</customData>
+										</Link>
+										<Text id="ass_sysRole_val" text="{CollectionSystemRole}" class="myCustomOrange">
+											<customData>
+												<core:CustomData key="orange" value="foo"
+													writeToDom="{= ${ProductName} === 'S4HANA CLOUD' &amp;&amp; ( ${CollectionSystemRole}.includes('SCP_ABAP') || ${CollectionSystemRole}.includes('IBP_OD') )}"/>
+												<core:CustomData key="green" value="foo"
+													writeToDom="{= ${ProductName} === 'SAPA1S' &amp;&amp; ( (( ${CollectionSystemRole}.includes('COD') || ${CollectionSystemRole}.includes('C4C') ) === true) &amp;&amp; ((${CollectionSystemRole}.includes('BYD') || ${CollectionSystemRole}.includes('TEM')) === false))}"/>
+												<core:CustomData key="grey" value="foo"
+													writeToDom="{= ${ProductName} === 'SAPA1S' &amp;&amp; ( (( ${CollectionSystemRole}.includes('COD') || ${CollectionSystemRole}.includes('C4C') ) === true) &amp;&amp; ((${CollectionSystemRole}.includes('BYD') || ${CollectionSystemRole}.includes('TEM')) === true))}"/>
+											</customData>
+										</Text>
+										<Text text="{FinalASystem}"/>
+										<Text text="{path:'CodelineType',formatter:'.formatter.statusText5'}"/>
+										<Link id="patch_to_pqp" text="PQP({ProductId}{= parseFloat(${ProductTriggerId})})" target="_blank" press="jump_to_pqp_project"
+											class="pqp_link" tooltip="PQP({ProductId}{= parseFloat(${ProductTriggerId})})"/>
+										<ObjectIdentifier title="{TriggerUser}"
+											text="{path:'TriggerDate',type: 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'dd MMM yyyy' ,source :'yyyy-MM-dd\'T\'HH:mm:ss'}}-{path:'TriggerTime', type : 'sap.ui.model.type.Time' ,formatOptions:{ source:{ pattern : '\'PT\'hh\'H\'mm\'M\'ss\'S\'' }, pattern : 'HH:mm'}} CET"
+											class="sapMTableContentMargin"/>
+										<CheckBox selected="{path:'EvBusinessDown',formatter:'.formatter.CheckBoxEPinProcess'}" enabled="false"/>
+										<Label text="{TriggerComment}" tooltip="{TriggerComment}" class="hotlinecomment"/>
+										<!--<Button class="sapUiTinyMarginBeginEnd" text="SA" visible="{= ${TriggerType} === 'R'}" press="startReusePatchAssembly"
+											enabled="{= ${EnableTrigger} === 'true' &amp;&amp; ${TriggerType} === 'R'}" tooltip="Start Assembly" width="auto"/>-->
+										<Button class="sapUiTinyMarginBeginEnd" id="pickeps"
+											text="{parts : [ 'ProductTriggerId', 'ActionVorna' ],formatter:'.formatter.assembly_button_format'}"
+											type="{path:'ActionVorna',formatter:'.formatter.buttonType'}" press="TakeOver_Assembly" tooltip="TakeOver This Project" width="auto"/>
+										<Button class="sapUiTinyMarginBeginEnd" id="commenteps" text="{= parseFloat(${ProductTriggerId})}"
+											type="{path:'CommentVorna',formatter:'.formatter.buttonType'}" icon="sap-icon://write-new-document" press="Comment_on_Assembly"
+											tooltip="Comment" width="auto"/>
+										<Text class="sapUiTinyMarginBeginEnd" id="finalcommentassem"
+											text="{parts : [ 'CommentVorna', 'Comments' ],formatter:'.formatter.CommentFormat'}" maxLines="2" width="160px"/>
+										<!--<Button id="nav_to_form" text="GO TO Form" press="open_form" tooltip="" width="120px"/> -->
+										<Button enabled="{= ${TriggerType} === 'R' ? true : false }"
+											text="{= ${TriggerType} === 'R' || ${TriggerType} === 'U' ? 'Reuse' : 'Standard' }"/>
+										<Button id="reuse_start_assem" text="{ProductId}{= parseFloat(${ProductTriggerId})}" visible="{= ${TriggerType} === 'R'}"
+											enabled="{= ${EnableTrigger} === 'true' &amp;&amp; ${TriggerType} === 'R'}" press="startReusePatchAssembly"
+											icon="sap-icon://shipping-status" tooltip="Start Assembly" width="auto"/>
+										<!--<Text id="urgencydellis1" text="hello"/>-->
+										<Text id="urgencydellis" text="{Urgency}"/>
+										<Text id="sys_role_EP_compl" text="{SystemRole}"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</content>
+				</Panel>
+				<Panel id="deleteep" visible="false" backgroundDesign="Solid">
+					<Panel expandable="true" id="dispalydelete" visible="false" expanded="false" headerText="Assembly Completed" width="auto"
+						backgroundDesign="Solid" class="sapUiResponsiveMargin">
+						<headerToolbar>
+							<OverflowToolbar>
+								<Title text="Assembly Completed" level="H2"/>
+								<ToolbarSpacer></ToolbarSpacer>
+								<Button text="" icon="sap-icon://filter" type="Emphasized" press="retest_success_filter" tooltip="Filter Table" class="sapUiSizeCompact"></Button>
+								<Button text="Send Reminder for Retest" icon="sap-icon://email" type="Emphasized" press="retest_reminder" tooltip="Reminder"
+									class="sapUiSizeCompact"></Button>
+							</OverflowToolbar>
+						</headerToolbar>
+						<content>
+							<Table id="EP_req_tabledelete" alternateRowColors="true" inset="false" visible="false" items="{delete_request_epsSet}"
+								class="title sapUiSizeCompact" growingScrollToLoad="false" mode="MultiSelect">
+								<columns>
+									<Column mergeDuplicates="true" hAlign="Center" demandPopin="true" width="80px">
+										<header>
+											<Text text="Trigger ID"/>
+										</header>
+									</Column>
+									<Column mergeDuplicates="false" hAlign="Center" demandPopin="true" width="80px">
+										<header>
+											<Text id="EpSortButEP_del" text="EP ID"/>
+										</header>
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" width="150px">
+										<header>
+											<Text id="ProdNameEP_del" width="auto" text="Supp.Pack.Stack"/>
+										</header>
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" width="100px">
+										<header>
+											<Text id="HotSortButEP_del" width="auto" text="HotFix ID"/>
+										</header>
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" width="100px">
+										<header>
+											<Text id="assem_complete_sysRole_val" width="auto" text="System Role"/>
+										</header>
+									</Column>
+									<Column hAlign="Center" demandPopin="true" width="80px">
+										<header>
+											<Text text="Codeline Type"/>
+										</header>
+									</Column>
+									<!--<Column hAlign="Center" demandPopin="true" width="180px">
+                                                                                                                                                <header>
+                                                                                                                                                               <Text text="Trigger Owner/Time"/>
+                                                                                                                                                </header>
+                                                                                                                                 </Column>
+                                                                                                                                 <Column hAlign="Center" demandPopin="true" width="180px">
+                                                                                                                                                <header>
+                                                                                                                                                               <Text text="Completed By/Time"/>
+                                                                                                                                                </header>
+                                                                                                                                 </Column>-->
+									<Column mergeDuplicates="true" hAlign="Center" demandPopin="true" width="200px">
+										<header>
+											<Text text="Patch Collection"/>
+										</header>
+									</Column>
+									<Column hAlign="Center" demandPopin="true" width="100px" mergeDuplicates="true">
+										<header>
+											<Text text="PQP Project"/>
+										</header>
+									</Column>
+									<!--<Column demandPopin="true" width="100px" hAlign="Begin">
+                                                                                                                                                <Text text="Retest Mail Sent"/>
+                                                                                                                                 </Column>-->
+									<Column demandPopin="true" width="100px" hAlign="Begin">
+										<Text text="Retest Success"/>
+									</Column>
+									<Column demandPopin="true" width="100px" hAlign="Begin">
+										<Text text="Trigger Type"/>
+									</Column>
+								</columns>
+								<items >
+									<ColumnListItem id="coloumidEP_del" type="Inactive">
+										<customData>
+											<core:CustomData key="red" value="foo" writeToDom="{= ${Urgency} === '3'}"/>
+											<core:CustomData key="white" value="foo" writeToDom="{= ${Urgency} === '5'}"/>
+											<core:CustomData key="yellow" value="foo" writeToDom="{= ${Urgency} === '7'}"/>
+										</customData>
+										<cells >
+											<Link text="{ProductId}{= parseFloat(${ProductTriggerId})}" class="form_link" press="onPressTableEPs"/>
+											<Link text="{= parseFloat(${EpRequestId})}" target="_blank" press="open_hfs_hfx_EP" class="myCustomOrange">
+												<customData>
+													<core:CustomData key="orange" value="foo"
+														writeToDom="{= ${ProductName} === 'S4HANA CLOUD' &amp;&amp; ( ${CollectionSystemRole}.includes('SCP_ABAP ') || ${CollectionSystemRole} === 'SCP_ABAP'|| ${CollectionSystemRole}.includes('IBP_OD ') || ${CollectionSystemRole} === 'IBP_OD' )}"/>
+													<core:CustomData key="green" value="foo"
+														writeToDom="{= ${ProductName} === 'SAPA1S' &amp;&amp; ( (( ${CollectionSystemRole}.includes('COD ') || ${CollectionSystemRole} === 'COD' || ${CollectionSystemRole}.includes('C4C') ) === true) &amp;&amp; ((${CollectionSystemRole}.includes('BYD') || ${CollectionSystemRole}.includes('TEM')) === false))}"/>
+													<core:CustomData key="grey" value="foo"
+														writeToDom="{= ${ProductName} === 'SAPA1S' &amp;&amp; ( (( ${CollectionSystemRole}.includes('COD') || ${CollectionSystemRole}.includes('C4C') ) === true) &amp;&amp; ((${CollectionSystemRole}.includes('BYD') || ${CollectionSystemRole}.includes('TEM')) === true))}"/>
+												</customData>
+											</Link>
+											<Text text="{SpsName}" class="myCustomOrange">
+												<customData>
+													<core:CustomData key="orange" value="foo"
+														writeToDom="{= ${ProductName} === 'S4HANA CLOUD' &amp;&amp; ( ${CollectionSystemRole}.includes('SCP_ABAP ') || ${CollectionSystemRole} === 'SCP_ABAP'|| ${CollectionSystemRole}.includes('IBP_OD ') || ${CollectionSystemRole} === 'IBP_OD' )}"/>
+													<core:CustomData key="green" value="foo"
+														writeToDom="{= ${ProductName} === 'SAPA1S' &amp;&amp; ( (( ${CollectionSystemRole}.includes('COD ') || ${CollectionSystemRole} === 'COD' || ${CollectionSystemRole}.includes('C4C') ) === true) &amp;&amp; ((${CollectionSystemRole}.includes('BYD') || ${CollectionSystemRole}.includes('TEM')) === false))}"/>
+													<core:CustomData key="grey" value="foo"
+														writeToDom="{= ${ProductName} === 'SAPA1S' &amp;&amp; ( (( ${CollectionSystemRole}.includes('COD') || ${CollectionSystemRole}.includes('C4C') ) === true) &amp;&amp; ((${CollectionSystemRole}.includes('BYD') || ${CollectionSystemRole}.includes('TEM')) === true))}"/>
+												</customData>
+											</Text>
+											<Link text="{= parseFloat(${HotfixId})}" target="_blank" press="open_hfs_hfx_Hot" class="myCustomOrange">
+												<customData>
+													<core:CustomData key="orange" value="foo"
+														writeToDom="{= ${ProductName} === 'S4HANA CLOUD' &amp;&amp; ( ${CollectionSystemRole}.includes('SCP_ABAP ') || ${CollectionSystemRole} === 'SCP_ABAP'|| ${CollectionSystemRole}.includes('IBP_OD ') || ${CollectionSystemRole} === 'IBP_OD' )}"/>
+													<core:CustomData key="green" value="foo"
+														writeToDom="{= ${ProductName} === 'SAPA1S' &amp;&amp; ( (( ${CollectionSystemRole}.includes('COD ') || ${CollectionSystemRole} === 'COD' || ${CollectionSystemRole}.includes('C4C') ) === true) &amp;&amp; ((${CollectionSystemRole}.includes('BYD') || ${CollectionSystemRole}.includes('TEM')) === false))}"/>
+													<core:CustomData key="grey" value="foo"
+														writeToDom="{= ${ProductName} === 'SAPA1S' &amp;&amp; ( (( ${CollectionSystemRole}.includes('COD') || ${CollectionSystemRole}.includes('C4C') ) === true) &amp;&amp; ((${CollectionSystemRole}.includes('BYD') || ${CollectionSystemRole}.includes('TEM')) === true))}"/>
+												</customData>
+											</Link>
+											<Text id="ass_complete_sysRole_val" text="{CollectionSystemRole}" class="myCustomOrange">
+												<customData>
+													<core:CustomData key="orange" value="foo"
+														writeToDom="{= ${ProductName} === 'S4HANA CLOUD' &amp;&amp; ( ${CollectionSystemRole}.includes('SCP_ABAP ') || ${CollectionSystemRole} === 'SCP_ABAP'|| ${CollectionSystemRole}.includes('IBP_OD ') || ${CollectionSystemRole} === 'IBP_OD' )}"/>
+													<core:CustomData key="green" value="foo"
+														writeToDom="{= ${ProductName} === 'SAPA1S' &amp;&amp; ( (( ${CollectionSystemRole}.includes('COD ') || ${CollectionSystemRole} === 'COD' || ${CollectionSystemRole}.includes('C4C') ) === true) &amp;&amp; ((${CollectionSystemRole}.includes('BYD') || ${CollectionSystemRole}.includes('TEM')) === false))}"/>
+													<core:CustomData key="grey" value="foo"
+														writeToDom="{= ${ProductName} === 'SAPA1S' &amp;&amp; ( (( ${CollectionSystemRole}.includes('COD') || ${CollectionSystemRole}.includes('C4C') ) === true) &amp;&amp; ((${CollectionSystemRole}.includes('BYD') || ${CollectionSystemRole}.includes('TEM')) === true))}"/>
+												</customData>
+											</Text>
+											<Text text="{path:'CodelineType',formatter:'.formatter.statusText5'}"/>
+											<!--<ObjectIdentifier title="{TriggerUser}"
+                                                                                                                                                                             text="{path:'TriggerDate',type: 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'dd MMM yyyy' ,source :'yyyy-MM-dd\'T\'HH:mm:ss'}}-{path:'TriggerTime', type : 'sap.ui.model.type.Time' ,formatOptions:{ source:{ pattern : '\'PT\'hh\'H\'mm\'M\'ss\'S\'' }, pattern : 'HH:mm'}} CET"
+                                                                                                                                                                             class="sapMTableContentMargin"/>
+                                                                                                                                                               <ObjectIdentifier title="{DeploymentUser}"
+                                                                                                                                                                             text="{path:'DeploymentDate',type: 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'dd MMM yyyy' ,source :'yyyy-MM-dd\'T\'HH:mm:ss'}}-{path:'DeploymentTime',type : 'sap.ui.model.type.Time' ,formatOptions:{ source:{ pattern : '\'PT\'hh\'H\'mm\'M\'ss\'S\'' }, pattern : 'HH:mm'}} CET"
+                                                                                                                                                                             class="sapMTableContentMargin"/>-->
+											<ObjectStatus text="{CollectionName}" state="{path:'CollectionType',formatter:'.formatter.Collectiontype'}" titleActive='false'
+												titlePress="on_press_patch_collection" class="collection_type">
+												<customData>
+													<core:CustomData key="yellow_collection" value="foo" writeToDom="{= ${CollectionType} === '02'}"/>
+												</customData>
+											</ObjectStatus>
+											<!--<ObjectIdentifier title="" text="" titleActive='false' titlePress="on_press_patch_collection" class="sapMTableContentMargin"/>-->
+											<Link id="patch_to_pqp_comp" text="PQP({ProductId}{= parseFloat(${ProductTriggerId})})" target="_blank" press="jump_to_pqp_project"
+												class="pqp_link"/>
+											<!--<ObjectStatus class="sapUiSmallMarginBottom" text="Yes" state="Success" icon="sap-icon://accept"/>-->
+											<ObjectStatus class="sapUiSmallMarginBottom" text="{path:'RetestSuccess',formatter:'.formatter.retesttooltip'}"
+												state="{path:'RetestSuccess',formatter:'.formatter.retestsuccess'}" icon="{path:'RetestSuccess',formatter:'.formatter.retesticon'}"/>
+											<Text id="trigger_type1" text="{=${TriggerType}==='R' ? 'Reuse' : 'Standard' }"/>
+											<Text id="urgencydel" text="{Urgency}"/>
+											<Text id="FormStatus" text="{FormStatus}"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</content>
+					</Panel>
+				</Panel>
+				<!--   <html:audio id="audio" src="./audio/popup.mp3" width="1px"/> -->
+				<footer>
+					<OverflowToolbar id="otbFooter">
+						<MenuButton id="menubutton" class="sapUiSizeCompact" text="Assembly Ongoing" type="Emphasized" visible="false">
+							<menu>
+								<Menu itemSelected="showDeploymentStep" items="{product>/property/0/text}">
+									<items>
+										<MenuItem text="{product>}"/>
+									</items>
+								</Menu>
+							</menu>
+						</MenuButton>
+						<ToolbarSpacer/>
+						<ProgressIndicator id="deploymentindicator" class="sapUiSizeCompact" showValue="true" state="Warning" displayOnly="true" visible="false"
+							width="85%"/>
+						<ToolbarSpacer/>
+						<Button id="closebar" text="Close" type="Reject" press="closeProgressbar" class="sapUiSizeCompact" visible="false"/>
+					</OverflowToolbar>
+				</footer>
+			</m:Page>
+		</f:SplitContainer>
+	</App>
+</core:View>

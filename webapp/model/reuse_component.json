@@ -1,0 +1,38 @@
+{
+	"ROLE": [{
+		"key": "1",
+		"ProductName": "SAPA1S",
+		"Generated_Product": "SAPLEAPPLICATIONPLATFORM",
+		"System_role_1": ["COD", "C4C"],
+		"System_role_2": "",
+		"Component_ID": "SAP_LEAP"
+	}, {
+		"key": "2",
+		"ProductName": "SAPA1S",
+		"Generated_Product": "SAPLEAPPLICATIONPLATFORM",
+		"System_role_1": ["COD", "C4C"],
+		"System_role_2": ["BYD", "TEM", "FAP"],
+		"Component_ID": "SAP_LEAP"
+	}, {
+		"key": "3",
+		"ProductName": "S4HANA CLOUD",
+		"Generated_Product": "IBP CLOUD",
+		"System_role_1": ["IBP_OD"],
+		"System_role_2": "",
+		"Component_ID": "IBPCLOUD"
+	}, {
+		"key": "4",
+		"ProductName": "S4HANA CLOUD",
+		"Generated_Product": "ABAP IN SAP CP",
+		"System_role_1": ["SCP_ABAP"],
+		"System_role_2": "",
+		"Component_ID": "ABAP_PAAS"
+	}, {
+		"key": "5",
+		"ProductName": "S4HANA CLOUD",
+		"Generated_Product": "BW4HANA CLOUD",
+		"System_role_1": ["DWC"],
+		"System_role_2": "",
+		"Component_ID": "DW4CORE"
+	}]
+}

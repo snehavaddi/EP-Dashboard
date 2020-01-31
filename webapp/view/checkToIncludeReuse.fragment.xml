@@ -1,0 +1,37 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<Dialog title="Do you want to include selected codeline to the below codeline which is already ongoing assembly queue?" contentWidth="800px"
+		contentHeight="400px" class="sapUiSizeCompact Bar5">
+		<content>
+			<Page showHeader="false" floatingFooter="true">
+				<Table id="checkToInclude" inset="false" items="{IncludedItems>/items}" updateFinished="" class="sapUiSizeCompact">
+					<columns>
+						<Column width="80px">
+							<Text text="Reuse Product ID"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+							<Text text="Reuse Trigger ID"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+							<Text text="SPS Name"/>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem id="itemsToInclude">
+							<cells>
+								<Text text="{IncludedItems>c_prod_id}"/>
+								<Text text="{IncludedItems>c_trig_id}"/>
+								<Text text="{IncludedItems>spsname}"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+				<footer>
+					<OverflowToolbar >
+						<Button id="includeConfirm" text="Confirm" type="Accept" press="onPressToIncludeReuse"/>
+						<Button id="includeCancel" text="Cancel" type="Reject" press="onPressToCancelIncludeReuse"/>
+					</OverflowToolbar >
+				</footer>
+			</Page>
+		</content>
+	</Dialog>
+</core:FragmentDefinition>

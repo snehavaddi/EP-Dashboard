@@ -1,0 +1,62 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout">
+	<Panel width="auto" class="sapUiSizeCompact">
+		<content>
+			<Table id="pending_vp_tab" items="{}" growingScrollToLoad="false" class="sapUiSizeCompact">
+				<headerToolbar>
+					<OverflowToolbar>
+						<Title text="List of pending VP's" level="H2"/>
+						<ToolbarSpacer></ToolbarSpacer>
+						<!--  Add the Personalization button -->
+						<!--  Add the Personalization button -->
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column hAlign="Center" width="100px">
+						<ToggleButton width="auto" text="EP Req ID" type="Transparent" pressed="false" press="onsortEP" icon="sap-icon://sort" />
+					</Column>
+					<Column hAlign="Center" width="100px">
+						<Text width="auto" text="Product Version" />
+					</Column>
+					<Column hAlign="Center" width="100px">
+						<Text width="auto" text="SPS Name" />
+					</Column>
+					<Column id="Hotid" hAlign="Center" width="80px">
+						<ToggleButton width="auto" text="HotFix ID" type="Transparent" pressed="false" press="onsortHot" icon="sap-icon://sort"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="false" width="80px" hAlign="Center">
+						<Text text="Hotfix Requester"/>
+					</Column>
+					<Column hAlign="Center" demandPopin="true" width="120px">
+						<header>
+							<Text text="Codeline Type"/>
+						</header>
+					</Column>
+					<Column hAlign="Center" demandPopin="true" width="120px">
+						<Text text="MAO Codeline Status"/>
+					</Column>
+					<Column hAlign="Center" demandPopin="true" minScreenWidth="Tablet" width="120px" >
+						<Text text="Action"/>
+					</Column>
+				</columns>
+				<items >
+					<ColumnListItem id="pending_vp_item">
+						<cells >
+							<Link text="{= parseFloat(${EpRequestId})}" target="_blank" press="open_hfs_hfx_EP"/>
+							<Text text="{ProdVersName}"/>
+							<Text text="{SpsName}"/>
+							<Link text="{=parseFloat(${Id})}" target="_blank" press="open_hfs_hfx_Hot"/>
+							<Text text="{Requester}"/>
+							<Text text="{path:'CodelineType',formatter:'.formatter.statusText5'}"/>
+							<Text text="{path:'CodelineStatus',formatter:'.formatter.statusText10'}"/>
+							<l:HorizontalLayout >
+								<Button id="noteVp" text="" type="{path:'Commentsc',formatter:'.formatter.buttonType'}" icon="sap-icon://write-new-document"
+									press="On_Comment_follow_up" tooltip="Comment" width="auto" class="tableb1"/>
+								<Text id="finalcommentvp" text="{parts : [ 'CommentVornac', 'Commentsc' ],formatter:'.formatter.CommentFormat'}" maxLines="2" width="160px"/>
+							</l:HorizontalLayout >
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</Panel>
+</core:FragmentDefinition>

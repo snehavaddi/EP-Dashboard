@@ -1,0 +1,36 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core">
+	<Popover showHeader="false" contentWidth="500px" contentHeight="400px" placement="Bottom">
+		<NavContainer id="navCon">
+			<Page xmlns="sap.m" id="widget_dialog" class="widdialog" title="List Of Product" showHeader="true" >
+				<content>
+					<!--    <SelectList id="varinatdisplay" itemPress="onselectvarinat" selectionChange = "onchangeofselection"
+            items="{/Variant_table_eme_patchSet}">
+          <core:Item  text="{Variant}" />
+
+        </SelectList> -->
+					<Table id="productTable" inset="false" items="{ path: '/ProductSet', sorter: { path: 'ProductName' } }" itemPress="onItemPressProduct" mode="MultiSelect">
+						<columns>
+							<Column width="12em">
+								<Text text="Select All"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem type="Active">
+								<cells>
+									<ObjectIdentifier title="{ProductName}"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
+				<footer>
+					<Toolbar>
+						<Button text="Search" press="Search_product"/>
+						<Button text="Save as Default" press="Save_product_as_variant"/>
+						<Button text="Close" press="CloseVar"/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</NavContainer>
+	</Popover>
+</core:FragmentDefinition>

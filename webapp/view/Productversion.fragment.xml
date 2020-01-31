@@ -1,0 +1,20 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:m="sap.ui.table">
+	<Popover showHeader="false" contentWidth="500px" contentHeight="300px" placement="Bottom">
+		<NavContainer>
+			<Page xmlns="sap.m" class="widdialog" title="List Of Product Version" showHeader="true" >
+				<content>
+					<List id="ProductversionList" items="{}" mode="MultiSelect" includeItemInSelection="true">
+						<StandardListItem id="productversionitem" title="{ProdVersName}" iconDensityAware="false" iconInset="false"/>
+					</List>
+				</content>
+				<footer>
+					<Toolbar>
+						<ToolbarSpacer/>
+						<Button text="OK" press="onSelectproductversion"/>
+						<Button text="Cancel" press="oncloseproductversion"/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</NavContainer>
+	</Popover>
+</core:FragmentDefinition>

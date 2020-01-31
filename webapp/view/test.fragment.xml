@@ -1,0 +1,13 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Dialog title="Selected Patches for Assembly" contentWidth="1100px" contentHeight="600px" class="sapUiSizeCompact Bar5">
+		<content>
+			<ComboBox items="{product_s_name>/product}">
+				<core:Item key="{product_s_name>key}" text="{product_s_name>text}"/>
+			</ComboBox>
+		</content>
+		<buttons>
+			<Button text="test1"></Button>
+			<Button text="test 2"></Button>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,70 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Dialog title="Selected Patches for Assembly" contentWidth="1100px" contentHeight="600px" class="sapUiSizeCompact Bar5">
+		<content>
+			<Page showHeader="false" floatingFooter="true">
+				<Title text="You are about to trigger a patch assembly, Re-trigger is not possible Please confirm!!" level="H2"/>
+				<Table id="assemblyreq" inset="false" items="{assembly_info>/sales}" updateFinished="get_Downtime_Info" class="sapUiSizeCompact">
+					<columns>
+						<Column width="80px">
+							<Text text="EP Request"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+							<Text text="SP Stack"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+							<Text text="Hotfix ID"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+							<Text text="FA System"/>
+						</Column>
+						<Column minScreenWidth="Tablet" hAlign="Center" demandPopin="true">
+							<Text text="Codeline Type"/>
+						</Column>
+						<Column minScreenWidth="Tablet" hAlign="Center" demandPopin="true">
+							<Text text="Codeline Status"/>
+						</Column>
+						<Column minScreenWidth="Tablet" hAlign="Center" demandPopin="true">
+							<Text text="Downtime Req"/>
+						</Column>
+						<Column minScreenWidth="Tablet" hAlign="Center" demandPopin="true">
+							<Text text="Online Depl(CVOI)"/>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem id="assemblycolo">
+							<cells>
+								<Text text="{= parseFloat(${assembly_info>EpRequestId})}"/>
+								<Text text="{assembly_info>SpsName}"/>
+								<Text text="{= parseFloat(${assembly_info>HotfixId})}"/>
+								<Text text="{assembly_info>FinalASystem}"/>
+								<Text text="{path:'assembly_info>CodelineType',formatter:'.formatter.statusText5'}"/>
+								<Text text="{path:'assembly_info>Status',formatter:'.formatter.statusText6'}"/>
+								<CheckBox selected="{path:'assembly_info>EvBusinessDown',formatter:'.formatter.CheckBox'}" enabled="false"/>
+								<CheckBox selected="{path:'assembly_info>CvoiFlag',formatter:'.formatter.CheckBox'}" enabled="false"/>
+								<Text text="{path:'assembly_info>HeaderStatus',formatter:'.formatter.statusText'}"/>
+								<Text text="{assembly_info>Urgency}"/>
+								<Text text='{assembly_info>Sid}'/>
+								<Text text="{assembly_info>ProductName}"/>
+								<Text text="{assembly_info>CollectionSystemRole}"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+				<form:SimpleForm editable="true" layout="ResponsiveGridLayout" title="Additonal Note" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
+					labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1"
+					singleContainerFullSize="false"></form:SimpleForm>
+				<TextArea id="assemblyinp" class="cursor" placeholder="Kindly Provide Some Note Here......(Maximum 150 character)" width="100%" rows="2"
+					valueLiveUpdate="false" liveChange="handleLiveChange"/>
+				<footer>
+					<OverflowToolbar >
+						<CheckBox id="get_eep_mail_confirmation" selected="true" text="Inform DEV/MAO of all EP for Assembly Trigger" wrapping="true" width="auto"
+							visible="{= ${oModel_eep>/eep_visible} ==='true'}"/>
+						<ToolbarSpacer/>
+						<Button id="assemblyconfirm" text="Confirm" type="Accept" press=".callAssemblyTrigger($event,'{=${resuse_model>/reuse_trigger}')"/>
+						<Button id="assemblycancel" text="Cancel" type="Reject" press="cancelcallAssemblyTrigger"/>
+					</OverflowToolbar >
+				</footer>
+			</Page>
+		</content>
+	</Dialog>
+</core:FragmentDefinition>

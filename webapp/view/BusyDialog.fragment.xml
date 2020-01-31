@@ -1,0 +1,47 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Dialog  contentWidth="500px" contentHeight="600px" class="transparent_dialog" >
+		<content>
+			<html:html>
+				<html:head >
+					<html:style>
+						body { } .dots-loading-container { width: 66px; -webkit-animation: expand 0.75s ease-in-out infinite alternate; -moz-animation: expand 0.75s
+						ease-in-out infinite alternate; -ms-animation: expand 0.75s ease-in-out infinite alternate; animation: expand 0.75s ease-in-out infinite
+						alternate; top: 50%; left: 50%; margin-left: -33px; margin-top: 30px; position: absolute; } .dot { width: 13px; height: 13px; border-radius:
+						50%; position: absolute; } .dot.dot-a { -webkit-animation: scaleA 1.5s ease-in-out infinite; -moz-animation: scaleA 1.5s ease-in-out
+						infinite; -ms-animation: scaleA 1.5s ease-in-out infinite; animation: scaleA 1.5s ease-in-out infinite; background-color: #f66; left: 0; }
+						.dot.dot-b { -webkit-animation: scaleB 1.5s ease-in-out infinite; -moz-animation: scaleB 1.5s ease-in-out infinite; -ms-animation: scaleB
+						1.5s ease-in-out infinite; animation: scaleB 1.5s ease-in-out infinite; background-color: #93f; left: 33%; } .dot.dot-c { -webkit-animation:
+						scaleC 1.5s ease-in-out infinite; -moz-animation: scaleC 1.5s ease-in-out infinite; -ms-animation: scaleC 1.5s ease-in-out infinite;
+						animation: scaleC 1.5s ease-in-out infinite; background-color: #0cf; left: 66%; } .dot.dot-d { -webkit-animation: scaleD 1.5s ease-in-out
+						infinite; -moz-animation: scaleD 1.5s ease-in-out infinite; -ms-animation: scaleD 1.5s ease-in-out infinite; animation: scaleD 1.5s
+						ease-in-out infinite; background-color: #0f9; left: 100%; } @-moz-keyframes scaleA { 0% { transform: scale(1); } 30% { transform:
+						scale(1.5); } 60% { transform: scale(1); } } @-webkit-keyframes scaleA { 0% { transform: scale(1); } 30% { transform: scale(1.5); } 60% {
+						transform: scale(1); } } @-o-keyframes scaleA { 0% { transform: scale(1); } 30% { transform: scale(1.5); } 60% { transform: scale(1); } }
+						@keyframes scaleA { 0% { transform: scale(1); } 30% { transform: scale(1.5); } 60% { transform: scale(1); } } @-moz-keyframes scaleB { 10% {
+						transform: scale(1); } 40% { transform: scale(1.5); } 70% { transform: scale(1); } } @-webkit-keyframes scaleB { 10% { transform: scale(1);
+						} 40% { transform: scale(1.5); } 70% { transform: scale(1); } } @-o-keyframes scaleB { 10% { transform: scale(1); } 40% { transform:
+						scale(1.5); } 70% { transform: scale(1); } } @keyframes scaleB { 10% { transform: scale(1); } 40% { transform: scale(1.5); } 70% {
+						transform: scale(1); } } @-moz-keyframes scaleC { 20% { transform: scale(1); } 50% { transform: scale(1.5); } 80% { transform: scale(1); } }
+						@-webkit-keyframes scaleC { 20% { transform: scale(1); } 50% { transform: scale(1.5); } 80% { transform: scale(1); } } @-o-keyframes scaleC
+						{ 20% { transform: scale(1); } 50% { transform: scale(1.5); } 80% { transform: scale(1); } } @keyframes scaleC { 20% { transform: scale(1);
+						} 50% { transform: scale(1.5); } 80% { transform: scale(1); } } @-moz-keyframes scaleD { 30% { transform: scale(1); } 65% { transform:
+						scale(1.5); } 100% { transform: scale(1); } } @-webkit-keyframes scaleD { 30% { transform: scale(1); } 65% { transform: scale(1.5); } 100% {
+						transform: scale(1); } } @-o-keyframes scaleD { 30% { transform: scale(1); } 65% { transform: scale(1.5); } 100% { transform: scale(1); } }
+						@keyframes scaleD { 30% { transform: scale(1); } 65% { transform: scale(1.5); } 100% { transform: scale(1); } } @-moz-keyframes expand {
+						from { width: 66px; } to { width: 100px; transform: translateX(-17px); } } @-webkit-keyframes expand { from { width: 66px; } to { width:
+						100px; transform: translateX(-17px); } } @-o-keyframes expand { from { width: 66px; } to { width: 100px; transform: translateX(-17px); } }
+						@keyframes expand { from { width: 66px; } to { width: 100px; transform: translateX(-17px); } }
+					</html:style>
+				</html:head>
+				<html:body>
+					<html:div id="dots-loader" class="dots-loading-container">
+						<html:div class="dot dot-a"></html:div>
+						<html:div class="dot dot-b"></html:div>
+						<html:div class="dot dot-c"></html:div>
+						<html:div class="dot dot-d"></html:div>
+					</html:div>
+				</html:body>
+			</html:html>
+		</content>
+	</Dialog>
+</core:FragmentDefinition>

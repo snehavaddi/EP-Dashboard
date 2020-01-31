@@ -1,0 +1,51 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core">
+  <ViewSettingsDialog
+    confirm="handleConfirmEP">
+    <sortItems>
+      <ViewSettingsItem text="EP ID" key="EpRequestId" selected="true" />
+      <ViewSettingsItem text="Supp Pack" key="SpsName" />
+      <ViewSettingsItem text="HOTFIX ID" key="HotfixId" />
+      <ViewSettingsItem text="Codeline Type" key="CodelineType" />
+      <ViewSettingsItem text="Codeline Status" key="CodelineEpStat" />
+    </sortItems>
+    <groupItems>
+      <ViewSettingsItem text="Supp Pack" key="SpsName" />
+      <ViewSettingsItem text="Codeline Type" key="CodelineType" />
+      <ViewSettingsItem text="Codeline Status" key="CodelineEpStat" />
+    </groupItems>
+    <filterItems>
+      <ViewSettingsFilterItem
+        text="Codeline Type"
+        key="CodelineType"
+        multiSelect="false">
+        <items>
+          <ViewSettingsItem text="MAO Codeline" key="CodelineType___EQ___1___X" />
+          <ViewSettingsItem text="Verification Patch Codeline" key="CodelineType___EQ___2___2000" />
+          <ViewSettingsItem text="Emergency Patch Codeline" key="CodelineType___EQ___3___X" />
+        </items>
+      </ViewSettingsFilterItem>
+      <ViewSettingsFilterItem
+        text="Codeline Status"
+        key="CodelineEpStat"
+        multiSelect="false">
+        <items>
+          <ViewSettingsItem text="New" key="CodelineEpStat___EQ___70___X" />
+          <ViewSettingsItem text="In Risk Mitigation" key="CodelineEpStat___EQ___72___X" />
+          <ViewSettingsItem text="In Approval" key="CodelineEpStat___EQ___74___X" />
+          <ViewSettingsItem text="Verification Patch Approved" key="CodelineEpStat___EQ___75___X" />
+          <ViewSettingsItem text="Approved" key="CodelineEpStat___EQ___76___X" />
+          <ViewSettingsItem text="Rejected" key="CodelineEpStat___EQ___78___X" />
+          <ViewSettingsItem text="Implementation on-going" key="CodelineEpStat___EQ___80___X" />
+          <ViewSettingsItem text="Implementation Completed" key="CodelineEpStat___EQ___82___X" />
+          <ViewSettingsItem text="Assembly Done" key="CodelineEpStat___EQ___84___X" />
+          <ViewSettingsItem text="Deployment completed" key="CodelineEpStat___EQ___86___X" />
+          <ViewSettingsItem text="Retest Successful" key="CodelineEpStat___EQ___88___X" />
+          <ViewSettingsItem text="Finished" key="CodelineEpStat___EQ___90___X" />
+          <ViewSettingsItem text="Canceled" key="CodelineEpStat___EQ___92___X" />
+        </items>
+      </ViewSettingsFilterItem>
+    </filterItems>
+  </ViewSettingsDialog>
+</core:FragmentDefinition>

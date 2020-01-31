@@ -1,0 +1,39 @@
+<mvc:View height="100%" controllerName="epdash.epdash.controller.landscape" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" class="sapUiSizeCompact" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Shell>
+		<Page showNavButton="true" navButtonPress="backtomain" backgroundDesign="List" title="Landscape Detail" class="lanscapeclass">
+			<content>
+				<Carousel id="carousel" class="sapUiContentPadding" loop="true" width="100%" height="90%">
+					<pages>
+						<Image src="https://github.wdf.sap.corp/ARES/Cloud_mnt_sys/blob/master/Landscape_Images/S4HANA.jpg?raw=true" alt="S4HANA Landscape"/>
+						<!---->
+						<Image src="https://github.wdf.sap.corp/ARES/Cloud_mnt_sys/blob/master/Landscape_Images/IBP.jpg?raw=true" alt="IBP Landscape"/>
+						<Image src="https://github.wdf.sap.corp/ARES/Cloud_mnt_sys/blob/master/Landscape_Images/BYD.jpg?raw=true" alt="BYD Landscape"/>
+						<Image src="https://github.wdf.sap.corp/ARES/Cloud_mnt_sys/blob/master/Landscape_Images/C4C.jpg?raw=true" alt="C4C Landscape"/>
+						<Image src="https://github.wdf.sap.corp/ARES/Cloud_mnt_sys/blob/master/Landscape_Images/NGAP.jpg?raw=true" alt="NGAP Landscape"/>
+						<Image src="https://github.wdf.sap.corp/ARES/Cloud_mnt_sys/blob/master/Landscape_Images/STEAMPUNK.jpg?raw=true" alt="ACP Landscape"/>
+						<Image src="https://github.wdf.sap.corp/ARES/Cloud_mnt_sys/blob/master/Landscape_Images/BWHANA.jpg?raw=true" alt="BWH Landscape"/>
+						<Image src="https://github.wdf.sap.corp/ARES/Cloud_mnt_sys/blob/master/Landscape_Images/MACO.jpg?raw=true" alt="MaCo Landscape"/>
+					</pages>
+				</Carousel>
+				<HBox >
+					<ImageContent id="lan_1" src="https://github.wdf.sap.corp/ARES/Cloud_mnt_sys/blob/master/Landscape_Images/S4HANA.jpg?raw=true"
+						description="S4HANA Landscape" press="press"></ImageContent>
+					<ImageContent id="lan_2" src="https://github.wdf.sap.corp/ARES/Cloud_mnt_sys/blob/master/Landscape_Images/IBP.jpg?raw=true"
+						description="IBP Landscape" press="press"></ImageContent>
+					<ImageContent id="lan_3" src="https://github.wdf.sap.corp/ARES/Cloud_mnt_sys/blob/master/Landscape_Images/BYD.jpg?raw=true"
+						description="BYD Landscape" press="press"></ImageContent>
+					<ImageContent id="lan_4" src="https://github.wdf.sap.corp/ARES/Cloud_mnt_sys/blob/master/Landscape_Images/C4C.jpg?raw=true"
+						description="C4C Landscape" press="press"></ImageContent>
+					<ImageContent id="lan_5" src="https://github.wdf.sap.corp/ARES/Cloud_mnt_sys/blob/master/Landscape_Images/NGAP.jpg?raw=true"
+						description="NGAP Landscape" press="press"></ImageContent>
+					<ImageContent id="lan_6" src="https://github.wdf.sap.corp/ARES/Cloud_mnt_sys/blob/master/Landscape_Images/STEAMPUNK.jpg?raw=true"
+						description="ACP Landscape" press="press"></ImageContent>
+					<ImageContent id="lan_7" src="https://github.wdf.sap.corp/ARES/Cloud_mnt_sys/blob/master/Landscape_Images/BWHANA.jpg?raw=true" press="press"></ImageContent>
+					<ImageContent id="lan_8" src="https://github.wdf.sap.corp/ARES/Cloud_mnt_sys/blob/master/Landscape_Images/MACO.jpg?raw=true"
+						description="MaCo Landscape" press="press"></ImageContent>
+				</HBox>
+			</content>
+		</Page>
+	</Shell>
+</mvc:View>

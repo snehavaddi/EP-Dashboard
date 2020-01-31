@@ -1,0 +1,59 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:chart="sap.suite.ui.microchart">
+	<Dialog title="Software Component Versions" id="swcv_dialog" contentWidth="50%" contentHeight="40%" draggable="true" resizable="true"
+		class="Bar5 sapUiSizeCompact">
+		<content>
+			<Table id="swcv_table" inset="false" class="sapUiSizeCompact" items="{swcv_model>/}">
+				<headerToolbar>
+					<OverflowToolbar>
+						<Title id="swc_heading" level="H2" text="Project Group '{swcv_model>/0/ProjgrpId}' found with below Information. Please double check and Confirm Assembly?"/>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column minScreenWidth="Tablet" demandPopin="true" width="15%">
+						<Text text="Project ID" />
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" width="20%">
+						<Text text="SW Comp PPMS" />
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" width="15%">
+						<Text text="SW Comp ID"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" width="15%">
+						<Text text="SW Comp Rel"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" width="10%">
+						<Text text="SW SP Level"/>
+					</Column>
+					<!--<Column minScreenWidth="Tablet" demandPopin="true" width="25%">
+						<Text text="Comments"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="Change Status"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" width="5%">
+						<Text text="Update Entry"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" width="10%">
+						<Text text="User+Date+Time "/>
+					</Column>-->
+				</columns>
+				<items>
+					<ColumnListItem id="sw_colllist" class="sapUiSizeCompact">
+						<cells>
+							<Text text="{swcv_model>ProjectId}"/>
+							<Text text="{swcv_model>SwcvPpms}" />
+							<Text text="{swcv_model>SwcvName}" />
+							<Text text="{swcv_model>SwcvRel}" />
+							<Text text="{swcv_model>Value}" />
+							
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+		<buttons>
+			<Button id="procced_assembly" text="Confirm Assembly" type="Accept" icon="sap-icon://begin" press="confirm_assembly" enabled="{= ${swcv_model>/0/ProjgrpId} !== ''}"/>
+			<Button id="cancel_assembly" text="Close" type="Reject" icon="sap-icon://decline" press="close_assembly"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

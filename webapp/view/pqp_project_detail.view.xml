@@ -1,0 +1,167 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" controllerName="epdash.epdash.controller.pqp_project_detail" displayBlock="true"
+	xmlns:tab="sap.ui.table" xmlns:tnt="sap.tnt" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Shell>
+		<Page showNavButton="true" navButtonPress="backtomain" showHeader="false" title="PQP Project Detail"
+			class="lanscapeclass backgroundpage sapUiFioriObjectPage" backgroundDesign="List" titleLevel="H2">
+			<html:nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+				<html:a class="navbar-brand" href="#">
+					<Button icon="sap-icon://sys-back-2" type="Emphasized" class="sapUiSizeCompact" tooltip="Back to main page" press="backtomain">
+						<layoutData>
+							<OverflowToolbarLayoutData priority="NeverOverflow"/>
+						</layoutData>
+					</Button>
+					PQP Project Group Status
+				</html:a>
+			</html:nav>
+			<Panel id="panelhead" expandable="true" expanded="true" backgroundDesign="Solid" width="auto" class="sapUiResponsiveMargin panelpgrp">
+				<headerToolbar>
+					<Toolbar height="3rem">
+						<Title id="panelheadtext" titleStyle="H2" class="phaseText"/><ToolbarSpacer/>
+						<Button type="Accept" text="Detail" icon="sap-icon://expand" press="onPressdetailgroup" tooltip="Detail of Project Group Items"/>
+					</Toolbar>
+				</headerToolbar>
+				<tnt:ToolHeader>
+					<Button icon="sap-icon://home" type="Transparent" press="backtomain">
+						<layoutData>
+							<OverflowToolbarLayoutData priority="NeverOverflow"/>
+						</layoutData>
+					</Button>
+					<IconTabHeader id="iconTabHeader" selectedKey="invalidKey" select="onSelectTab" showSelection="true" showOverflowSelectList="true"
+						enableTabReordering="true" class="sapUiResponsiveContentPadding" backgroundDesign="Translucent" items="{/pqp_project_idSet}">
+						<layoutData>
+							<OverflowToolbarLayoutData priority="NeverOverflow" shrinkable="true"/>
+						</layoutData>
+						<items id="iconitem">
+							<IconTabFilter text="{ProjectId}"></IconTabFilter>
+						</items>
+					</IconTabHeader>
+					<ToolbarSpacer>
+						<layoutData>
+							<OverflowToolbarLayoutData priority="NeverOverflow" minWidth="16px"/>
+						</layoutData>
+					</ToolbarSpacer>
+					<Text icon="sap-icon://comment" text="List of Project ID">
+						<layoutData>
+							<OverflowToolbarLayoutData priority="NeverOverflow"/>
+						</layoutData>
+					</Text>
+				</tnt:ToolHeader>
+			</Panel>
+			<Panel id="projectexppanel" expandable="true" expanded="false" backgroundDesign="Solid" visible="false" headerText="List of Items"
+				width="auto" class="sapUiResponsiveMargin panelpgrp">
+				<VBox id="__mainContent" items="{/project_detail_itemSet}" visible="false">
+					<Panel width="100%" id="detpanel" backgroundDesign="Solid" class="phasePanel" expandable="true" expand="onexpandpanel">
+						<headerToolbar>
+							<Toolbar height="3rem">
+								<Title text="{PhseShortText}" titleStyle="H2" class="phaseText"/><ToolbarSpacer/>
+								<Button type="Transparent" icon="{path:'State',formatter:'.iconformat'}" class="itemstateclass" press="onPressPhase"
+									tooltip="{PhseShortText} Steps"/>
+							</Toolbar>
+						</headerToolbar>
+						<infoToolbar>
+							<Toolbar design="Transparent">
+								<MessageStrip type="Success" text="{Success}" showIcon="true"/>
+								<ToolbarSpacer/>
+								<MessageStrip type="Error" text="{Fail}" showIcon="true"/>
+								<ToolbarSpacer/>
+								<MessageStrip type="Warning" text="{Warning}" showIcon="true"/>
+								<ToolbarSpacer/>
+								<MessageStrip type="Information" text="{Inprocess}" showIcon="true" customIcon="sap-icon://shipping-status"/>
+							</Toolbar>
+						</infoToolbar>
+						<content>
+							<!--			<tab:Table  id="projectphasetab" selectionMode="None"   setEnableGrouping="true" ariaLabelledBy="title">
+											<tab:columns>
+												<tab:Column width="auto">
+													<Label text="Item Short text"/>
+													<tab:template >
+														<Text  text="{ItemShortText}"  />
+													</tab:template>
+												</tab:Column>
+												<tab:Column hAlign="Center" width="auto">
+													<Label text="Item Status"/>
+													<tab:template >
+														<Text  text="{ItemStatus}"  />
+													</tab:template>
+												</tab:Column>
+												<tab:Column hAlign="Center" width="auto">
+													<Label text="Item Status Text"/>
+													<tab:template >
+														<Text  text="{ItemStatusText}"  />
+													</tab:template>
+												</tab:Column>
+												<tab:Column hAlign="Center" width="auto">
+													<Label text="Start Date"/>
+													<tab:template >
+														<Text  text="{StartDate}"  />
+													</tab:template>
+												</tab:Column>
+												<tab:Column hAlign="Center" width="auto">
+													<Label text="Start User"/>
+													<tab:template >
+														<Text  text="{StartUser}"  />
+													</tab:template>
+												</tab:Column>
+												<tab:Column hAlign="Center" width="auto">
+													<Label text="Comment"/>
+													<tab:template >
+														<Text  text="{GlobalComment}"  />
+													</tab:template>
+												</tab:Column>
+												
+											</tab:columns>
+										</tab:Table> -->
+							<Table id="proitemtable" rowSelectionChange="onselectrow" inset="false" select="handleSelectionChange" visibleRowCount="200"
+								growingScrollToLoad="false">
+								<headerToolbar>
+									<Toolbar></Toolbar>
+								</headerToolbar>
+								<columns>
+									<Column width="25%" styleClass="cellBorderLeft cellBorderRight" demandPopin="true" popinDisplay="WithoutHeader" mergeDuplicates="true">
+										<Text text="Project ID"/>
+									</Column>
+									<Column width="50%" styleClass="cellBorderLeft cellBorderRight" demandPopin="true" popinDisplay="WithoutHeader">
+										<Text text="Item Short Text"/>
+									</Column>
+									<Column width="10%" styleClass="cellBorderLeft cellBorderRight" demandPopin="true" popinDisplay="WithoutHeader" hAlign="Center">
+										<Text text="Icon"/>
+									</Column>
+									<Column width="30%" styleClass="cellBorderLeft cellBorderRight" demandPopin="true" popinDisplay="WithoutHeader">
+										<Text text="Item Status Text"/>
+									</Column>
+									<Column width="22%" styleClass="cellBorderLeft cellBorderRight" demandPopin="true" popinDisplay="WithoutHeader">
+										<Text text="Start Date"/>
+									</Column>
+									<Column width="22%" styleClass="cellBorderLeft cellBorderRight" demandPopin="true" popinDisplay="WithoutHeader">
+										<Text text="Start Time"/>
+									</Column>
+									<Column width="22%" styleClass="cellBorderLeft cellBorderRight" demandPopin="true" popinDisplay="WithoutHeader">
+										<Text text="Start User"/>
+									</Column>
+									<Column width="45%" styleClass="cellBorderLeft cellBorderRight" demandPopin="true" popinDisplay="WithoutHeader">
+										<Text text="Global Comment"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem id="proitemtableitem" vAlign="Middle">
+										<cells>
+											<Text text="{ProjectId}"/>
+											<Text text="{ItemShortText}"/>
+											<Image id="imgmesource" src="{path:'ItemStatus',formatter:'.textformat'}" width="20px"/>
+											<Text text="{ItemStatusText}"/>
+											<Text
+												text="{path : 'StartDate',type: 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'dd MMM yyyy' ,source :'yyyy-MM-dd\'T\'HH:mm:ss'}}"/>
+											<Text text="{path:'StartTime',formatter:'.timeformat'}"/>
+											<Text text="{StartUser}"/>
+											<Text text="{GlobalComment}"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</content>
+					</Panel>
+				</VBox>
+			</Panel>
+		</Page>
+	</Shell>
+</mvc:View>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
+<style>
+#mySidenav  {
+    position: absolute;
+    right: -30px;
+    top:20px;
+    transition: 0.3s;
+
+    padding:10px;
+
+    width: 100px;
+    text-decoration: none;
+    font-size: 15px;
+    color: white;
+    background:gray;
+    -webkit-animation-name: ShineAnimation;
+    -webkit-animation-duration: 5s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: cubic-bezier(.12,.89,.98,.47);
+    border-radius: 0 5px 5px 0;
+}
+
+@-webkit-keyframes ShineAnimation{
+    from {
+        background-repeat:no-repeat;
+        background-image:-webkit-linear-gradient(
+            top left,
+            rgba(240,248,255, 0.6) 0%,
+            rgba(240,248,255, 0.6) 10%,
+            rgba(240,248,255, 0.6) 20%,
+            rgba(240,248,255, 0.6) 30%,
+            rgba(240,248,255, 0.6) 40%,
+            rgba(240,248,255, 0.6) 48%,
+            rgba(240,248,255, 0.5) 50%,
+            rgba(240,248,255, 0.5) 52%,
+            rgba(240,248,255, 0.6) 57%,
+            rgba(240,248,255, 0.6) 100%
+        );
+        background-position:-250x -250px;
+        background-size: 600px 600px
+    }
+    to {
+        background-repeat:no-repeat;
+        background-position:2px 2px;
+    }
+}
+
+
+#mainView  {
+    position: absolute;
+    right: -30px;
+    top:20px;
+    transition: 0.3s;
+    padding: 10px;
+    background-color: #808080;
+    width: 100px;
+    text-decoration: none;
+    font-size: 15px;
+    color: white;
+    border-radius: 0 5px 5px 0;
+    visibility: hidden;
+
+}
+
+#mySidenav:hover {
+        right: 0;
+    width: 500px;
+    cursor: pointer;
+    padding: 60px;
+    visibility: hidden;
+
+}
+
+
+#mySidenav:hover + #mainView  {
+    right: 0;
+    width: 500px;
+    cursor: pointer;
+    padding: 60px;
+     visibility:visible;
+     background: #ccc
+}
+
+#mainView:hover    {
+    right: 0;
+    width: 600px;
+    cursor: pointer;
+     visibility:visible;
+     background-color: #DCDCDC;
+     border: 1px solid gray;
+}
+
+
+#right {
+    position: absolute;
+    right: 5px;
+    top:10px;
+}
+
+#about1 {
+    top: 25px;
+    background-color: #808080;
+    text-decoration: underline;
+}
+
+
+
+
+
+
+</style>
+</head>
+<body>
+
+<div id="mySidenav" class="sidenav">Quick Links
+
+</div>
+
+<div id="mainView" class="main">
+<div id="left">
+<nav>
+  <ul>
+<li><div id="uiArea1" class="uiArea"></div><a href="mailto:DL_580626965F99B722B6000148@exchange.sap.corp" >DL S4HANA_HotfixGovernance_Operations</a></li>
+<li> <a href="mailto:DL_5642E9D17BCF84C8DE00028A@exchange.sap.corp" >DL IBP_HotfixGovernance</a></li>
+</ul>
+</nav>
+</div>
+<div id="right">
+<nav>
+  <ul>
+<li><a href="https://wiki.wdf.sap.corp/wiki/display/AOF/Cloud+Maintenance+Assembly"
+ target="_blank">Cloud Maintenance Assembly wiki</a></li>
+<li><a href="https://wiki.wdf.sap.corp/wiki/pages/viewpage.action?pageId=1672905885" target="_blank"> HFG wiki</a></li>
+</ul>
+</nav>
+<div>
+
+
+<script>
+document.getElementById("mySidenav").onmouseover = function() {mouseOver()};
+document.getElementById("mySidenav").onmouseout = function() {mouseOut()};
+
+function mouseOver() {
+
+
+
+}
+function mouseOut(){
+
+}
+</script>
+
+
+</body>
+</html>

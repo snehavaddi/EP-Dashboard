@@ -1,0 +1,19 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:core="sap.ui.core">
+       <Dialog
+      title="Table Colors Info"
+      draggable="true"
+      resizable="true"
+      contentWidth= "600px"
+      contentHeight= "700px"
+      class="Bar5">
+    <content>
+    <Panel id="tablehelppanel">
+  <mvc:HTMLView viewName="epdash.epdash.view.mastertable_note"/>
+</Panel>
+</content>
+</Dialog>
+</core:FragmentDefinition>

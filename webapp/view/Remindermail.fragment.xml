@@ -1,0 +1,102 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form">
+	<Dialog title="You are about to trigger Reminder Mail!!" contentWidth="1100px" contentHeight="600px" class="Bar5">
+		<content>
+			<l:VerticalLayout id="containerLayout" width="100%">
+				<l:BlockLayout id="BlockLayout" background="Default" class="accentclass">
+					<l:BlockLayoutRow accentCells="Accent1" class="accentclass">
+						<l:BlockLayoutCell >
+							<VBox>
+								<Label text="Pick Date" labelFor="DP2"/>
+								<DatePicker id="DP2" placeholder="Enter Date ..." valueFormat="yyyy-MM-dd" displayFormat="long" width="225px" class="sapUiSmallMarginBottom"
+									change="onChangeDateReminder"/>
+							</VBox>
+						</l:BlockLayoutCell>
+						<l:BlockLayoutCell>
+							<VBox>
+								<Label text="Pick Time "/>
+								<TimePicker id="TP3" placeholder="Please Select Time...." valueFormat="hh:mm a" displayFormat="hh:mm a" change="handleChange"/>
+							</VBox>
+						</l:BlockLayoutCell>
+						<l:BlockLayoutCell>
+							<VBox>
+								<Label text="Select TImeZone"/>
+								<Select id="timezone" forceSelection="false" width="225px">
+									<core:Item key="CET" text="CET"/>
+									<core:Item key="IST" text="IST"/>
+									<core:Item key="PST" text="PST"/>
+									<core:Item key="GMT" text="GMT"/>
+								</Select>
+							</VBox>
+						</l:BlockLayoutCell>
+						<l:BlockLayoutCell>
+							<VBox>
+								<Label text="Select Day"/>
+								<Select id="dayvalue" forceSelection="false" width="225px">
+									<core:Item key="Monday" text="Monday"/>
+									<core:Item key="Tuesday" text="Tuesday"/>
+									<core:Item key="Wednesday" text="Wednesday"/>
+									<core:Item key="Thrusday" text="Thrusday"/>
+									<core:Item key="Friday" text="Friday"/>
+									<core:Item key="Saturday" text="Saturday"/>
+									<core:Item key="Sunday" text="Sunday"/>
+								</Select>
+							</VBox>
+						</l:BlockLayoutCell>
+					</l:BlockLayoutRow>
+				</l:BlockLayout>
+			</l:VerticalLayout>
+			<Table id="reminderTable" inset="false" items="{}">
+				<headerToolbar>
+					<Toolbar>
+						<Title text="Mail will be sent to Hotfix Requester and MAO." level="H2"/>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column width="80px" hAlign="Center">
+						<Text text="EP Request"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" width="60px">
+						<Text text="Hotfix ID"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" width="280px">
+						<Text text="SP Stack"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" width="150px">
+						<Text text="Status"/>
+					</Column>
+					<Column hAlign="Center" demandPopin="true" width="120px">
+						<Text text="Requister"/>
+					</Column>
+					<Column hAlign="Center" demandPopin="true" width="120px">
+						<Text text="MAO Requester"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem id="remindertemplate">
+						<cells>
+							<Text text="{= parseFloat(${EpRequestId})}"/>
+							<Text text="{= parseFloat(${HotfixId})}"/>
+							<Text text="{SpsName}"/>
+							<Text text="{path:'Status',formatter:'.formatter.statusText6'}"/>
+							<Text text="{Requester}"/>
+							<Text text="{MaoUser}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+		<content>
+			<form:SimpleForm editable="true" layout="ResponsiveGridLayout" title="Additonal Note" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
+				labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1"
+				singleContainerFullSize="false"></form:SimpleForm>
+			<TextArea id="remindertarea" class="cursor" rows="2" placeholder="Write Some Message....(Optional)" valueLiveUpdate="false"
+				liveChange="handleLiveChange" width="100%"/>
+		</content>
+		<beginButton>
+			<Button id="sendreminderconfirm" text="Send" type="Accept" width="100px" press="sendreminderconfirm"/>
+		</beginButton>
+		<endButton>
+			<Button id="cancelreminder" text="Cancel" type="Reject" width="100px" press="cancelreminder"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

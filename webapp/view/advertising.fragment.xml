@@ -1,0 +1,28 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:core="sap.ui.core">
+	<Dialog title="Tips and Tricks/New Feature Info"   class="Bar sapUiSizeCompact" draggable="true" > <!--height="auto" width="auto"-->
+		<content>
+			<Panel width="750px">
+			<HBox >
+			<!--<Title id="videoContentID"  textAlign="Centre"></Title>-->
+			
+			<html:iframe width="500px" height="300px" id="addVideoframe" src="" class="kmsembed allowfullscreen webkitallowfullscreen mozAllowFullScreen" 
+			    allow="autoplay; fullscreen ; encrypted-media " frameborder="0"></html:iframe>
+			<Text id="videoContentID"  textAlign="Center" ></Text>
+			</HBox>
+			</Panel>
+			<Panel backgroundDesign="Transparent">
+				<headerToolbar>
+					<Toolbar height="2rem">
+						<CheckBox id="disablecheck" text="Don't Show on startup" select="disableVideo"/>
+						<ToolbarSpacer/>
+						<Button icon="sap-icon://close-command-field" id="videoprevious" type="Emphasized" text="Previous" press="onPreviousVideo" visible="false"
+							class="sapUiSizeCompact"/>
+						<Button icon="sap-icon://open-command-field" id="videonext" type="Emphasized" text="Next" press="onNextVideo" visible="false" class="sapUiSizeCompact"/>
+						<Button icon="sap-icon://decline" type="Reject" text="Close" press="onCloseVideo" class="sapUiSizeCompact"/>
+					</Toolbar>
+				</headerToolbar>
+			</Panel>
+		</content>
+	</Dialog>
+</core:FragmentDefinition>

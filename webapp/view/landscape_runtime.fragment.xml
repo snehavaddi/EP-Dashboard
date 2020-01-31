@@ -1,0 +1,93 @@
+<core:FragmentDefinition
+  xmlns="sap.m"   
+  xmlns:mvc="sap.ui.core.mvc" xmlns:ap="sap.uxap"  xmlns:l="sap.ui.layout"  xmlns:f="sap.ui.layout.form"
+  xmlns:core="sap.ui.core"  xmlns:html="http://www.w3.org/1999/xhtml">
+   <Dialog
+      title="Landscape Detail"
+      contentWidth= "1100px"
+      contentHeight= "600px"
+      class="Bar5">
+    <content>
+        <Table id="landscape_table"
+    inset="false"
+    growingScrollToLoad="false"
+   updateFinished="finish_landscape"
+    class="lanscape_class">
+    <headerToolbar>
+      <Toolbar>
+        <Title  level="H2" id="landtext"/>
+      </Toolbar>
+    </headerToolbar>
+    <columns>
+      <Column
+        width="140px">
+        <Text text="Landscape" width="80px"/>
+      </Column>
+      <Column
+        minScreenWidth="Tablet"
+        demandPopin="true"
+        hAlign="Center"
+        width="100px" >
+        <Text text="Correction System" />
+      </Column>
+      <Column
+        minScreenWidth="Tablet"
+        demandPopin="true"
+        hAlign="Center"
+        width="100px">
+        <Text text="Dev Test System" width="60px"/>
+      </Column>
+      <Column
+        minScreenWidth="Tablet"
+        demandPopin="true"
+        hAlign="Center"
+        width="100px">
+        <Text text="FA System" />
+      </Column>
+       <Column
+        hAlign="Center"
+        demandPopin="true"
+        width="100px">
+        <Text text= "Deploy Test System"/>
+        </Column>
+       
+    </columns>
+    <items>
+      <ColumnListItem id="landscape_colom" type="Active">
+        <cells>
+          
+          <ObjectIdentifier
+            title="{landscape}" class="landscape_info" />
+
+          <TextArea
+            value="{Correction_System}" rows="1" editable="false"  class="correction" textAlign="Center"/>
+          <TextArea
+            value="{Development_Test_System}" rows="1" editable="false"  textAlign="Center" class="correction"/>
+           <TextArea
+            value="{Final_Assembly_System}" rows="1" editable="false"  textAlign="Center" class="correction"/>
+           <TextArea  value="{Deploy_Text_System}" rows="1" editable="false"  textAlign="Center" class="correction"/>
+
+        </cells>
+      </ColumnListItem>
+    </items>
+  </Table>
+   </content>
+
+  	
+  	<beginButton>
+
+         <Button
+            id="assemblyconfirm"
+            text="Close"
+            type="Reject"
+            press="closelandscape"/>
+    </beginButton>
+    <endButton>
+    	
+    </endButton>
+        
+
+
+
+   </Dialog>
+</core:FragmentDefinition>

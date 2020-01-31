@@ -1,0 +1,7 @@
+<mvc:View
+    controllerName="epdash.epdash.controller.app"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true">
+  <App class="nyAppDemoWT1" id="app1"/>
+</mvc:View>

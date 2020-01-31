@@ -1,0 +1,20 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+  <ViewSettingsDialog confirm="onConfirm">
+    <sortItems>
+        <ViewSettingsItem selected="true" key="EpRequestId" text="EP Req ID" />
+        <ViewSettingsItem key="HotfixId" text="Hotfix ID" />
+        <ViewSettingsItem key="HeaderStatus" text="Header Status" />
+        <ViewSettingsItem key="ApproverRm" text="Approver (RM)" />
+        <ViewSettingsItem key="StatusRm" text="Approval Status(RM)" />
+        <ViewSettingsItem key="ApproverHf" text="Approver(HFG)" />
+        <ViewSettingsItem key="StatusHf" text="Status(HFG)" />
+    </sortItems>
+    <groupItems>
+        <ViewSettingsItem key="HeaderStatus" text="Header Status" />
+        <ViewSettingsItem key="ApproverRm" text="Approver (RM)" />
+        <ViewSettingsItem key="StatusRm" text="Approval Status(RM)" />
+        <ViewSettingsItem key="ApproverHf" text="Approver(HFG)" />
+        <ViewSettingsItem key="StatusHf" text="Status(HFG)" />
+    </groupItems>
+  </ViewSettingsDialog>
+</core:FragmentDefinition>

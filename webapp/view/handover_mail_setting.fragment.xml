@@ -1,0 +1,128 @@
+<core:FragmentDefinition xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	xmlns:f="sap.ui.layout.form" xmlns:uxap="sap.uxap">
+	<Dialog showHeader="false" draggable="true" resizable="true" contentHeight="100%" contentWidth="100%">
+		<Page title="Confirm Page">
+			<!-- this CSS class add a standard spacing to all the page content -->
+			<content>
+				<VBox fitContainer="true" class="sapUiSizeCompact">
+					<f:SimpleForm minWidth="1024" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout" labelSpanL="4" labelSpanM="4"
+						emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2">
+						<f:content>
+							<Label text="Send To DL"/>
+							<MultiComboBox id="to_dl" selectionChange="handleSelectionChange" selectionFinish="handleSelectionFinish" width="500px"
+								items="{Dl_Model>/default_dl/0/dls}" selectedKeys="DL_580DF3485F99B741C5000030@global.corp.sap"
+								selectedItems="DL ARES CLOUD HOTFIX GOVERNANCE" class="sapUiSizeCompact">
+								<core:Item key="{Dl_Model>alias}" text="{Dl_Model>name}"/>
+							</MultiComboBox>
+							<Label text="DL in CC"/>
+							<MultiComboBox id="cc_dl" selectionChange="handleSelectionChange" selectionFinish="handleSelectionFinish" width="500px"
+								items="{Dl_Model>/default_dl/0/dls}"
+								selectedKeys="DL_580626965F99B722B6000148@global.corp.sap,DL_589ACBC05F99B79FE9000026@global.corp.sap,DL_59410F115F99B7DD5B0005C1@global.corp.sap,DL_5D4BDA4C23001B02797382B0@global.corp.sap,DL_5D021AE44004FB027439C596@global.corp.sap"
+								selectedItems="DL S4HANA_HotfixGovernance_Operations,DL IBP_HotfixGovernance_Operations,DL BYDC4C_HotfixGovernance_Operations,DL ABAPSCP_HotfixGovernance_Operations,DL ABAPSCP_DWC_HotfixGovernance_Operations"
+								class="sapUiSizeCompact">
+								<core:Item key="{Dl_Model>alias}" text="{Dl_Model>name}"/>
+							</MultiComboBox>
+							<Label text="Send Handover for All Product in One Mail"/>
+							<Switch id="dl_change" state="true" class="sapUiSizeCompact" change="send_to_specific_dl" customTextOn="Yes" customTextOff="No"/>
+							<Label text="Please Select Products"/>
+							<MultiComboBox items="{product_short_name>/}" id="specific_prod" selectionChange="onChangeProductSelection"
+								selectionFinish="handleSelectionFinish" width="500px" class="sapUiSizeCompact" visible="{=${inputmodel>/key} !== 'multiple'}">
+								<core:Item key="{product_short_name>ProductShortText}" text="{product_short_name>ProductName}"/>
+							</MultiComboBox>
+						</f:content>
+						<f:layoutData>
+							<FlexItemData shrinkFactor="0" backgroundDesign="Solid" styleClass="sapContrastPlus"/>
+						</f:layoutData>
+					</f:SimpleForm>
+					<IconTabBar upperCase="true" expandable="false" applyContentPadding="true" stretchContentHeight="true"
+						class="sapUiResponsiveContentPadding sapUiSizeCompact">
+						<items>
+							<IconTabFilter text="Mail Content"/>
+						</items>
+						<content>
+							<f:SimpleForm editable="false" layout="ColumnLayout" columnsM="2" columnsL="2" columnsXL="2">
+								<f:content>
+									<Label text="Handover Subject"/>
+									<Text text="{Draft_Header_Model_CV>/HoSubject}"/>
+									<Label text="Content"/>
+									<Text text="{Draft_Header_Model_CV>/HoTopMsg}"/>
+									<Label text="Date"/>
+									<Text text='{Draft_Header_Model_CV>/HoDate}'/>
+									<Label text="Time"/>
+									<Text text='{Draft_Header_Model_CV>/HoTime}'/>
+								</f:content>
+							</f:SimpleForm>
+							<Table id="to_do_cv_tab" headerText="TO-DO List" class="sapUiSizeCompact" items="{ path: 'Draft_TODO_Model_CV>/0' }">
+								<headerToolbar></headerToolbar>
+								<columns>
+									<Column styleClass="" width="15%"><Text text="Product"/></Column>
+									<Column minScreenWidth="Tablet" demandPopin="true" styleClass="cellBorderLeft cellBorderRight" width="25%"><Text text="HFC/Patch Collection"/></Column>
+									<Column minScreenWidth="Tablet" demandPopin="true" styleClass="cellBorderLeft cellBorderRight" width="20%"><Text text="Assembly/Status"/></Column>
+									<Column minScreenWidth="Tablet" demandPopin="true" styleClass="cellBorderLeft cellBorderRight" width="30%"><Text text="Assembly Encountered Issues/Tickets"/></Column>
+									<Column minScreenWidth="Tablet" demandPopin="true" styleClass="cellBorderLeft cellBorderRight" width="20%"><Text text="Deployment/Status"/></Column>
+									<Column minScreenWidth="Tablet" demandPopin="true" styleClass="cellBorderLeft cellBorderRight" width="30%"><Text text="Deployment Encountered Issues/Tickets"/></Column>
+									<Column minScreenWidth="Tablet" demandPopin="true" styleClass="cellBorderLeft cellBorderRight" width="40%"><Text text="To-Do"/></Column>
+								</columns>
+								<items>
+									<ColumnListItem vAlign="Center">
+										<cells>
+											<Text text="{Draft_TODO_Model_CV>ProductId}"/>
+											<Text text="{Draft_TODO_Model_CV>CollectionName}"/>
+											<Text text="{Draft_TODO_Model_CV>AssemStatus}"/>
+											<Text text="{Draft_TODO_Model_CV>CommentByUserAssem}"/>
+											<Text text="{Draft_TODO_Model_CV>DeplStatus}"/>
+											<Text text="{Draft_TODO_Model_CV>CommentByUserDepl}"/>
+											<Text text="{Draft_TODO_Model_CV>ToDo}"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+							<Table id="ep_vp_cv_tab" headerText="EP/VP Processing" class="sapUiSizeCompact" items="{ path: 'Draft_EPVP_Model_CV>/0' }">
+								<columns>
+									<Column styleClass="cellBorderLeft cellBorderRight" width="15%"><Text text="Product"/></Column>
+									<Column minScreenWidth="Tablet" demandPopin="true" styleClass="cellBorderLeft cellBorderRight" width="30%"><Text text="EP/VP Processing"/></Column>
+									<Column minScreenWidth="Tablet" demandPopin="true" styleClass="cellBorderLeft cellBorderRight" width="50%"><Text text="Heads-Up"/></Column>
+								</columns>
+								<items>
+									<ColumnListItem vAlign="Center">
+										<cells>
+											<Text text="{Draft_EPVP_Model_CV>ProductId}"/>
+											<Text text="{Draft_EPVP_Model_CV>EpVpProcess}"/>
+											<Text text="{Draft_EPVP_Model_CV>HeadsUp}"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+							<f:Form editable="false">
+								<f:layout>
+									<f:ResponsiveGridLayout labelSpanXL="1" labelSpanL="2" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4"
+										emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+								</f:layout>
+								<f:formContainers>
+									<f:FormContainer >
+										<f:formElements>
+											<f:FormElement label="Message">
+												<f:fields>
+													<Text text='{Draft_Header_Model_CV>/HoBottomMsg}'/>
+												</f:fields>
+											</f:FormElement>
+										</f:formElements>
+									</f:FormContainer>
+								</f:formContainers>
+							</f:Form>
+						</content>
+						<layoutData>
+							<FlexItemData growFactor="1" baseSize="0%"/>
+						</layoutData>
+					</IconTabBar>
+				</VBox>
+			</content>
+		</Page>
+		<buttons>
+			<!--{= ${master>/PrefAllowed} !== 'X' &amp;&amp; ${hfcAssg>/Year} === ${master>/Year} &amp;&amp; ${hfcAssg>/SelMonth} === ${master>/Month} }-->
+			<Button icon="sap-icon://email" text="Confirm/Trigger mail" type="Emphasized" press="onSendMail"/>
+			<Button text="Cancel" icon="sap-icon://decline" press="onClose" type="Reject"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>
+<!--{/get_dl_listSet}-->

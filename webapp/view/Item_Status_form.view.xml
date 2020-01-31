@@ -1,0 +1,85 @@
+<mvc:View controllerName="epdash.epdash.controller.Item_Status_form"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true">>
+
+			<Table id="itemassemTab" inset="false" class="sapUiSizeCompact" items="{item_of_assem>/path}">
+				<headerToolbar>
+					<OverflowToolbar>
+						<Title id="assemsteptitle"  level="H2"/>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column mergeDuplicates="true">
+						<Text text="Phase Disc"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" width="5%">
+						<Text text="System ID"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" width="5%">
+						<Text text="Client"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" width="17%">
+						<Text text="Activity / Status "/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" width="25%">
+						<Text text="Comments"/>
+					</Column>
+					
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="Change Status"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" width="5%">
+						<Text text="Update Entry"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" width="10%">
+						<Text text="User+Date+Time "/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem id="itemsteplist" class="sapUiSizeCompact">
+						<cells>
+							<Text text="{item_of_assem>Phase}"/>
+							<Input value="{item_of_assem>SystemId}" placeholder="System ID" />
+							<Input value="{item_of_assem>Client}" placeholder="Clients" liveChange="validateClient" />
+							<Button id="itembutton" text="{path:'item_of_assem>Status',formatter:'.formatter.buttontext'}"
+								icon="{path:'item_of_assem>Status',formatter:'.formatter.buttonicon'}" tooltip="{item_of_assem>Status}" visible="{path:'item_of_assem>Status',formatter:'.formatter.buttonvisible'}"/>
+							<TextArea value="{item_of_assem>CommentByUser}" placeholder="Comment Log " growing="false" rows='3' width="100%"/>
+							
+							<!--<Text  text="{ChangeUser} {ChangeDate} {ChangeTime}"/>-->
+							<Select change="onChangevalue" name="{path:'item_of_assem>Status',formatter:'.formatter.buttontext'}"
+								enabled="{path:'item_of_assem>EnableStatus',formatter:'.formatter.EnableStatus'}">
+								<core:Item key="9898" text=""/>
+								<core:Item key="0000" text="Finished"/>
+								<core:Item key="0002" text="Manually set to finished"/>
+								<core:Item key="0004" text="Finished with warning"/>
+								<core:Item key="0006" text="Not processed"/>
+								<core:Item key="0007" text="Reset"/>
+								<core:Item key="0008" text="Terminated"/>
+								<core:Item key="0012" text="Aborted"/>
+								<core:Item key="0400" text="Initial"/>
+								<core:Item key="0800" text="Reset"/>
+								<core:Item key="4000" text="In process"/>
+								<core:Item key="4100" text="Waiting for return of process"/>
+								<core:Item key="8888" text="Workflow Confirmed"/>
+								<core:Item key="9999" text="Workflow aborted completely"/>
+							</Select>
+							<Button text="Save" type="Emphasized" press="update_form"/>
+							<VBox>
+								<ObjectIdentifier
+									text="{path : 'item_of_assem>ChangeDate',type: 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'dd MMM yyyy' ,source :'yyyy-MM-dd\'T\'HH:mm:ss'}}"
+									title="{item_of_assem>ChangeUser}"/>
+								<Text text="{path:'item_of_assem>ChangeTime',formatter:'.formatter.ChangeTime'}"/>
+							</VBox>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+
+		<!--<buttons>-->
+		<!--	<Button id="add_item" text="Add Items" type="Default" icon="sap-icon://add" press="add_item_assembly"/>-->
+			<!--<Button id="procedd_assem_item" text="Update Entry" type="Emphasized" icon="sap-icon://write-new" press="procced_assembly_item"/>-->
+		<!--	<Button id="cancelassem" text="Close" type="Reject" icon="sap-icon://decline" press="cancel_assembly_item"/>-->
+		<!--</buttons>-->
+</mvc:View>

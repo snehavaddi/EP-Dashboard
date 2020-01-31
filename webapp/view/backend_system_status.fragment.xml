@@ -1,0 +1,30 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core">
+	<Popover showHeader="false" placement="Bottom">
+		<VBox>
+			<HBox>
+				<Button text="PQP" type="Accept" class=" sapUiSizeCompact sapUiTinyMargin" visible="{= ${status>/SYSTEM/SystemId} === 'PQP'}"/>
+				<Button text="PQP" type="Reject" class=" sapUiSizeCompact sapUiTinyMargin"
+					visible="{= ${status>/SYSTEM} === 'null' || ${status>/SYSTEM/SystemId} === '' }"/>
+				<Button class="sapUiSizeCompact button_green_status sapUiTinyMargin" visible="{= ${status>/SYSTEM/SystemId} === 'PQP'}"/>
+				<Button class=" sapUiSizeCompact button_red_status sapUiTinyMargin"
+					visible="{= ${status>/SYSTEM} === 'null' || ${status>/SYSTEM/SystemId} === '' }"/>
+			</HBox>
+			<HBox>
+				<Button text="HFS" type="Accept" class="sapUiSizeCompact sapUiTinyMargin" visible="{= ${status>/SYSTEM/HfsStatus} === 'X'}"/>
+				<Button text="HFS" type="Reject" class=" sapUiSizeCompact sapUiTinyMargin"
+					visible="{= ${status>/SYSTEM} === 'null' || ${status>/SYSTEM/HfsStatus} === ''}"/>
+				<Button class="sapUiSizeCompact button_green_status sapUiTinyMargin" visible="{= ${status>/SYSTEM/HfsStatus} === 'X'}"/>
+				<Button class="sapUiSizeCompact button_red_status sapUiTinyMargin"
+					visible="{= ${status>/SYSTEM} === 'null' || ${status>/SYSTEM/HfsStatus} === '' }"/>
+			</HBox>
+			<HBox>
+				<Button text="HFX" type="Accept" class="sapUiSizeCompact sapUiTinyMargin" visible="{= ${status>/SYSTEM/HfxStatus} === 'X'}"/>
+				<Button text="HFX" type="Reject" class="sapUiSizeCompact sapUiTinyMargin"
+					visible="{= ${status>/SYSTEM} === 'null' || ${status>/SYSTEM/HfxStatus} === '' }"/>
+				<Button class="sapUiSizeCompact button_green_status sapUiTinyMargin" visible="{= ${status>/SYSTEM/HfxStatus} === 'X'}"/>
+				<Button class="sapUiSizeCompact button_red_status sapUiTinyMargin"
+					visible="{= ${status>/SYSTEM} === 'null' || ${status>/SYSTEM/HfxStatus} === ''}"/>
+			</HBox>
+		</VBox>
+	</Popover>
+</core:FragmentDefinition>

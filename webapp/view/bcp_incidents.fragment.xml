@@ -1,0 +1,37 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Dialog title="BCP Incidents for DEV-HOTFIX-ARES" contentWidth="1100px" contentHeight="600px" class="sapUiSizeCompact Bar5">
+		<content>
+			<Page showHeader="false" floatingFooter="true">
+				<Table inset="false" items="{incident_model>/incidents}" updateFinished="get_Downtime_Info" class="sapUiSizeCompact">
+					<columns>
+						<Column >
+							<Text text="Incident ID"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+							<Text text="Description"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+							<Text text="Priority Description"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+							<Text text="Status Description"/>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem >
+							<cells>
+								<Link text="{incident_model>OBJECT_ID}" href="{incident_model>URL_MESSAGE}" target="_blank"/>
+								<Text text="{incident_model>DESCRIPTION}"/>
+								<Text text="{incident_model>PRIORITY_DESCR}"/>
+								<Text text="{incident_model>STATUS_DESCR}"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</Page>
+		</content>
+		<beginButton>
+			<Button text="Close" press="close_bcp_dialog" icon="" type="Reject"/>
+		</beginButton>
+	</Dialog>
+</core:FragmentDefinition>

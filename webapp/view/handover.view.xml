@@ -1,0 +1,241 @@
+<mvc:View controllerName="epdash.epdash.controller.handover" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns="sap.m"
+	xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:fa="sap.f">
+	<Page class="sapUiSizeCompact handover_class" showNavButton="false" showHeader="false" floatingFooter="true">
+		<html:nav class="navbar navbar-dark bg-primary">
+			<html:a class="navbar-brand" href="#">
+				<Button icon="sap-icon://sys-back-2" type="Transparent" class="btn btn-info" press="onPressback">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="NeverOverflow"/>
+					</layoutData>
+				</Button>
+				Handover Page</html:a>
+		</html:nav>
+		<IconTabBar id="idIconTabBar" select="handleIconTabBarSelect" backgroundDesign="Transparent" expanded="{device>/isNoPhone}"
+			class="sapUiResponsiveContentPadding sapUiSizeCompact">
+			<items>
+				<IconTabFilter icon="sap-icon://detail-view" iconColor="Positive" count="" text="View" key="View"
+					enabled="{= ${button_setting>/table_edit} !== 'true'}"/>
+				<IconTabFilter id="draft_tab" icon="sap-icon://notes" iconColor="Default" count="" text="Draft" key="Draft"></IconTabFilter>
+				<IconTabFilter id="Search_tab" icon="sap-icon://search" iconColor="Default" count="" text="History" key="Search"
+					enabled="{= ${button_setting>/table_edit} !== 'true'}"></IconTabFilter>
+			</items>
+			<content>
+				<SearchField id="searchField" width="100%" placeholder="Search Handovers..." enableSuggestions="true" search="onSearch" suggest="onSuggest"
+					suggestionItems="{SearchHelp>/}" visible="{= ${selectItem>/search} === 'on'}">
+					<suggestionItems>
+						<SuggestionItem text="{SearchHelp>HoSubject}" description="{path:'Price'} {path:'CurrencyCode'}" key="{SearchHelp>HoId}"/>
+					</suggestionItems>
+				</SearchField>
+				<!--<Last send mail view>-->
+				<!--<f:SimpleForm editable="false" layout="ColumnLayout"  visible="{= ${selectItem>/key} === 'view'}">-->
+				<!--	<f:content>-->
+				<!--		<Toolbar>-->
+				<!--			<MultiComboBox items="{product_short_name>/}" selectionChange="onChangeProductSelection" selectionFinish="handleSelectionFinish"-->
+				<!--				width="500px" class="sapUiSizeCompact" >-->
+				<!--				<core:Item key="{product_short_name>ProductShortText}" text="{product_short_name>ProductName}"/>-->
+				<!--			</MultiComboBox>-->
+				<!--			<Label text="simple DatePicker" labelFor="DP1"/>-->
+				<!--			<DatePicker id="DP1" placeholder="Enter Date ..." />-->
+				<!--			<Button tooltip="Get Handover" press="get_hanover_by_date" src="sap-icon://search"  class="btn btn-primary roundButton"/>-->
+				<!--		</Toolbar>-->
+				<!--	</f:content>-->
+				<!--</f:SimpleForm>-->
+				<f:SimpleForm editable="false" layout="ColumnLayout" columnsM="2" columnsL="2" columnsXL="2" visible="{= ${selectItem>/key} === 'view'}">
+					<f:content>
+						<Label text="Handover Subject" design="Bold"/>
+						<Text text="{last_HO>/HoSubject}" id="subject_view"/>
+						<Label text="Content" design="Bold"/>
+						<Text text="{last_HO>/HoTopMsg}"/>
+						<Label text="Time" design="Bold"/>
+						<Text text="{path:'last_HO>/HoTime',formatter:'.formatter.setTime'}"/>
+						<Label text="To DL" design="Bold"/>
+						<Text text="{path:'last_HO>/SenderDl',formatter:'.convert_Dl_To_Name'}"/>
+						<Label text="Date" design="Bold"/>
+						<Text text="{path:'last_HO>/HoDate',formatter:'.formatter.setDate'}"/>
+						<Label text="Cc DL" design="Bold"/>
+						<Text text="{path:'last_HO>/ReceiverDl',formatter:'.convert_Dl_To_Name'}"/>
+					</f:content>
+				</f:SimpleForm>
+				<Table id="to_do_view_tab" headerText="TO-DO List" class="sapUiSizeCompact" items="{ path: 'last_HO_TODO>/' }"
+					visible="{= ${selectItem>/key} === 'view' }">
+					<columns>
+						<Column styleClass="cellBorderRight cellBorderLeft" width="15%"><Text text="Product"/></Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" styleClass="cellBorderRight cellBorderLeft" width="25%"><Text text="HFC/Patch Collection"/></Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" styleClass="cellBorderRight cellBorderLeft" width="20%"><Text text="Assembly/Status"/></Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" styleClass="cellBorderRight cellBorderLeft" width="30%"><Text text="Assembly Encountered Issues/Tickets"/></Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" styleClass="cellBorderRight cellBorderLeft " width="20%"><Text text="Deployment/Status"/></Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" styleClass="cellBorderRight cellBorderLeft" width="30%"><Text text="Deployment Encountered Issues/Tickets"/></Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" styleClass="cellBorderRight cellBorderLeft " width="40%"><Text text="To-Do"/></Column>
+					</columns>
+					<items>
+						<ColumnListItem vAlign="Top">
+							<cells>
+								<Text text="{last_HO_TODO>ProductId}"/>
+								<Text text="{last_HO_TODO>CollectionName}"/>
+								<Text text="{last_HO_TODO>AssemStatus}"/>
+								<Text text="{last_HO_TODO>CommentByUserAssem}"/>
+								<Text text="{last_HO_TODO>DeplStatus}"/>
+								<Text text="{last_HO_TODO>CommentByUserDepl}"/>
+								<Text text="{last_HO_TODO>ToDo}"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+				<Table id="ep_vp_view_tab" headerText="EP/VP Processing" class="sapUiSizeCompact" items="{ path: 'last_HO_EPVP>/' }"
+					visible="{= ${selectItem>/key} === 'view' }">
+					<columns>
+						<Column styleClass="cellBorderRight cellBorderLeft" width="15%"><Text text="Product"/></Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" styleClass="cellBorderRight cellBorderLeft" width="30%"><Text text="EP/VP Processing"/></Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" styleClass="cellBorderLeft cellBorderRight" width="50%"><Text text="Heads-Up"/></Column>
+					</columns>
+					<items>
+						<ColumnListItem vAlign="Top">
+							<cells>
+								<Text text="{last_HO_EPVP>ProductId}"/>
+								<Text text="{last_HO_EPVP>EpVpProcess}"/>
+								<Text text="{last_HO_EPVP>HeadsUp}"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+				<f:SimpleForm editable="false" layout="ColumnLayout" columnsM="1" columnsL="1" columnsXL="1" visible="{= ${selectItem>/key} === 'view' }">
+					<f:content>
+						<Label text="Message" design="Bold"/>
+						<Text text="{last_HO>/HoBottomMsg}"/>
+					</f:content>
+				</f:SimpleForm>
+				<!--</end of mail view>-->
+			</content>
+			<content>
+				<!--<draft view>-->
+				<f:SimpleForm editable="false" layout="ColumnLayout" columnsM="2" columnsL="2" columnsXL="2" visible="{= ${selectItem>/key} === 'draft'}">
+					<f:content>
+						<Label text="Handover Subject" design="Bold"/>
+						<TextArea value="{Draft_Header_Model>/HoSubject}" rows='1' editable="{button_setting>/row_edit}"/>
+						<Label text="Content" design="Bold"/>
+						<TextArea id="content_msg_draft" value="{Draft_Header_Model>/HoTopMsg}" editable="{button_setting>/row_edit}"/>
+						<Label text="Date" design="Bold"/>
+						<TextArea value="{Draft_Header_Model>/HoDate}" editable="false" rows='1'/>
+						<Label text="Time" design="Bold"/>
+						<TextArea value="{Draft_Header_Model>/HoTime}" editable="false" rows='1'/>
+					</f:content>
+				</f:SimpleForm>
+				<Table mode="{button_setting>/mode}" id="to_do_draft_tab" headerText="TO-DO List" class="sapUiSizeCompact"
+					items="{ path: 'Draft_TODO_Model>/0' }" visible="{= ${selectItem>/key} === 'draft' }">
+					<headerToolbar>
+						<Toolbar>
+							<Title text="TO-DO List" level="H2"/>
+							<ToolbarSpacer/>
+							<fa:Avatar tooltip="Insert Row" press="add_row_to_do_table" src="sap-icon://add" visible="{=${button_setting>/table_edit} === 'true'}"
+								displaySize="XS" class="btn btn-success "/>
+							<fa:Avatar displaySize="XS" tooltip="Remove Row" press="remove_row_to_do_table" src="sap-icon://less"
+								visible="{=${button_setting>/table_edit} === 'true'}" class="btn btn-danger"/>
+						</Toolbar>
+					</headerToolbar>
+					<columns>
+						<Column styleClass="cellBorderLeft cellBorderRight" width="15%"><Text text="Product"/></Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" styleClass="cellBorderLeft cellBorderRight" width="25%"><Text text="HFC/Patch Collection"/></Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" styleClass="cellBorderLeft cellBorderRight" width="20%"><Text text="Assembly/Status"/></Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" styleClass="cellBorderLeft cellBorderRight" width="30%"><Text text="Assembly Encountered Issues/Tickets"/></Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" styleClass="cellBorderLeft cellBorderRight" width="20%"><Text text="Deployment/Status"/></Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" styleClass="cellBorderLeft cellBorderRight" width="30%"><Text text="Deployment Encountered Issues/Tickets"/></Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" styleClass="cellBorderLeft cellBorderRight" width="40%"><Text text="To-Do"/></Column>
+					</columns>
+					<items>
+						<ColumnListItem vAlign="Center">
+							<cells>
+								<ComboBox items="{product_short_name>/}" value="{Draft_TODO_Model>ProductId}" selectedItem="{Draft_TODO_Model>ProductId}"
+									selectedKey="{Draft_TODO_Model>ProductId}" editable="{button_setting>/row_edit}">
+									<core:Item key="{product_short_name>ProductShortText}" text="{product_short_name>ProductShortText}"/>
+								</ComboBox>
+								<TextArea value="{Draft_TODO_Model>CollectionName}" rows="1" width="100%" growing='true' editable="{button_setting>/row_edit}"/>
+								<TextArea value="{Draft_TODO_Model>AssemStatus}" rows="1" width="100%" growing='true' editable="{button_setting>/row_edit}"/>
+								<TextArea value="{Draft_TODO_Model>CommentByUserAssem}" rows="1" width="100%" growing='true' editable="{button_setting>/row_edit}"/>
+								<TextArea value="{Draft_TODO_Model>DeplStatus}" rows="1" width="100%" growing='true' editable="{button_setting>/row_edit}"/>
+								<TextArea value="{Draft_TODO_Model>CommentByUserDepl}" rows="1" width="100%" growing='true' editable="{button_setting>/row_edit}"/>
+								<TextArea value="{Draft_TODO_Model>ToDo}" rows="1" width="100%" growing='true' editable="{button_setting>/row_edit}"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+				<Table mode="{button_setting>/mode}" id="ep_vp_draft_tab" headerText="EP/VP Processing" class="sapUiSizeCompact"
+					items="{ path: 'Draft_EPVP_Model>/0' }" visible="{= ${selectItem>/key} === 'draft' }">
+					<headerToolbar>
+						<Toolbar>
+							<Title text="EP/VP Processing" level="H2"/>
+							<ToolbarSpacer/>
+							<fa:Avatar tooltip="Insert Row" press="add_row_ep_vp_table" src="sap-icon://add" displaySize="XS"
+								visible="{=${button_setting>/table_edit} === 'true'}" class="btn btn-success"/>
+							<fa:Avatar tooltip="Remove Row" press="remove_row_ep_vp_table" src="sap-icon://less" visible="{=${button_setting>/table_edit} === 'true'}"
+								displaySize="XS" class="btn btn-danger"/>
+						</Toolbar>
+					</headerToolbar>
+					<columns>
+						<Column styleClass="cellBorderLeft cellBorderRight" width="15%"><Text text="Product"/></Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" styleClass="cellBorderLeft cellBorderRight" width="30%"><Text text="EP/VP Processing"/></Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" styleClass="cellBorderLeft cellBorderRight" width="50%"><Text text="Heads-Up"/></Column>
+					</columns>
+					<items>
+						<ColumnListItem vAlign="Center">
+							<cells>
+								<ComboBox items="{product_short_name>/}" value="{Draft_EPVP_Model>ProductId}" selectedItem="{Draft_EPVP_Model>ProductId}"
+									selectedKey="{Draft_EPVP_Model>ProductId}" editable="{button_setting>/row_edit}">
+									<core:Item key="{product_short_name>ProductShortText}" text="{product_short_name>ProductShortText}"/>
+								</ComboBox>
+								<TextArea value="{Draft_EPVP_Model>EpVpProcess}" rows="1" width="100%" growing='true' editable="{button_setting>/row_edit}"/>
+								<!--<Text text="{Draft_EPVP_Model>HeadsUp}" />-->
+								<TextArea value="{Draft_EPVP_Model>HeadsUp}" growing="true" width="100%" editable="{button_setting>/row_edit}"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+				<f:SimpleForm editable="true" layout="ResponsiveGridLayout" columnsM="1" columnsL="1" columnsXL="1"
+					visible="{= ${selectItem>/key} === 'draft' }">
+					<f:content>
+						<Label text="Message" design="Bold"/>
+						<TextArea id="bottom_msg_draft" value="{Draft_Header_Model>/HoBottomMsg}" rows="2" width="100%" growing='true'
+							editable="{button_setting>/row_edit}"/>
+					</f:content>
+				</f:SimpleForm>
+				<!--</end of draft view>-->
+			</content>
+		</IconTabBar>
+		<footer >
+			<OverflowToolbar id="otbFooter" visible="{= ${selectItem>/key} === 'create' || ${selectItem>/key} === 'draft'}">
+				<MessageStrip id="message_saved" showIcon="true" showCloseButton="true" class="sapUiSizeCompact" type="Success"
+					visible="{= ${selectItem>/key} === 'draft' &amp;&amp; ${button_setting>/table_edit} === 'false'}"
+					text="Last version saved by {Draft_Header_Model>/last_saved} , Comment - {Draft_Header_Model>/UserComment}"></MessageStrip>
+				<Button id="send_mail" text="Send Mail" type="Emphasized" icon="sap-icon://email" press="on_Send_handover_mail"
+					visible="{= ${selectItem>/key} === 'draft' &amp;&amp; ${button_setting>/table_edit} === 'true'}"/>
+				<MessageStrip id="message_sender" showIcon="true" showCloseButton="true" class="sapUiSizeCompact" type="Information"
+					text="Last Handover send by - {last_HO>/Sender}"
+					visible="{= ${selectItem>/key} === 'draft' &amp;&amp; ${button_setting>/table_edit} === 'true'}"></MessageStrip>
+				<ToolbarSpacer/>
+				<Button id="edit_mail" text="Edit Draft" type="Emphasized" press="on_edit_draft" icon="sap-icon://edit"
+					visible="{= ${selectItem>/key} === 'draft' &amp;&amp; ${button_setting>/table_edit} === 'false'}"/>
+				<MenuButton text="Add Contents in Draft" type="Accept"
+					visible="{= ${selectItem>/key} === 'draft' &amp;&amp; ${button_setting>/table_edit} === 'true'}" icon="sap-icon://add">
+					<menu>
+						<Menu itemSelected="onMenuActionPullRequest">
+							<items>
+								<MenuItem text="Pull from assembly Queue" key="assemblyPull" icon="sap-icon://pull-down"/>
+								<MenuItem text="Pull from previous Handover" visible="false" key="lastHandover" icon="sap-icon://pull-down"/>
+							</items>
+						</Menu>
+					</menu>
+				</MenuButton>
+				<!--<Button id="delete_mail" text="Delete Draft and Create Fresh" type="Emphasized" press="on_delete_draft" icon="sap-icon://delete"
+					visible="{= ${selectItem>/key} === 'draft' }"/>-->
+				<Button id="cancel_mail" text="Cancel" type="Reject" press="on_cancel_draft" icon="sap-icon://sys-cancel"
+					visible="{= ${selectItem>/key} === 'draft' &amp;&amp; ${button_setting>/table_edit} === 'true'}"/>
+				<!---->
+				<Button id="save_mail" text="Save Draft" type="Accept" press="on_Save_draft" icon="sap-icon://save"
+					visible="{= ${selectItem>/key} === 'draft' &amp;&amp; ${button_setting>/table_edit} === 'true'}"/>
+				<!--"{= ${selectItem>/key} === 'draft' }"-->
+				<!---->
+				<!---->
+				<!--  -->
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</mvc:View>

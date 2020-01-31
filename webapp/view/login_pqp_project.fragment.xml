@@ -1,0 +1,25 @@
+<core:FragmentDefinition
+  xmlns="sap.m"   xmlns:l="sap.ui.layout"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:core="sap.ui.core">
+  <Popover
+    showHeader="false"
+    contentWidth="200px"
+    contentHeight="220px"
+    placement="Right" >
+  <NavContainer>
+      <Page
+        title="Select Option">
+          <l:VerticalLayout
+    class="sapUiContentPadding"
+    width="100%">
+    <l:content>
+  <Button id="loginGUI" text="Login to Classic GUI" press="fioriGuilogin_pqp" width="170px"/>
+  <Button text="Login to Web GUI" press="fioriGuilogin_pqp" width="170px"/>
+  <Button text="Login to Fiori GUI" press="fioriGuilogin_pqp" width="170px"/>
+  </l:content>
+  </l:VerticalLayout>
+  </Page>
+  </NavContainer>
+  </Popover>
+</core:FragmentDefinition>

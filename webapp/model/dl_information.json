@@ -1,0 +1,150 @@
+{
+	"products": [{
+
+		"key": "S4H",
+		"TO_NAME": [
+			"DL ARES CLOUD HOTFIX GOVERNANCE"
+		],
+		"TO_ADDRESS": [
+			"DL_580DF3485F99B741C5000030@global.corp.sap"
+		],
+		"CC_NAME": [
+			"DL S4HANA_HotfixGovernance_Operations"
+		],
+		"CC_ADDRESS": [
+			"DL_580626965F99B722B6000148@global.corp.sap"
+		]
+	}, {
+
+		"key": "IBP",
+		"TO_NAME": [
+			"DL ARES CLOUD HOTFIX GOVERNANCE"
+		],
+		"TO_ADDRESS": [
+			"DL_580DF3485F99B741C5000030@global.corp.sap"
+		],
+		"CC_NAME": [
+			"DL IBP_HotfixGovernance_Operations"
+		],
+		"CC_ADDRESS": [
+			"DL_589ACBC05F99B79FE9000026@global.corp.sap"
+		]
+	}, {
+
+		"key": "C4C",
+		"TO_NAME": [
+			"DL ARES CLOUD BYD_C4C"
+		],
+		"TO_ADDRESS": [
+			"DL_5A87DB787BCF84462C000003@global.corp.sap"
+		],
+		"CC_NAME": [
+			"DL BYDC4C_HotfixGovernance_Operations"
+		],
+		"CC_ADDRESS": [
+			"DL_59410F115F99B7DD5B0005C1@global.corp.sap"
+		]
+	}, {
+
+		"key": "BYD",
+		"TO_NAME": [
+			"DL ARES CLOUD BYD_C4C"
+		],
+		"TO_ADDRESS": [
+			"DL_5A87DB787BCF84462C000003@global.corp.sap"
+		],
+		"CC_NAME": [
+			"DL BYDC4C_HotfixGovernance_Operations"
+		],
+		"CC_ADDRESS": [
+			"DL_59410F115F99B7DD5B0005C1@global.corp.sap"
+		]
+	}, {
+
+		"key": "A4C",
+		"TO_NAME": [
+			"DL ARES CLOUD A4C_BW4"
+		],
+		"TO_ADDRESS": [
+			"DL_5ADFE02F5F99B71213000003@global.corp.sap"
+		],
+		"CC_NAME": [
+			"DL ABAPSCP_HotfixGovernance_Operations"
+		],
+		"CC_ADDRESS": [
+			"DL_5D4BDA4C23001B02797382B0@global.corp.sap"
+		]
+	}, {
+
+		"key": "BWH",
+		"TO_NAME": [
+			"DL ARES CLOUD A4C_BW4"
+		],
+		"TO_ADDRESS": [
+			"DL_5ADFE02F5F99B71213000003@global.corp.sap"
+		],
+		"CC_NAME": [
+			"DL ABAPSCP_DWC_HotfixGovernance_Operations "
+		],
+		"CC_ADDRESS": [
+			"DL_5D021AE44004FB027439C596@global.corp.sap"
+		]
+	}],
+	"default_dl": [{
+		"dls": [{
+			"name": "DL ABAPSCP_HotfixGovernance_Operations",
+			"alias": "DL_5D4BDA4C23001B02797382B0@global.corp.sap"
+		}, {
+			"name": "DL ARES CLOUD A4C_BW4",
+			"alias": "DL_5ADFE02F5F99B71213000003@global.corp.sap"
+		}, {
+			"name": "DL ARES Development India",
+			"alias": "DL_59DC8E005F99B793F2000171@global.corp.sap"
+		}, {
+			"name": "DL BYDC4C_HotfixGovernance_Operations",
+			"alias": "DL_59410F115F99B7DD5B0005C1@global.corp.sap"
+		}, {
+			"name": "DL ARES CLOUD BYD_C4C",
+			"alias": "DL_5A87DB787BCF84462C000003@global.corp.sap"
+		}, {
+			"name": "DL ABAP Release Engineering Services Canada",
+			"alias": "DL_011000358700001368872012E@global.corp.sap"
+		}, {
+			"name": "DL ARES - GERMANY",
+			"alias": "DL_011000358700006179031999E@global.corp.sap"
+		}, {
+			"name": "DL ARES CLOUD HOTFIX GOVERNANCE",
+			"alias": "DL_580DF3485F99B741C5000030@global.corp.sap"
+		}, {
+			"name": "DL IBP_HotfixGovernance_Operations",
+			"alias": "DL_589ACBC05F99B79FE9000026@global.corp.sap"
+		}, {
+			"name": "DL ARES - BANGALORE (External)",
+			"alias": "DL_011000358700001526672004E@global.corp.sap"
+		}, {
+			"name": "DL ARES CLOUD S4HANA_IBP - Bangalore",
+			"alias": "DL_5A9E2B245F99B7C28D000006@global.corp.sap"
+		}, {
+			"name": "DL ARES CLOUD PATCH ASSEMBLY",
+			"alias": "DL_580DF53C7BCF84FE8E00001C@global.corp.sap"
+		}, {
+			"name": "DL S4HANA_HotfixGovernance_Operations",
+			"alias": "DL_580626965F99B722B6000148@global.corp.sap"
+		}],
+
+		"dl_to_selected": [{
+			"key": "DL_580DF3485F99B741C5000030@global.corp.sap"
+		}],
+		"dl_cc_selected": [{
+			"key": "DL_580626965F99B722B6000148@global.corp.sap"
+		}, {
+			"key": "DL_589ACBC05F99B79FE9000026@global.corp.sap"
+		}, {
+			"key": "DL_59410F115F99B7DD5B0005C1@global.corp.sap"
+		}, {
+			"key": "DL_5D4BDA4C23001B02797382B0@global.corp.sap"
+		}, {
+			"key": "DL_5D021AE44004FB027439C596@global.corp.sap"
+		}]
+	}]
+}

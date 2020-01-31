@@ -1,0 +1,64 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core">
+  <ViewSettingsDialog
+    confirm="handleConfirm">
+    <sortItems>
+      <ViewSettingsItem text="EP ID" key="EpRequestId" selected="true" />
+      <ViewSettingsItem text="Product Version" key="ProdVersName" />
+      <ViewSettingsItem text="HOTFIX ID" key="HotfixId" />
+      <ViewSettingsItem text="Header Status" key="HeaderStatus" />
+      <ViewSettingsItem text="RM Status" key="StatusRm" />
+      <ViewSettingsItem text="HFG Status" key="StatusHf" />
+    </sortItems>
+    <groupItems>
+      <ViewSettingsItem text="Product Version" key="ProdVersName" />
+       <ViewSettingsItem text="Header Status" key="HeaderStatus" />
+      <ViewSettingsItem text="RM Status" key="StatusRm" />
+      <ViewSettingsItem text="HFG Status" key="StatusHf" />
+    </groupItems>
+    <filterItems>
+      <ViewSettingsFilterItem
+        text="Header Status"
+        key="HeaderStatus"
+        multiSelect="false">
+        <items>
+          <ViewSettingsItem text="New" key="HeaderStatus___EQ___70___X" />
+          <ViewSettingsItem text="In Risk Mitigation" key="HeaderStatus___EQ___72___2000" />
+          <ViewSettingsItem text="In Approval" key="HeaderStatus___EQ___74___X" />
+          <ViewSettingsItem text="Verification" key="HeaderStatus___EQ___75___X" />
+          <ViewSettingsItem text="Approved" key="HeaderStatus___EQ___76___X" />
+          <ViewSettingsItem text="Rejected" key="HeaderStatus___EQ___78___X" />
+          <ViewSettingsItem text="In Process" key="HeaderStatus___EQ___88___X" />
+          <ViewSettingsItem text="Finished" key="HeaderStatus___EQ___90___X" />
+          <ViewSettingsItem text="Canceled" key="HeaderStatus___EQ___92___X" />
+        </items>
+      </ViewSettingsFilterItem>
+      <ViewSettingsFilterItem
+        text="HFG Status"
+        key="StatusHf"
+        multiSelect="false">
+        <items>
+          <ViewSettingsItem text="Not yet decided" key="StatusHf___EQ___01___X" />
+          <ViewSettingsItem text="In Approval" key="StatusHf___EQ___02___X" />
+          <ViewSettingsItem text="Approved" key="StatusHf___EQ___03___X" />
+          <ViewSettingsItem text="Rejected" key="StatusHf___EQ___04___X" />
+          <ViewSettingsItem text="Not needed" key="StatusHf___EQ___05___X" />
+        </items>
+      </ViewSettingsFilterItem>
+
+       <ViewSettingsFilterItem
+        text="RM Status"
+        key="StatusRm"
+        multiSelect="false">
+        <items>
+          <ViewSettingsItem text="Not yet decided" key="StatusRm___EQ___01___X" />
+          <ViewSettingsItem text="In Approval" key="StatusRm___EQ___02___X" />
+          <ViewSettingsItem text="Approved" key="StatusRm___EQ___03___X" />
+          <ViewSettingsItem text="Rejected" key="StatusRm___EQ___04___X" />
+          <ViewSettingsItem text="Not needed" key="StatusRm___EQ___05___X" />
+        </items>
+      </ViewSettingsFilterItem>
+    </filterItems>
+  </ViewSettingsDialog>
+</core:FragmentDefinition>
