@@ -1,0 +1,1140 @@
+.app_class {
+    background-image: url('../img/wallpaper.jpg');
+    webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.handover_class {
+    /*background: linear-gradient(to bottom, #9695d033 0%, #69af9b 90%);*/
+    background-image: linear-gradient(-225deg, #FFFEFF 0%, #D7FFFE 100%);
+}
+
+.Bar1 {
+    height: 10px;
+    background-color: orange !important
+}
+
+.Bar2 {
+    background-color: rgb(104, 161, 212) !important
+}
+
+.Bar3 {
+    height: 10px;
+    background-color: green !important
+}
+
+.Bar4 {
+    height: 10px;
+    background-color: white !important
+}
+
+.Bar5 {
+    background-color: antiquewhite !important
+}
+
+.Bar {
+    background-color: antiquewhite !important;
+    width: 800px;
+}
+
+.sapwall {
+    margin-top: 5px;
+}
+
+.label {
+    color: #2F4F4F !important;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem !important;
+    font-weight: bold !important;
+}
+
+.label1 {
+    font-size: 25px;
+    margin-top: 5px;
+    font-weight: bold !important;
+    color: black;
+}
+
+.label2 {
+    margin-top: 7px !important;
+}
+
+.contentright {
+    margin-bottom: -5px;
+}
+
+.info_tab {
+    position: relative;
+    height: 30px;
+    background-color: rgb(195, 195, 195)!important;
+}
+
+.span.highlight {
+    background-color: yellow;
+}
+
+.variant.sapMBtnInner {
+    cursor: inherit;
+    color: #666666;
+    background-color: aliceblue!important;
+}
+
+.buttonStyle .sapMBtnInner {
+    text-shadow: 0 0px 0 #333333;
+    text-align: center;
+    margin: 4px 10px;
+}
+
+.buttonStyle .sapMBtnInner:hover {
+    background-color: gold !important
+}
+
+.buttonStylevppending .sapMBtnInner {
+    background-color: #F0E68C;
+    text-shadow: 0 0px 0 #ABEBC6;
+    text-align: center;
+    margin: 4px 10px;
+    -webkit-animation: glowing 1500ms infinite;
+    -moz-animation: glowing 1500ms infinite;
+    -o-animation: glowing 1500ms infinite;
+    animation: glowing 1500ms infinite;
+}
+
+@-webkit-keyframes glowing {
+    0% {
+        background-color: #f4e109;
+        -webkit-box-shadow: 0 0 3px #f4e109;
+    }
+    50% {
+        background-color: #f4e109;
+        -webkit-box-shadow: 0 0 40px #f4e109;
+    }
+    100% {
+        background-color: #f4e109;
+        -webkit-box-shadow: 0 0 3px #f4e109;
+    }
+}
+
+.buttonStyle1 .sapMBtnInner {
+    text-shadow: 0 0px 0 #333333;
+    text-align: center;
+    margin: 4px 10px;
+    background-color: blueviolet !important
+}
+
+.sapMLIB sapMLIB-CTX sapMLIBFocusable sapMLIBShowSeparator sapMLIBTypeInactive sapMListTblRow {
+    border-bottom-color: blue;
+    color: #FFFFFF;
+    background-colour: Blue;
+    min-height: 27px;
+    border: none;
+    border-bottom: 10px solid aliceblue;
+}
+
+.table.tr {
+    border-collapse: collapse;
+    width: 100%;
+    height: 50px;
+}
+
+.sapMLIB.sapMLIB-CTX.sapMLIBFocusable.sapMLIBShowSeparator.sapMLIBTypeInactive.sapMListTblRow {}
+
+.size1 {
+    font-size: 1rem;
+    margin: 4px 10px;
+    color: blue;
+}
+
+.Position {
+    margin-top: -16px;
+    margin-left: -18px;
+}
+
+.Positioncorrection .sapMBtnInner {
+    display: block !important;
+    margin-top: -28px;
+    margin-left: -15px;
+    height: 50px;
+    width: 50px;
+}
+
+.Positionlon {}
+
+.cursor {
+    position: relative;
+}
+
+.myRedTextButton {
+    padding: 1px 32px;
+}
+
+.sapMBtnContent.sapMBtnContentRight {
+    text-align: left
+}
+
+.sapMBarChild.sapUiIcon.sapUiIconMirrorInRTL {
+    font-size: 30px !important;
+    margin-top: 10px
+}
+
+.sapMBarChild.sapMImg {
+    margin-bottom: 15px !important
+}
+
+.barclassblr {
+    height: 10px;
+    background-color: green!important
+}
+
+.barclassrot {
+    height: 10px;
+    background-color: red !important
+}
+
+.inputpanel {
+    height: 60px;
+}
+
+.masterpanel {
+    height: 200px;
+    width: 600px;
+}
+
+.buttonclass {
+    margin-left: 1px;
+    margin-right: 1px;
+}
+
+.indclass {
+    height: 20px;
+    width: 10px
+}
+
+.verticalone {
+    margin-top: -10px;
+    background-size: 195px 80px;
+    background-repeat: no-repeat;
+}
+
+
+
+.green {
+    height: 20px;
+    backgroud: green !important
+}
+
+.red {
+    height: 20px;
+    backgroud: red !important
+}
+
+.white {
+    color: black !important;
+    backgroud: white !important;
+    height: 20px;
+}
+
+.b1 div.sapMBtnInner {
+    height: 15px;
+}
+
+.idprclass {
+    height: 100px;
+    margin-top: -20px;
+    margin-bottom: -30px;
+}
+
+.idprclass1 {
+    height: 100px;
+    margin-top: -2px;
+    margin-bottom: -20px;
+}
+
+.center {
+    margin-left: "150px" !important;
+}
+
+.compledpatch {
+    color: blue !important;
+    font-weight: bold;
+}
+
+.patchcomplete {
+    color: green !important;
+    font-weight: bold;
+}
+
+.patchrejected {
+    color: red !important;
+    font-weight: bold;
+}
+
+.listselect {
+    font-weight: bold;
+}
+
+.listselect1 {
+    font-weight: bold !important;
+    margin-left: 100px !important;
+    position: static;
+}
+
+.listselect2 {
+    font-weight: bold !important;
+    margin-left: 600px !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #808080 !important;
+}
+
+::-webkit-scrollbar {
+    background-color: rgb(211, 230, 220) !important;
+}
+
+.textradio {
+    font-size: "larger";
+}
+
+.verticallay {
+    margin-top: -10px;
+    margin-left: -70px;
+    background-size: 195px 80px;
+    background-repeat: no-repeat;
+}
+
+.verticallayproduct {
+    margin-top: -10px;
+    margin-bottom: -12px;
+    padding-bottom: 8px;
+}
+
+.verticallay3 {
+    margin-top: -10px;
+    margin-left: -40px;
+    background-size: 195px 80px;
+    background-repeat: no-repeat;
+}
+
+.hori3rd {
+    margin-top: 25px
+}
+
+.mypanle {
+    margin-left: 0px;
+    margin-top: 10px;
+    padding-bottom: 10px;
+    position: absolute;
+    left: 0px;
+}
+
+.shiftup {
+    margin-top: -22px;
+    margin-bottom: -25px;
+}
+
+.shiftup1 {
+    margin-top: -22px;
+    margin-bottom: -2px;
+    height: 60px;
+}
+
+.horizontal {
+    margin-top: -40px;
+    margin-bottom: -10px;
+}
+
+.horizontal1 {
+    margin-left: 55px;
+}
+
+.text2 {
+    margin-top: -10px;
+}
+
+.hotlineclass {
+    margin-left: 80px !important;
+}
+
+.hotlineclass1 {
+    margin-left: 40px !important;
+}
+
+.text21 {
+    margin-top: -10px;
+    margin-left: -15px
+}
+
+.text21 .sapMBtnInner {
+    width: 25px !important;
+    height: 25px !important;
+    border-radius: 50% !important
+}
+
+.text21 .sapMBtnIcon {
+    width: 20px;
+    height: 20px
+}
+
+.text21 .sapMBtnInner:hover {
+    background-color: #DCDCDC!important
+}
+
+.text22 {
+    margin-top: -10px;
+}
+
+.text22 .sapMBtnInner {
+    border-radius: 50% !important
+}
+
+.text22 .sapMBtnIcon {
+    width: 20px;
+    height: 20px
+}
+
+.text22 .sapMBtnInner:hover {
+    background-color: #DCDCDC !important
+}
+
+.flagclass {
+    margin-top: 10px;
+    margin-right: 15px
+}
+
+.flagclass1 {
+    margin-top: 10px;
+}
+
+.up {
+    margin-top: -20px;
+}
+
+.up1 {
+    margin-top: -20px;
+    margin-left: -15px
+}
+
+.up1 .sapMBtnInner {
+    width: 25px !important;
+    height: 25px !important;
+    border-radius: 50% !important
+}
+
+.up1 .sapMBtnIcon {
+    width: 20px;
+    height: 20px
+}
+
+.up1 .sapMBtnInner:hover {
+    background-color: #DCDCDC !important
+}
+
+.up2 {
+    margin-top: -20px;
+}
+
+.up2 .sapMBtnInner {
+    border-radius: 50% !important
+}
+
+.up2 .sapMBtnIcon {
+    width: 20px;
+    height: 20px
+}
+
+.up2 .sapMBtnInner:hover {
+    background-color: #DCDCDC !important
+}
+
+.label12 {
+    color: #2F4F4F !important;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem !important;
+    font-weight: bold !important;
+    margin-right: 20px;
+    margin-top: 5px
+}
+
+.label13 {
+    color: #2F4F4F !important;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem !important;
+    font-weight: bold !important;
+    margin-right: 14px;
+    margin-top: 5px
+}
+
+.tableb1 {
+    width: 100px
+}
+
+.tableb1 .sapMBtnInner {
+    margin-right: 5px;
+    border-radius: 8px;
+    margin-top: -20px;
+}
+
+.tableb1 .sapMBtnInner:hover {
+    background-color: #FA8072 !important;
+    border-radius: 8px
+}
+
+.designon {
+    margin-top: -15px;
+    margin-bottom: -18px
+}
+
+.Headertool {
+    margin-top: 5px;
+    margin-left: 500px;
+    margin-bottom: -12px
+}
+
+.blockdata {
+    border: 5px solid blue;
+}
+
+.texterror {
+    background-color: red !important;
+}
+
+.margin {
+    margin-left: 200px
+}
+
+.myCustomTablewhite {
+    font-weight: bold;
+    background-color: #F7F9F9 !important;
+}
+
+.myCustomTablegreen {
+    font-weight: bold;
+    background-color: rgba(254, 254, 152, 1) !important;
+}
+
+.myCustomTablegreen1 {
+    background-color: yellow !important;
+}
+
+.myCustomTablegreenEP {
+    background-color: #ABEBC6 !important;
+    font-weight: bold !important;
+}
+
+.myCustomTablegreyEP {
+    background-color: #e2dbdb !important;
+    font-weight: bold !important;
+}
+
+.myCustomTableorangeEP {
+    background-color: #ffb84d !important;
+    font-weight: bold !important;
+}
+.myCustomOrange[data-orange]  {
+    background-color: #ffb84d !important;
+    font-weight: bold !important;
+}
+.myCustomOrange[data-green]  {
+    background-color: #ABEBC6 !important;
+    font-weight: bold !important;
+}
+.myCustomOrange[data-grey]  {
+    background-color: #e2dbdb !important;
+    font-weight: bold !important;
+}
+
+.myCustomTablered {
+    font-weight: bold;
+    background-color: #FADBD8 !important;
+}
+
+.myCustomTablered1 {
+    font-weight: bold;
+    color: #FF0000 !important;
+}
+
+.assemgreen_color {
+    font-weight: bold;
+    background-color: #90EE90 !important;
+}
+
+.assemgreen_red {
+    font-weight: bold;
+    background-color: #90EE90 !important;
+    color: red !important;
+}
+
+.timepanel {
+    margin-top: -15px;
+}
+
+.timepanel1 {
+    margin-bottom: -15px;
+}
+
+.timegraphpanle {
+    margin-bottom: -10px
+}
+
+.detailpanel {
+    overflow: auto;
+    margin-top: -10px;
+}
+
+.masterclass {
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+
+.gary {
+    background-color: #DCDCDC !important;
+    text-align: right;
+}
+
+.blueindicator {
+    background-color: #3CB371 !important;
+    color: #FFFFFF;
+    text-align: right
+}
+
+.whiteindicator {
+    background-color: #FFFFFF !important;
+}
+
+.blueindicator .sapMPIText {
+    color: #FFFFFF !important;
+}
+
+.lucnhindicator {
+    background-color: #009de0 !important;
+    color: #FFFFFF;
+    text-align: right
+}
+
+.lucnhindicator .sapMPIText {
+    color: #FFFFFF !important;
+}
+
+.img1 {
+    margin-left: 50px !important;
+    margin-top: 22px !important;
+    height: 25px !important;
+}
+
+.img2 {
+    margin-left: 150px !important;
+    margin-top: 22px !important;
+    height: 25px !important;
+}
+
+.img3 {
+    margin-left: 120px !important;
+    margin-top: 22px !important;
+    height: 25px !important;
+}
+
+.linkpanel {
+    margin-left: 30px;
+    margin-top: -10px;
+    position: absolute;
+    left: 1185px;
+    right: 10px;
+}
+
+.rLinks {
+    margin-left: 20px;
+    margin-right: 10px;
+}
+
+.switchclass .sapMSwtLabel {
+    background-color: green !important;
+}
+
+.evenRowColors {
+    /*border-bottom-color: blue;
+    color: #FFFFFF;
+    background-colour: blue;
+    min-height: 27px;
+    border: none;
+    border-bottom: 10px solid aliceblue;
+    background: #D4D4D4 !important;*/
+    border-style: solid;
+    border-color: coral;
+}
+
+.evenRowColors.sapMLIBShowSeparator>td {
+    border-top: 1.4px solid black;
+    /*border-bottom: 1px solid balck;*/
+}
+
+.evenRowColors.sapMLIBShowSeparator>td:first-child {}
+
+.Callout {
+    width: 80px;
+}
+
+.B1tool1 {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.B2tool {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.messagepop {
+    position: absolute;
+    visibility: visible;
+    z-index: 60;
+    left: 50%;
+    top: 10% !important;
+    display: block;
+    width: 50%;
+    text-align: center !important;
+    transform: translate(-304px, -73px) scale(1);
+}
+
+.tabletextarea {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+.sidenav {
+    width: 40%;
+    display: none;
+}
+
+.topBar {
+    background-color: #deeff5 !important;
+    color: black;
+}
+
+.topBarhot {
+    background-color: yellow !important;
+    color: hotpink;
+    font-size: 110%;
+}
+
+.topBarhotT {
+    color: hotpink;
+    font-size: 110%;
+}
+
+.openhot .sapMBtnInner {
+    background-color: orange !important;
+    font-size: 15px !important;
+    font-weight: bold!important;
+    height: 35px;
+    margin-top: -3px;
+}
+
+.logout .sapMBtnInner {
+    background-color: orange !important;
+    font-size: 15px !important;
+    font-weight: bold!important;
+    height: 35px;
+    margin-top: -3px;
+}
+
+.accentclass {
+    margin-bottom: -20px;
+    margin-top: -20px;
+}
+
+.hotlinecomment {
+    color: #DC7633 !important;
+    font-weight: bold !important;
+    font-size: 120%;
+}
+
+.hotlinecomment:hover {
+    cursor: pointer;
+    cursor: hand;
+    font-weight: bold;
+    background-color: yellow;
+    font-size: 15px;
+}
+
+.Timetext {
+    font-weight: bold;
+}
+
+.Timeclass {
+    margin-right: 70px;
+    margin-top: -30px;
+    color: white;
+    font-weight: bold;
+    margin-top: 5px !important;
+}
+
+.Timeclass1 {
+    margin-right: 30px;
+    margin-top: -30px;
+    font-weight: bold;
+    color: white;
+    margin-top: 5px !important;
+}
+
+.Timegreen {
+    margin-right: 30px;
+    margin-top: -30px;
+    background-color: #239B56 !important;
+    font-weight: bold;
+    color: white;
+    margin-top: 5px !important;
+}
+
+.Timeblue {
+    margin-right: 30px;
+    margin-top: -30px;
+    background-color: #000080 !important;
+    font-weight: bold;
+    color: white;
+    margin-top: 5px !important;
+}
+
+.Timegrey {
+    margin-right: 30px;
+    margin-top: -30px;
+    background-color: lightgray !important;
+    font-weight: bold;
+    color: black;
+    margin-top: 5px !important;
+}
+
+.Timegreycanda {
+    margin-right: 100px;
+    margin-top: -30px;
+    background-color: lightgray !important;
+    font-weight: bold;
+    color: black;
+    margin-top: 5px !important;
+}
+
+.Timered {
+    margin-right: 30px;
+    margin-top: -30px;
+    background-color: #DC143C !important;
+    font-weight: bold;
+    color: black;
+    margin-top: 5px !important;
+}
+
+.notcomment {
+    background: #F4F6F7 !important;
+    width: 450px;
+    font-weight: bold;
+}
+
+.notcomment.sapMTextLineClamp.sapMTextMaxLine {
+    font-weight: bold;
+}
+
+.notcommentred {
+    color: red !important;
+}
+
+.blocklay {
+    padding: 3px 3px;
+}
+
+.blockrow {
+    padding-right: 3px !important;
+    padding-bottom: 3px !important;
+    padding-left: 3px !important;
+}
+
+.inprepepvp {
+    background-color: lightgreen !important;
+    color: lightgreen !important;
+}
+
+.inepepvp {
+    background-color: red !important;
+    color: red !important;
+}
+
+.invpepvp {
+    background-color: yellow !important;
+    color: yellow !important;
+}
+
+.topbutton .sapMBtnInner {
+    color: black !important;
+    font-weight: bold;
+    border-radius: 10px;
+    background-color: #f7f7f7 !important;
+}
+
+.topbutton .sapMBtnInner:hover {
+    background-color: #F4A460 !important;
+    transform: scale(1.2);
+    opacity: 1;
+    right: 0;
+}
+
+.pqp_link {
+    color: #138D75 !important;
+    font-weight: bold;
+}
+
+.lanscapeclass {
+    background-color: "#ffffff";
+}
+
+.lanscape_class {}
+
+.correction .sapMTextAreaInner {
+    vertical-align: middle;
+    background-color: lightgrey;
+}
+
+.landscape_info {
+    margin-top: 20px !important;
+}
+
+.light_green {
+    background-color: #90EE90 !important;
+}
+
+.light_yellow {
+    background-color: #FFFF66 !important;
+}
+
+.light_red {
+    background-color: #FF6347 !important;
+}
+
+.backgroundpage {}
+
+.panelpgrp {
+    background: #f0f4f9;
+}
+
+.page2back .sapMBtnInner {
+    background-color: #1E90FF;
+    border-radius: 50%;
+}
+
+.phasePanel {
+    margin-top: 10px;
+    background: #008FD3;
+}
+
+.sapMListTblCell.cellBorderRight {
+    border-right: 1px solid lightgray;
+}
+
+.sapMListTblCell.cellBorderLeft {
+    border-left: 1px solid lightgray;
+}
+
+.itemstateclass .sapMBtnInner {
+    width: 30px;
+}
+
+.innerarea .sapMInputBaseInner {
+    border: 1px white;
+}
+
+.innerareaadd .sapMInputBaseInner {
+    border: 1px solid lightgray;
+}
+
+.thumbnail:hover {
+    width: 1000px;
+    height: auto;
+    border: 3px solid #73AD21;
+    -webkit-transition: opacity 500ms;
+    -moz-transition: opacity 500ms;
+    -o-transition: opacity 500ms;
+    transition: opacity 500ms;
+}
+
+.table_handover.sapMListTblCell.cellBorderRight {
+    border-right: 1px solid lightgray;
+}
+
+.table_handover.sapMListTblCell.cellBorderLeft {
+    border-left: 1px solid lightgray;
+}
+
+.table_handover.sapMListTblCell.cellBorderTop {
+    border-top: 1px solid lightgray;
+}
+
+.table_handover.sapMListTblCell.cellBorderBottom {
+    border-bottom: 1px solid lightgray;
+}
+
+.icon_tab.sapMITBFilter.sapMITBText {
+    width: 20rem !important;
+    font-size: 20px !important
+}
+
+.collapse_icon {
+    top: -20px;
+    left: -20px;
+}
+
+.coll_form {
+    top: -20px;
+    bottom: -20px;
+}
+
+.drag_top {
+    top: -30px;
+    height: 60px;
+}
+
+.drag_top_body {
+    top: -70px;
+}
+
+.drag_top_more {
+    top: -75px;
+}
+
+.moveup {
+    margin-top: -30px;
+}
+
+.textarea_width .sapMInputBaseInner.sapMTextAreaInner {
+    width: 30%;
+}
+
+textarea_width_clnt.sapMInputBaseInner.sapMTextAreaInner {
+    width: 40%;
+}
+
+.form_link {
+    color: #0039e6 !important;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.delete_table_color {
+    background-color: #e6ffff !important;
+}
+
+.myCoustomClass {
+    background-color: green !important;
+}
+
+.transparent_dialog {}
+
+.sapMLIB.sapMListTblRow[data-red] {
+    background: #FADBD8 !important;
+    font-weight: bold !important;
+}
+
+.sapMLIB.sapMListTblRow[data-white] {
+    background-color: #F7F9F9!important;
+    font-weight: bold !important;
+}
+
+.sapMLIB.sapMListTblRow[data-yellow] {
+    background-color: rgba(254, 254, 152, 1) !important;
+    font-weight: bold !important;
+}
+
+.schedule_status[data-grey] {
+    border: none;
+    border-radius: 4px;
+    padding: 2px 10px;
+    font-size: 14px;
+    color: black;
+    cursor: pointer;
+    display: inline-block;
+    background-color: #A9A9A9;
+}
+
+.schedule_status[data-yellow] {
+    border: none;
+    border-radius: 4px;
+    padding: 2px 10px;
+    font-size: 14px;
+    color: orange;
+    cursor: pointer;
+    display: inline-block;
+    background-color: #FFFF00;
+}
+
+.schedule_status[data-green] {
+    border: none;
+    border-radius: 4px;
+    padding: 2px 10px;
+    font-size: 14px;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    background-color: #75e569;
+}
+
+.schedule_status[data-red] {
+    border: none;
+    border-radius: 4px;
+    padding: 2px 10px;
+    font-size: 14px;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    background-color: #FA8072;
+}
+
+.collection_type[data-yellow] {
+    color: yellow;
+}
+
+.button_red_status .sapMBtnInner {
+    border-radius: 50%;
+    padding: 5px 5px;
+    -webkit-animation: glowing_red 1000ms infinite;
+    animation: glowing_red 1000ms infinite;
+}
+
+@-webkit-keyframes glowing_red {
+    0% {
+        background-color: #B20000;
+        -webkit-box-shadow: 0 0 0px #B20000;
+    }
+    50% {
+        background-color: #FF0000;
+        -webkit-box-shadow: 0 0 0px #FF0000;
+    }
+    100% {
+        background-color: #B20000;
+        -webkit-box-shadow: 0 0 0px #B20000;
+    }
+}
+
+.button_green_status .sapMBtnInner {
+    border-radius: 50%;
+    border: none;
+    padding: 5px 5px;
+    -webkit-animation: glowing_green 1000ms infinite;
+    animation: glowing_green 1000ms infinite;
+}
+
+@-webkit-keyframes glowing_green {
+    0% {
+        background-color: #14b200;
+        -webkit-box-shadow: 0 0 0px #14b200;
+    }
+    50% {
+        background-color: #95d88c;
+        -webkit-box-shadow: 0 0 0px #95d88c;
+    }
+    100% {
+        background-color: #14b200;
+        -webkit-box-shadow: 0 0 px #14b200;
+    }
+}
+
+.roundButton  {
+    border-radius: 2.5rem;
+}
