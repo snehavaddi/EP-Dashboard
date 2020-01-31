@@ -1,0 +1,651 @@
+.Bar1{
+ height:10px;
+  background-color: orange !important
+}
+.Bar2{
+  height:45px;
+  background-color: rgb(104, 161, 212); !important
+}
+
+.Bar3{
+ height:10px;
+  background-color: green !important
+}
+.Bar4{
+  height:10px;
+  background-color: white !important
+}
+
+.Bar5{
+  background-color: antiquewhite !important
+}
+.sapwall{
+margin-top:5px;
+}
+
+.label{
+  color: #2F4F4F !important;
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 1rem !important;
+  font-weight: bold !important;
+}
+
+
+.label1{
+  font-size: 25px;
+  margin-top:5px;
+  font-weight: bold !important;
+  color: black;
+}
+
+.label2{
+  font-size: 15px;
+  color: black;
+  margin-top:5px !important;
+  font-weight: bold !important;
+}
+.contentright{
+  margin-bottom:-5px;
+}
+
+.info_tab{
+  position:relative;
+    height: 40px;
+    background-color: rgb(195, 195, 195)!important;
+  //  left:1300px
+}
+.span.highlight {
+    background-color: yellow;
+}
+
+.variant {
+  cursor: inherit;
+  color: #666666;
+  background-color: aliceblue!important;
+}
+ .buttonStyle  {
+     text-shadow: 0 0px 0 #333333;
+     text-align: center;
+      margin: 4px 10px;
+    }
+    .buttonStyle :hover{
+  background-color:gold !important
+}
+
+ .buttonStyle1  {
+     text-shadow: 0 0px 0 #333333;
+     text-align: center;
+      margin: 4px 10px;
+        background-color:blueviolet !important
+    }
+.sapMLIB sapMLIB-CTX sapMLIBFocusable sapMLIBShowSeparator sapMLIBTypeInactive sapMListTblRow{
+border-bottom-color: blue;
+color: #FFFFFF;
+background-colour : Blue;
+min-height: 27px;
+border: none;
+border-bottom: 10px solid aliceblue;
+
+}
+
+
+.table.tr {
+    border-collapse: collapse;
+    width: 100%;
+    height: 50px;
+}
+
+.sapMLIB.sapMLIB-CTX.sapMLIBFocusable.sapMLIBShowSeparator.sapMLIBTypeInactive.sapMListTblRow{
+
+}
+
+
+.size1 {
+  font-size : 1rem;
+  margin: 4px 10px;
+  color: blue;
+}
+
+.Position{
+  margin-top: -16px;
+  margin-left: -18px;
+
+}
+.Positionlon{
+
+}
+
+.cursor {
+position: relative;
+}
+
+
+
+
+
+.myRedTextButton {
+     padding: 1px 32px;
+    }
+.sapMBtnContent.sapMBtnContentRight{
+text-align: left
+}
+
+.sapMBarChild.sapUiIcon.sapUiIconMirrorInRTL{
+font-size:30px !important;
+margin-top:10px
+}
+.sapMBarChild.sapMImg{
+margin-bottom:15px !important
+}
+
+.barclassblr{
+  height:10px;
+   background-color: green!important
+}
+
+.barclassrot{
+ height:10px;
+  background-color: red !important
+}
+
+.inputpanel{
+height:60px;
+}
+
+.masterpanel{
+   height:200px ;
+   width: 600px ;
+}
+
+.buttonclass{
+ margin-left: 1px;
+ margin-right: 1px;
+}
+
+.indclass{
+height:20px;
+width:10px
+}
+
+.verticalone{
+ margin-top:-10px;
+
+    background-size: 195px 80px;
+    background-repeat: no-repeat;
+}
+
+
+.sapMInputBaseInner.sapMTextAreaGrow.sapMTextAreaInner{
+height:60px;
+}
+
+.green{
+height:20px ;
+backgroud:green !important
+}
+
+.red{
+height:20px;
+backgroud:red !important
+}
+
+.white{
+color:black !important
+backgroud:white !important
+height:20px;
+}
+
+.b1 div {
+   height: 15px;
+   }
+.idprclass{
+    height: 100px;
+    margin-top: -20px;
+    margin-bottom: -30px;
+}
+.idprclass1{
+    height: 100px;
+    margin-top: -2px;
+    margin-bottom: -20px;
+}
+.center{
+ margin-left= "150px" !important;
+}
+
+.compledpatch{
+  color: blue  !important;
+  font-weight: bold;
+}
+
+.patchcomplete{
+  color: green  !important;
+  font-weight: bold;
+}
+
+.patchrejected{
+  color: red  !important;
+  font-weight: bold;
+}
+
+.listselect{
+  font-weight: bold;
+}
+
+.listselect1{
+  font-weight: bold !important;
+  margin-left:100px !important;
+  position: static;
+}
+
+.listselect2{
+  font-weight: bold !important;
+  margin-left:600px !important;
+}
+
+::-webkit-scrollbar-thumb{
+background-color: rgb(231, 111, 36) !important;
+}
+
+::-webkit-scrollbar {
+background-color: rgb(211, 230, 220) !important;
+}
+.textradio{
+font-size= "larger"
+}
+
+.verticallay{
+ margin-top:-10px;
+margin-left: -40px;
+
+    background-size: 195px 80px;
+    background-repeat: no-repeat;
+
+
+}
+
+.verticallayproduct{
+ margin-top:-10px;
+ margin-bottom: -12px;
+ padding-bottom: 8px;
+
+
+}
+
+.verticallay3{
+ margin-top:-10px;
+margin-left: -40px;
+
+    background-size: 195px 80px;
+    background-repeat: no-repeat;
+
+}
+
+
+
+
+
+.hori3rd{
+ margin-top:25px
+}
+.mypanle{
+ margin-left:0px;
+ margin-top:10px;
+ padding-bottom: 10px;
+ position:absolute;
+ left:0px;
+}
+
+.shiftup{
+margin-top: -22px;
+margin-bottom: -25px;
+}
+
+.shiftup1{
+margin-top: -22px;
+margin-bottom: -2px;
+height: 60px;
+}
+
+.horizontal{
+margin-top:-40px;
+margin-bottom:-10px;
+
+}
+
+.horizontal1{
+margin-left:55px;
+
+}
+.text2{
+ margin-top:-10px;
+}
+
+.hotlineclass{
+ margin-left:80px !important;
+}
+
+.hotlineclass1{
+ margin-left:40px !important;
+}
+
+.text21{
+ margin-top:-10px;
+ margin-left : -15px
+}
+
+.text21  {
+  width:25px !important;
+  height:25px !important;
+  border-radius: 50% !important
+}
+
+.text21 .sapMBtnIcon{
+ width:20px;
+ height: 20px
+}
+.text21 :hover {
+  background-color: #DCDCDC!important
+}
+
+.text22{
+ margin-top:-10px;
+}
+
+.text22  {
+
+  border-radius: 50% !important
+}
+.text22 .sapMBtnIcon{
+ width:20px;
+ height: 20px
+}
+
+
+.text22 :hover {
+  background-color: #DCDCDC !important
+}
+
+.flagclass{
+margin-top:10px;
+margin-right:15px
+}
+
+.flagclass1{
+margin-top:10px;
+}
+
+
+.up{
+ margin-top:-20px;
+}
+
+.up1{
+ margin-top:-20px;
+ margin-left : -15px
+}
+
+.up1  {
+  width:25px !important;
+  height:25px !important;
+  border-radius: 50% !important
+}
+
+.up1 .sapMBtnIcon{
+ width:20px ;
+ height:20px
+}
+
+.up1 :hover {
+  background-color: #DCDCDC !important
+}
+
+.up2{
+ margin-top:-20px;
+}
+
+.up2  {
+  border-radius: 50% !important
+}
+
+.up2 .sapMBtnIcon{
+ width:20px ;
+ height:20px
+}
+
+.up2 :hover {
+  background-color: #DCDCDC !important
+}
+
+.label12{
+   color: #2F4F4F !important;
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 1rem !important;
+  font-weight: bold !important;
+  margin-right:20px;
+  margin-top: 5px
+}
+
+.label13{
+    color: #2F4F4F !important;
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 1rem !important;
+  font-weight: bold !important;
+  margin-right:14px;
+  margin-top: 5px
+}
+
+.tableb1{
+ width:100px
+}
+
+.tableb1 {
+margin-right:5px;
+border-radius: 8px;
+margin-top: -20px;
+}
+
+.tableb1 :hover{
+  background-color:#FA8072 !important ;
+  border-radius: 8px
+}
+
+.designon{
+
+margin-top: -20px;
+margin-bottom: -10px
+}
+
+.Headertool{
+margin-top: 5px;
+margin-left: 500px;
+margin-bottom:-12px
+}
+
+.blockdata{
+ border: 5px solid blue;
+}
+
+.texterror{
+  background-color: red  !important ;
+}
+
+.margin{
+margin-left : 200px
+}
+
+.myCustomTablewhite {
+    font-weight: bold;
+    background-color: #F7F9F9   !important ;
+}
+
+.myCustomTablegreen {
+    font-weight: bold;
+    background-color: rgba(254, 254, 152, 1) !important ;
+}
+
+.myCustomTablegreen1 {
+    background-color: yellow !important ;
+}
+
+.myCustomTablered{
+ font-weight: bold;
+  background-color: #FFA07A !important ;
+}
+
+.myCustomTablered1{
+  font-weight: bold;
+  color: 	#FF0000 !important ;
+}
+
+.timepanel{
+     margin-top: -15px;
+}
+
+
+.timepanel1{
+
+    margin-bottom: -15px;
+}
+
+.timegraphpanle{
+margin-bottom: -10px
+
+}
+
+.detailpanel{
+overflow:auto;
+margin-top:-10px;
+
+}
+
+.masterclass{
+  margin-top: -10px;
+  margin-bottom: -10px;
+}
+.gary{
+  background-color: #DCDCDC !important ;
+  text-align: right;
+}
+
+.blueindicator{
+  background-color: #3CB371 !important ;
+  color: #FFFFFF;
+  text-align: right
+}
+.whiteindicator{
+ background-color: #FFFFFF !important ;
+}
+.blueindicator .sapMPIText{
+  color: #FFFFFF  !important ;
+}
+
+
+.lucnhindicator{
+  background-color: #009de0 !important ;
+  color: #FFFFFF;
+  text-align: right
+}
+.lucnhindicator .sapMPIText{
+  color: #FFFFFF  !important ;
+}
+
+.img1{
+ margin-left:50px !important ;
+ margin-top:22px !important ;
+ height: 25px !important ;
+}
+
+.img2{
+ margin-left:150px !important ;
+ margin-top:22px !important ;
+  height: 25px !important ;
+}
+
+.img3{
+ margin-left:120px !important ;
+ margin-top:22px !important ;
+  height: 25px !important ;
+}
+
+
+
+.linkpanel{
+margin-left : 30px;
+margin-top : -10px;
+position:absolute;
+left:1185px;
+right:10px;
+
+}
+
+.rLinks {
+  margin-left : 20px;
+  margin-right : 10px;
+}
+.switchclass .sapMSwtLabel {
+ background-color: green !important;
+}
+
+.evenRowColors {
+border-bottom-color: blue;
+color: #FFFFFF;
+background-colour : blue;
+min-height: 27px;
+border: none;
+border-bottom: 10px solid aliceblue;
+  background : #D4D4D4 !important;
+}
+
+.Callout{
+width: 80px;
+}
+.B1tool1{
+margin-left: 10px;
+margin-right: 10px;
+}
+
+.B2tool{
+margin-left: 10px;
+margin-right: 10px;
+}
+
+.messagepop{
+position: absolute;
+visibility: visible;
+z-index: 60;
+left: 50%;
+top: 10% !important;
+display: block;
+width: 50%;
+text-align: center !important;
+transform: translate(-304px, -73px) scale(1);
+}
+.tabletextarea{
+padding-top:0px !important;
+padding-bottom:0px !important;
+}
+
+.sidenav{
+width: 40%;
+display: none;
+}
+
+
+.topBar{
+
+  background-color: #deeff5 !important;
+ color: black;
+}
+
+.openhot {
+ background-color: orange !important;
+ font-size : 15px !important;
+ font-weight : bold!important;
+ height:35px;
+ margin-top:-3px;
+}
+
+.accentclass{
+margin-bottom: -20px;
+margin-top: -20px;
+}
