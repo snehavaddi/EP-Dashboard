@@ -1,4 +1,4 @@
-sap.ui.controller("epdash.epdash.controller.app", {
+sap.ui.controller("epdash.epdash.controller.Item_Status_form", {
 
 /**
 * Called when a controller is instantiated and its View controls (if available) are already created.
