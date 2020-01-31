@@ -1,0 +1,99 @@
+<core:FragmentDefinition xmlns="sap.ui.table" xmlns:mvc="sap.ui.core.mvc" xmlns:u="sap.ui.unified" xmlns:m="sap.m" xmlns:core="sap.ui.core">
+	<m:Dialog title="HFC Header Information for Product Versions" class="sapUiSizeCompact">
+		<m:content>
+			<Table title="Cuttoff List" id="hfc_header_table" rows="{hfc_header>/hfc_header_data}" selectionMode="None" enableSelectAll="false"
+				visible="{= ${hfc_header>/visible} }">
+				<columns>
+					<Column width="14rem">
+						<m:Label text="SPS Name"/>
+						<template>
+							<m:Link text="{hfc_header>SpsName}" wrapping="false" press=".enable_reminders($event, 'hfc_header')" emphasized="true"/>
+						</template>
+					</Column>
+					<Column width="10rem">
+						<m:Label text="HFC Responsible"/>
+						<template>
+							<m:Link text="HFC Responsible" wrapping="false" press=".enable_reminders($event, 'hfc_hotliner')" emphasized="true"/>
+						</template>
+					</Column>
+					<Column width="10rem">
+						<m:Label text="PQP Project"/>
+						<template>
+							<m:Link text="Link" wrapping="false" press=".enable_reminders($event, 'hfc_header')" emphasized="true"/>
+						</template>
+					</Column>
+					<Column width="10rem">
+						<m:Label text="Cutoff Date Start"/>
+						<template>
+							<m:Text
+								text="{path:'hfc_header>Cutoffdatestart',type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd MMM yyyy' ,source :'yyyyMMdd'}}"
+								wrapping="false"/>
+						</template>
+					</Column>
+					<Column width="10rem">
+						<m:Label text="Cutoff Time Start"/>
+						<template>
+							<m:Text
+								text="{path:'hfc_header>Cutofftimestart', type : 'sap.ui.model.type.Time' ,formatOptions:{ source:{ pattern : '\'PT\'hh\'H\'mm\'M\'ss\'S\'' }, pattern : 'HH:mm:ss'}}"
+								wrapping="false"/>
+						</template>
+					</Column>
+					<Column width="10rem">
+						<m:Label text="Cutoff Time End"/>
+						<template>
+							<m:Text
+								text="{path:'hfc_header>Cutofftimeend', type : 'sap.ui.model.type.Time' ,formatOptions:{ source:{ pattern : '\'PT\'hh\'H\'mm\'M\'ss\'S\'' }, pattern : 'HH:mm:ss'}}"
+								wrapping="false"/>
+						</template>
+					</Column>
+					<Column width="7rem">
+						<m:Label text="Comments"/>
+						<template>
+							<m:Button text="{= parseFloat(${hfc_header>CommentsNumber})}" icon="sap-icon://post" press="comment_on_hfc" type="Emphasized"/>
+						</template>
+					</Column>
+					<Column width="12rem">
+						<m:Label text="Set Reminders"/>
+						<template>
+							<m:Button text="Enable Reminders" icon="sap-icon://post" press=".enable_reminders($event, 'hfc_reminder')" type="Emphasized"/>
+						</template>
+					</Column>
+				</columns>
+			</Table>
+			<Table title="Holidays List" id="holyday" rows="{holydays>/holyday_list}" selectionMode="None" enableSelectAll="false"
+				visible="{= ${holydays>/visible} }">
+				<columns>
+					<Column width="11rem">
+						<m:Label text="Country"/>
+						<template>
+							<Image xmlns="sap.m" src="{holydays>Pic}" height="25px" width="40px"/>
+						</template>
+					</Column>
+					<Column width="11rem">
+						<m:Label text="Tilte"/>
+						<template>
+							<m:Text text="{holydays>Title}" wrapping="false"/>
+						</template>
+					</Column>
+					<Column width="14rem">
+						<m:Label text="Holiday Text"/>
+						<template>
+							<m:Text text="{holydays>HolidayText}" wrapping="false"/>
+						</template>
+					</Column>
+					<Column width="9rem">
+						<m:Label text="Date"/>
+						<template>
+							<m:Text
+								text="{path:'holydays>DateFrom',type: 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'dd MMM yyyy' ,source :'yyyy-MM-dd\'T\'HH:mm:ss'}}"
+								wrapping="false"/>
+						</template>
+					</Column>
+				</columns>
+			</Table>
+		</m:content>
+		<m:endButton>
+			<m:Button text="Close" type="Reject" press="close_hfc_header_dialog"/>
+		</m:endButton>
+	</m:Dialog>
+</core:FragmentDefinition>

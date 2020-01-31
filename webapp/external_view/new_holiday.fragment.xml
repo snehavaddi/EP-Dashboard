@@ -1,0 +1,27 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core"
+	xmlns:unified="sap.ui.unified">
+	<VBox class="sapUiSmallMargin" id="v1">
+		<PlanningCalendar id="HC" viewKey="D" rows="{path: '/people'}" startDate="{path: '/startDate'}" appointmentsVisualization="Filled"
+			appointmentSelect="handleAppointmentSelect" showEmptyIntervalHeaders="false" showWeekNumbers="true">
+			<toolbarContent>
+				<Title text="Holiday Calendar"/>
+			</toolbarContent>
+			<views>
+				<PlanningCalendarView key="D" intervalType="Day" description="days view" intervalsS="1" intervalsM="7" intervalsL="7"
+					showSubIntervals="false"></PlanningCalendarView>
+				<PlanningCalendarView key="M" intervalType="Month" description="months view" intervalsS="1" intervalsM="7" intervalsL="7"
+					showSubIntervals="false"></PlanningCalendarView>
+				<PlanningCalendarView key="nonWorking" intervalType="Day" description="days with non-working dates" intervalsS="1" intervalsM="7"
+					intervalsL="9"></PlanningCalendarView>
+			</views>
+			<rows>
+				<PlanningCalendarRow icon="{pic}" title="{name}" appointments="{path : 'appointments', templateShareable: 'true'}">
+					<appointments>
+						<unified:CalendarAppointment startDate="{start}" endDate="{end}" icon="{pic}" title="{title}" text="{info}" type="{type}"
+							tooltip="{title} {start}"></unified:CalendarAppointment>
+					</appointments>
+				</PlanningCalendarRow>
+			</rows>
+		</PlanningCalendar>
+	</VBox>
+</core:FragmentDefinition>

@@ -1,0 +1,24 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:core="sap.ui.core" xmlns:rte="sap.ui.richtexteditor">
+	<Dialog title="HFC Reminder Mail Content" class="Bar sapUiSizeCompact" draggable="true" scrollable="true" contentWidth="800px">
+		<!--height="auto" width="auto"-->
+		<content>
+			<VBox>
+				<Label text="Recipient List in TO" design="Bold"/>
+				<Tokenizer width="100%" tokens="{hfc_content>/dl_to}" editable="false">
+					<Token key="{hfc_content>key}" text="{hfc_content>text}" />
+				</Tokenizer>
+				<Label text="Recipient List in CC" design="Bold"/>
+				<Tokenizer width="100%" tokens="{hfc_content>/dl_cc}" editable="false">
+					<Token key="{hfc_content>key}" text="{hfc_content>text}"/>
+				</Tokenizer>
+				<rte:RichTextEditor editorType="TinyMCE4" value='{hfc_content>/content}' height="1000px" width="100%"  customToolbar="true"  showGroupClipboard="false" showGroupFontStyle="false"
+					showGroupFont="false"  showGroupLink="false"  showGroupInsert="false" editable="false" showGroupTextAlign="false" showGroupStructure ="false" />
+			</VBox>
+		</content>
+		<beginButton>
+			<Button text="Close" press="close_dialog" icon="" type="Reject"/>
+		</beginButton>
+		
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,145 @@
+<mvc:View xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:u="sap.ui.unified" xmlns:tnt="sap.tnt" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" controllerName="epdash.epdash.external_controller.ext_form" displayBlock="true">
+	<!--	<App>
+		<pages> -->
+	<Shell>
+		<Page showHeader="false" title="{i18n>assembly_form}" navButtonPress="back_to_main" showNavButton="true" class="sapUiSizeCompact">
+			<content visible="false">
+				<tnt:ToolHeader>
+					<Button icon="sap-icon://home" type="Transparent" press="back_to_main">
+						<layoutData>
+							<OverflowToolbarLayoutData priority="NeverOverflow"/>
+						</layoutData>
+					</Button>
+					<Text text="Assembly Form" class="label1"/>
+				</tnt:ToolHeader>
+				<Panel backgroundDesign="Solid" visible="{=${searchModel>/key}==='normal'}">
+					<headerToolbar>
+						<Toolbar height="70px">
+							<Label text="Input"/>
+							<SearchField id="search_hfc_id" width="50%" placeholder="Collection Id / Collection Name" liveChange="onlive_change" suggest="on_suggest"
+								search="hit_search"/>
+							<Button text="Search" type="Emphasized" width="auto" press="search_collection_id"/>
+							<ToolbarSpacer/>
+							<Link text="Get Link" emphasized="true" press="link_get" visible="{=${table>/key}==='show'}"/>
+							<Link text="Advanced Filter" emphasized="true" press="hide_normal_search"/>
+						</Toolbar>
+					</headerToolbar>
+				</Panel>
+				<Panel backgroundDesign="Solid" visible="{=${searchModel>/key}==='advanced'}">
+					<VBox class="sapUiSmallMargin">
+						<f:SimpleForm id="SimpleFormChange354wideDual" editable="true" layout="ResponsiveGridLayout" title="Patch Assembly Form" labelSpanXL="4"
+							labelSpanL="4" labelSpanM="4" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0"
+							columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="true">
+							<f:content>
+								<core:Title text="Products"/>
+								<Label text="Select Product"/>
+								<ComboBox id="product" items="{ProductName>/}" value="" selectedKey="" loadItems="handleLoadItems" change="on_select_product">
+									<core:ListItem key="{ProductName>ProductName}" text="{ProductName>ProductName}"/>
+								</ComboBox>
+								<Label text="Product Version"/>
+								<ComboBox id="product_ver" items="{Pv_Version>/}" value="" selectedKey="" loadItems="handleLoadItems" change="on_select_product_version"
+									showSecondaryValues="true">
+									<core:ListItem key="{Pv_Version>ProdVersName}" text="{Pv_Version>ProdVersName}" additionalText="{Pv_Version>ProductName}"/>
+								</ComboBox>
+								<Label text="SPS Version"/>
+								<ComboBox id="sps" items="{Sps_Version>/}" value="" selectedKey="" loadItems="handleLoadItems" change="on_select_sps"
+									showSecondaryValues="true">
+									<core:ListItem key="{Sps_Version>SpsName}" text="{Sps_Version>SpsName}" additionalText="{Sps_Version>ProdVersName}"/>
+								</ComboBox>
+								<Label text="Patch Collection Name"/>
+								<ComboBox id="collection" items="{Patch_Collection>/}" value="" selectedKey="" loadItems="handleLoadItems" change="on_select_collection"
+									showSecondaryValues="true">
+									<core:ListItem id="collection_list" key="{Patch_Collection>CollectionName}" text="{Patch_Collection>CollectionName}" additionalText="{Patch_Collection>SpsName}"/>
+								</ComboBox>
+								<core:Title text="Type of Collection"/>
+								<RadioButtonGroup id="collection_group" columns="1" width="100%" class="sapUiMediumMarginBottom" select="on_select_coll_type" selectedIndex="-1">
+									<buttons>
+										<RadioButton id="hotfix_coll"  text="Hotfix Collection" />
+										<RadioButton id="vp_coll"  text="Validation Patch Collection" />
+										<RadioButton id="ep_coll" text="Extraordinary Patch Collection"/>
+									</buttons>
+								</RadioButtonGroup>
+							</f:content>
+						</f:SimpleForm>
+					</VBox>
+					<Link text="Get Link " emphasized="true" press="link_get" visible="{=${table>/key}==='show'}"/>
+					<Link text="Hide Filter" emphasized="true" press="hide_advanced_search"/>
+				</Panel>
+				<Table id="itemassembinqueue" inset="false" class="sapUiSizeCompact" items="{form_model>/}" visible="{=${table>/key}==='show'}">
+					<headerToolbar>
+						<OverflowToolbar>
+							<Title id="assemsteptitle" level="H2"/>
+						</OverflowToolbar>
+					</headerToolbar>
+					<columns>
+						<Column mergeDuplicates="true">
+							<Text text="Phase Disc"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" width="5%">
+							<Text text="System ID"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" width="5%">
+							<Text text="Client"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" width="17%">
+							<Text text="Activity / Status "/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" width="25%">
+							<Text text="Comments"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true">
+							<Text text="Change Status"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" width="5%">
+							<Text text="Update Entry"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" width="10%">
+							<Text text="User+Date+Time "/>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem id="itemstepinqueue" class="sapUiSizeCompact">
+							<cells>
+								<Text text="{form_model>Phase}"/>
+								<Input value="{form_model>SystemId}" placeholder="System ID"/>
+								<Input value="{form_model>Client}" placeholder="Clients" liveChange="validateClient"/>
+								<Button id="itembuttontext" text="{path:'form_model>Status',formatter:'.formatter.buttontext'}"
+									icon="{path:'form_model>Status',formatter:'.formatter.buttonicon'}" tooltip="{form_model>Status}"/>
+								<TextArea value="{form_model>CommentByUser}" placeholder="Comment Log " growing="false" rows="3" width="100%"/>
+								<!--<Text  text="{ChangeUser} {ChangeDate} {ChangeTime}"/>-->
+								<Select change="onChangevalue" name="{path:'form_model>Status',formatter:'.formatter.buttontext'}"
+									enabled="{path:'form_model>EnableStatus',formatter:'.formatter.EnableStatus'}">
+									<core:Item key="9898" text=""/>
+									<core:Item key="0000" text="Finished"/>
+									<core:Item key="0002" text="Manually set to finished"/>
+									<core:Item key="0004" text="Finished with warning"/>
+									<core:Item key="0006" text="Not processed"/>
+									<core:Item key="0007" text="Reset"/>
+									<core:Item key="0008" text="Terminated"/>
+									<core:Item key="0012" text="Aborted"/>
+									<core:Item key="0400" text="Initial"/>
+									<core:Item key="0800" text="Reset"/>
+									<core:Item key="4000" text="In process"/>
+									<core:Item key="4100" text="Waiting for return of process"/>
+									<core:Item key="8888" text="Workflow Confirmed"/>
+									<core:Item key="9999" text="Workflow aborted completely"/>
+								</Select>
+								<Button text="Save" type="Emphasized" press="update_form"/>
+								<VBox>
+									<ObjectIdentifier
+										text="{path : 'form_model>ChangeDate',type: 'sap.ui.model.type.DateTime', formatOptions:  { pattern: 'dd MMM yyyy' ,source :'yyyy-MM-dd\'T\'HH:mm:ss'}}"
+										title="{form_model>ChangeUser}"/>
+									<Text text="{path:'form_model>ChangeTime',formatter:'.formatter.ChangeTime'}"/>
+								</VBox>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</content>
+		</Page>
+	</Shell>
+	<!--	</pages>&nbsp;
+		
+</App>-->
+</mvc:View>

@@ -1,0 +1,192 @@
+<mvc:View xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:tnt="sap.tnt" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core" controllerName="epdash.epdash.external_controller.hfc_view" displayBlock="true" xmlns:me="sap.me"
+	xmlns:u="sap.ui.unified" xmlns:unified="sap.ui.unified">
+	<Page showHeader="false" title="{i18n>assembly_form}" navButtonPress="back_to_main" showNavButton="true" class="sapUiSizeCompact ">
+		<content>
+			<tnt:ToolHeader>
+				<Button icon="sap-icon://sys-back-2" type="Transparent" press="back_to_main">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="NeverOverflow"/>
+					</layoutData>
+				</Button>
+				<Text text="{Controls>/data/header_name}" class="label1"/>
+			</tnt:ToolHeader>
+			<Page id="sideContentContainer" showHeader="false" showNavButton="false">
+				<l:DynamicSideContent id="DynamicSideContent" class="sapUiDSCExplored sapUiContentPadding" containerQuery="true"
+					breakpointChanged="handleBreakpointChangeEvent">
+					<l:mainContent >
+						<Panel id="HFC_Panel" visible="{= ${Controls>/data/content_visiblty} ==='hfc_view'}">
+							<headerToolbar>
+								<Toolbar height="3rem">
+									<ToolbarSpacer/>
+									<Title text="Enable Public Holidays"/>
+									<Switch id="holiday_switch" state="true" customTextOn="Yes" customTextOff="No" change="add_public_holiday_to_hfc">
+										<layoutData>
+											<FlexItemData growFactor="1"/>
+										</layoutData>
+									</Switch>
+								</Toolbar>
+							</headerToolbar>
+							<Title level="H1" text="Calendar View"/>
+							<me:Calendar id="calendar" selectionMode="SINGLE" tapOnDate="onTapOnDate" changeCurrentDate="onNextMonth" dayHeight="100" dayWidth="100"
+								width='100%'/>
+							<Title level="H1" text="List of Products"/>
+							<u:CalendarLegend standardItems='' id="legend_hfc_product"></u:CalendarLegend>
+							<Title level="H1" text="List of Product Versions"/>
+							<u:CalendarLegend standardItems='' id="legend_hfc_product_version"></u:CalendarLegend>
+							<Title level="H1" text="Calendar Legend Items"/>
+							<u:CalendarLegend ></u:CalendarLegend>
+						</Panel>
+						<Panel id="Holiday_Panel" visible="{= ${Controls>/data/content_visiblty} ==='hol_view'}">
+							<Title level="H1" text="Holidays"/>
+						</Panel>
+						<Panel id="Hotliner_Panel" visible="{= ${Controls>/data/content_visiblty} ==='hot_view'}">
+							<Title level="H1" text="Select Hotliner Type"/>
+							<Select id="hotline_num" forceSelection="false" selectedKey="" items="{hotliner_type>/hotliner_type}" width="100%"
+								change="On_Change_hotliner_Type">
+								<core:Item key="{hotliner_type>HotlineNum}" text="{hotliner_type>HotlineTxt}"/>
+							</Select>
+							<f:Form id="FormChange480_Trial" editable="true">
+								<f:layout>
+									<f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0"
+										emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="false"/>
+								</f:layout>
+								<f:formContainers>
+									<f:FormContainer visible="{= ${hotliner_type_freq>/frequency} !=='5'}">
+										<f:formElements>
+											<f:FormElement label="Quarter">
+												<f:fields>
+													<Select width="100px" id="__input0" selectedKey="{UserDetail>/0/Quarter}">
+														<core:Item key="01" text="01"/>
+														<core:Item key="02" text="02"/>
+														<core:Item key="03" text="03"/>
+														<core:Item key="04" text="04"/>
+													</Select>
+												</f:fields>
+											</f:FormElement>
+										</f:formElements>
+									</f:FormContainer>
+									<f:FormContainer visible="{= ${hotliner_type_freq>/frequency} ==='5'}">
+										<f:formElements >
+											<f:FormElement label="Month">
+												<f:fields>
+													<Select width="100px" id="__input1" selectedKey="{UserDetail>/0/Month}">
+														<core:Item key="01" text="January"/>
+														<core:Item key="02" text="February"/>
+														<core:Item key="03" text="March"/>
+														<core:Item key="04" text="April"/>
+														<core:Item key="05" text="May"/>
+														<core:Item key="06" text="June"/>
+														<core:Item key="07" text="July"/>
+														<core:Item key="08" text="August"/>
+														<core:Item key="09" text="September"/>
+														<core:Item key="10" text="October"/>
+														<core:Item key="11" text="November"/>
+														<core:Item key="12" text="December"/>
+													</Select>
+												</f:fields>
+											</f:FormElement>
+										</f:formElements>
+									</f:FormContainer>
+									<f:FormContainer>
+										<f:formElements>
+											<f:FormElement label="of Year">
+												<f:fields>
+													<StepInput id="step_year" value="{UserDetail>/0/Year}" min="2017" max="2025"/>
+												</f:fields>
+											</f:FormElement>
+										</f:formElements>
+									</f:FormContainer>
+									<f:FormContainer>
+										<f:formElements>
+											<f:FormElement>
+												<f:fields>
+													<Button text="Fetch" id="__button2" icon="sap-icon://arrow-right" type="Emphasized" iconFirst="false" press="refreshAssignments"
+														width="100%"/>
+												</f:fields>
+											</f:FormElement>
+										</f:formElements>
+									</f:FormContainer>
+								</f:formContainers>
+							</f:Form>
+							<PlanningCalendar id="PC2" viewKey="D" startDate="{path: '/startDate'}" rows="{path: '/people'}" appointmentsVisualization="Filled"
+								appointmentSelect="handleAppointmentSelect" showEmptyIntervalHeaders="false" showWeekNumbers="true" visible="false">
+								<views>
+									<PlanningCalendarView key="A" intervalType="Hour" description="hours view" intervalsS="2" intervalsM="7" intervalsL="6"
+										showSubIntervals="false"></PlanningCalendarView>
+									<PlanningCalendarView key="D" intervalType="Day" description="days view" intervalsS="1" intervalsM="7" intervalsL="7"
+										showSubIntervals="false"></PlanningCalendarView>
+									<PlanningCalendarView key="M" intervalType="Month" description="months view" intervalsS="1" intervalsM="7" intervalsL="7"
+										showSubIntervals="false"></PlanningCalendarView>
+									<PlanningCalendarView key="nonWorking" intervalType="Day" description="days with non-working dates" intervalsS="1" intervalsM="5"
+										intervalsL="9"></PlanningCalendarView>
+								</views>
+								<toolbarContent>
+									<Title text="Hotliner For " titleStyle="H4"/>
+								</toolbarContent>
+								<rows>
+									<PlanningCalendarRow icon="{pic}" title="{name}" text="{role}" appointments="{path : 'appointments', templateShareable: 'true'}"
+										intervalHeaders="{path: 'headers', templateShareable: 'true'}">
+										<customData>
+											<core:CustomData key="emp-name" value="{name}" writeToDom="true"/>
+										</customData>
+										<appointments>
+											<unified:CalendarAppointment startDate="{start}" endDate="{end}" icon="{pic}" title="{title}" text="{info}" type="{type}"
+												tentative="{tentative}"></unified:CalendarAppointment>
+										</appointments>
+										<intervalHeaders>
+											<unified:CalendarAppointment startDate="{start}" endDate="{end}" icon="{pic}" title="{title}" type="{type}"></unified:CalendarAppointment>
+										</intervalHeaders>
+									</PlanningCalendarRow>
+								</rows>
+							</PlanningCalendar>
+						</Panel>
+					</l:mainContent>
+					<l:sideContent>
+						<l:VerticalLayout id="containerLayout" width="100%">
+							<l:BlockLayout id="BlockLayout" background="Dashboard">
+								<l:BlockLayoutRow accentCells="Accent1">
+									<l:BlockLayoutCell id="Accent1" width="2" title="List of Products/Product Version"
+										visible="{= ${Controls>/data/content_visiblty} ==='hfc_view'}">
+										<List id="Product_list" items="{ProductName>/nodes}" mode="MultiSelect" itemPress="">
+											<items>
+												<StandardListItem title="{ProductName>ProductName_ver}"/>
+											</items>
+										</List>
+										<!--<Tree id="prod_tree" items="{ProductName>/nodes}" mode="MultiSelect" includeItemInSelection="false">-->
+										<!--	<StandardTreeItem title="{ProductName>ProductName_ver}" type="Active" press="expand_product"/>-->
+										<!--</Tree>-->
+										<Button text="Refresh HFC Calender" type="Accept" press="expand_product" width="100%"/>
+									</l:BlockLayoutCell>
+								</l:BlockLayoutRow>
+								<l:BlockLayoutRow accentCells="Accent1">
+									<l:BlockLayoutCell id="Accent2" width="2" title="Calendar Type">
+										<List headerText="Select Calendar Type" mode="None">
+											<CustomListItem>
+												<VBox >
+													<Button icon="sap-icon://calendar" text="HFC Calendar" type="{Controls>/data/hfc_btn}" width="100%" press="hfc_enable"/>
+													<Button icon="sap-icon://general-leave-request" text="Holiday Calendar" type="{Controls>/data/hot_btn}" width="100%" press="new_holiday_cal"/>
+													<Button icon="sap-icon://headset" text="Hotliner Calendar" width="100%" type="{Controls>/data/hol_btn}" press="hotliner_enable"/>
+												</VBox>
+											</CustomListItem>
+										</List>
+									</l:BlockLayoutCell>
+								</l:BlockLayoutRow>
+							</l:BlockLayout>
+						</l:VerticalLayout>
+					</l:sideContent>
+				</l:DynamicSideContent>
+			</Page>
+		</content>
+		<footer>
+			<Toolbar>
+				<content>
+					<!--	<Button text="Toggle" type="Accept" press="handleToggleClick" id="toggleButton"/>
+						<Button text="Open Side Content" id="showSideContentButton" press="handleSideContentShow" visible="false"/>
+						<Slider id='DSCWidthSlider' value="100" liveChange="handleSliderChange" visible="{= !${media>/phone}}"/>
+						<Text id='DSCWidthHintText' text="Best view in full screen" visible="{= !${media>/phone}}"/>-->
+				</content>
+			</Toolbar>
+		</footer>
+	</Page>
+</mvc:View>

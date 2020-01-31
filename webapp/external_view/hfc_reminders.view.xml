@@ -1,0 +1,537 @@
+<mvc:View xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:tnt="sap.tnt" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form"
+	xmlns:smartForm="sap.ui.comp.smartform" xmlns:core="sap.ui.core" controllerName="epdash.epdash.external_controller.hfc_reminders"
+	displayBlock="true" xmlns:me="sap.me" xmlns:u="sap.ui.unified" xmlns:unified="sap.ui.unified" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:smartField="sap.ui.comp.smartfield">
+	<Shell>
+		<!---->
+		<Page showHeader="false" title="{i18n>hfc_reminder}" navButtonPress="back_to_main" showNavButton="true"
+			class="sapUiSizeCompact side-navigation-demo">
+			<tnt:ToolHeader>
+				<Button icon="sap-icon://sys-back-2" type="Transparent" press="back_to_main">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="NeverOverflow"/>
+					</layoutData>
+				</Button>
+				<Text text="{i18n>hfc_reminder}" class="label1"/>
+				<ToolbarSpacer/>
+				<Button type="Transparent" press="onUserNamePress">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="NeverOverflow"/>
+					</layoutData>
+				</Button>
+			</tnt:ToolHeader>
+			<content>
+				<IconTabBar id="hfc_icon_tab_bar" expanded="{device>/isNoPhone}" class="sapUiResponsiveContentPadding" select="hfc_icon_tab_page">
+					<items>
+						<IconTabFilter text="HFC Header Information" press="schedule_mail" key="hfc_header">
+							<VBox class="sapUiSmallMargin">
+								<f:SimpleForm id="SimpleFormDisplay354wideDual" editable="false" layout="ResponsiveGridLayout" title="{patch_model>/patch/CollectionName}"
+									labelSpanXL="4" labelSpanL="6" labelSpanM="8" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0"
+									emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="true">
+									<f:content>
+										<core:Title text="HFC Header Info"/>
+										<Label text="Product Name"/>
+										<Text text="{patch_model>/patch/ProductName}"/>
+										<Label text="SPS Name"/>
+										<Text text="{patch_model>/patch/SpsName}"/>
+										<Label text="Collection Name"/>
+										<Link text="{patch_model>/patch/CollectionName}" target="_blank" class="pqp_link"/>
+										<Label text="Collection Type"/>
+										<ObjectStatus text="{path:'patch_model>/patch/CollectionType',formatter:'.formatter.Collectiontype_Text'}"
+											state="{path:'patch_model>/patch/CollectionType',formatter:'.formatter.Collectiontype'}"/>
+										<Label text="Collection Status"/>
+										<Text text="{path:'patch_model>/patch/Collection_status',formatter:'.formatter.Collection_status'}"/>
+										<Label text="Cut off Start Date"/>
+										<Text
+											text="{path:'hfc_model>/data/Cutoffdatestart',type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd MMM yyyy' ,source :'yyyyMMdd'}}"
+											wrapping="false"/>
+										<Label text="Cut off Start Time"/>
+										<Text
+											text="{path:'hfc_model>/data/Cutofftimestart', type : 'sap.ui.model.type.Time' ,formatOptions:{ source:{ pattern : '\'PT\'hh\'H\'mm\'M\'ss\'S\'' }, pattern : 'HH:mm:ss'}}"
+											wrapping="false"/>
+										<Label text="Cut off End Date"/>
+										<Text
+											text="{path:'hfc_model>/data/Cutoffdateend',type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd MMM yyyy' ,source :'yyyyMMdd'}}"
+											wrapping="false"/>
+										<Label text="Cut off End Time"/>
+										<Text
+											text="{path:'hfc_model>/data/Cutofftimeend', type : 'sap.ui.model.type.Time' ,formatOptions:{ source:{ pattern : '\'PT\'hh\'H\'mm\'M\'ss\'S\'' }, pattern : 'HH:mm:ss'}}"
+											wrapping="false"/>
+										<core:Title text="PQP Project Info"/>
+										<Label text="PQP Project Grp"/>
+										<Link text="{patch_model>/patch/ProjgrpId}" target="_blank" press="jump_to_pqp_project" class="pqp_link"/>
+										<Label text="ID of component group"/>
+										<Text text="{patch_model>/patch/GroupId}"/>
+										<Label text="Release of component group"/>
+										<Text text="{patch_model>/patch/GroupRel}"/>
+										<Label text="Status (for Electronic Checklist)"/>
+										<Text text="{patch_model>/patch/Status}"/>
+										<Label text="Owner"/>
+										<Text text="{patch_model>/patch/Owner}"/>
+									</f:content>
+								</f:SimpleForm>
+							</VBox>
+						</IconTabFilter>
+						<IconTabFilter text="HFC Responsible" press="get_hfc_hotliner" key="hfc_hotliner">
+							<Table
+								headerText="HFC Hotliners for {hfc_hotliner>/data/0/ProductName} {hfc_hotliner>/data/0/ProdVersIntern} {hfc_hotliner>/data/0/Spslevel}"
+								items="{hfc_hotliner>/data}">
+								<columns>
+									<Column mergeDuplicates="true">
+										<header>
+											<Text text="Task Details"/>
+										</header>
+									</Column>
+									<Column hAlign="Center" demandPopin="true" minScreenWidth="Tablet" popinDisplay="Block">
+										<header>
+											<Text text="Primary"/>
+										</header>
+									</Column>
+									<Column hAlign="Center" demandPopin="true" minScreenWidth="Tablet" popinDisplay="Block">
+										<header>
+											<Text text="IN Backup"/>
+										</header>
+									</Column>
+									<Column hAlign="Center" demandPopin="true" minScreenWidth="Tablet" popinDisplay="Block">
+										<header>
+											<Text text="DE Backup"/>
+										</header>
+									</Column>
+									<Column hAlign="Center" demandPopin="true" minScreenWidth="Tablet" popinDisplay="Block">
+										<header>
+											<Text text="CA Backup"/>
+										</header>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem >
+										<cells>
+											<Text text="{hfc_hotliner>TaskName}"/>
+											<Text text="{hfc_hotliner>Primaryname}"/>
+											<Text text="{hfc_hotliner>InBackupname}"/>
+											<Text text="{hfc_hotliner>DeBackupname}"/>
+											<Text text="{hfc_hotliner>CaBackupname}"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+							<!--<Image src="https://media.giphy.com/media/cJfcrFjysva7MsFCC4/giphy.gif"/>-->
+						</IconTabFilter>
+						<IconTabFilter text="HFC Reminders" press="get_hfc_hotliner" key="hfc_reminder">
+							<Panel visible="{=${CRDV>/data} !== null }" expandable="true" expanded="true" expandAnimation="true" class="sapUiSizeCompact">
+								<headerToolbar>
+									<Toolbar>
+										<Label text="Number of Reminder Mails for HFC" design="Bold" class="settingsLabel"/>
+										<ToolbarSpacer/>
+										<!--<Button icon="sap-icon://add" type="Accept" text="Add Entry" press="onaddVideo"/>-->
+									</Toolbar>
+								</headerToolbar>
+								<content>
+									<Table delete="onDeletedata" popinLayout="GridSmall" items="{CRDV>/data}">
+										<columns>
+											<Column mergeDuplicates="true">
+												<header>
+													<Text text="Products"/>
+												</header>
+											</Column>
+											<Column mergeDuplicates="true">
+												<header>
+													<Text text="SPS Name"/>
+												</header>
+											</Column>
+											<Column hAlign="Center">
+												<header>
+													<Text text="Scheduler Name"/>
+												</header>
+											</Column>
+											<Column hAlign="Center">
+												<header>
+													<Text text="Schedule Data/Time"/>
+												</header>
+											</Column>
+											<Column hAlign="Center">
+												<header>
+													<Text text="Start Data/Time"/>
+												</header>
+											</Column>
+											<Column hAlign="Center">
+												<header>
+													<Text text="Status"/>
+												</header>
+											</Column>
+											<!--<Column hAlign="Center" demandPopin="true" minScreenWidth="Tablet" >-->
+											<!--	<header>-->
+											<!--		<Text text="DL's In TO"/>-->
+											<!--	</header>-->
+											<!--</Column>-->
+											<!--<Column hAlign="Center" demandPopin="true" minScreenWidth="Tablet" >-->
+											<!--	<header>-->
+											<!--		<Text text="DL's In CC"/>-->
+											<!--	</header>-->
+											<!--</Column>-->
+											<!--<Column hAlign="Center" demandPopin="true" minScreenWidth="Tablet" popinDisplay="Block">-->
+											<!--	<header>-->
+											<!--		<Text text="Action"/>-->
+											<!--	</header>-->
+											<!--</Column>-->
+										</columns>
+										<items>
+											<ColumnListItem type="Active" press=".open_hfc_mail_content($event, 'CRDV')">
+												<cells>
+													<Text text="{CRDV>ProductName}"/>
+													<Text text="{CRDV>SpsName}"/>
+													<Text text="{CRDV>SchedulerUser}"/>
+													<Text
+														text="{path:'CRDV>ScheduleDate',formatter:'.formatter.setDate'} at {path:'CRDV>ScheduleTime', type : 'sap.ui.model.type.Time' ,formatOptions:{ source:{ pattern : '\'PT\'hh\'H\'mm\'M\'ss\'S\'' }, pattern : 'HH:mm'}} CET"/>
+													<Text
+														text="{path:'CRDV>StartingDate',formatter:'.formatter.setDate'} at {path:'CRDV>StartingTime', type : 'sap.ui.model.type.Time' ,formatOptions:{ source:{ pattern : '\'PT\'hh\'H\'mm\'M\'ss\'S\'' }, pattern : 'HH:mm'}} CET"/>
+													<Text text="{path:'CRDV>ScheduleStatus',formatter:'.formatter.schedulestatus'}" class="schedule_status">
+														<customData>
+															<core:CustomData key="grey" value="foo" writeToDom="{= ${CRDV>ScheduleStatus} === '01'}"/>
+															<core:CustomData key="yellow" value="foo" writeToDom="{= ${CRDV>ScheduleStatus} === '02'}"/>
+															<core:CustomData key="green" value="foo" writeToDom="{= ${CRDV>ScheduleStatus} === '03'}"/>
+															<core:CustomData key="red" value="foo" writeToDom="{= ${CRDV>ScheduleStatus} === '04'}"/>
+															<core:CustomData key="red" value="foo" writeToDom="{= ${CRDV>ScheduleStatus} === '04'}"/>
+														</customData>
+													</Text>
+													<!--<List headerText="" items="{CRDVrecipients_to>/recipient}">-->
+													<!--	<StandardListItem title="{CRDVrecipients_to>DlText}"/>-->
+													<!--</List>-->
+													<!--<List headerText="" items="{CRDVrecipients_cc>/recipient}">-->
+													<!--	<StandardListItem title="{CRDVrecipients_cc>DlText}"/>-->
+													<!--</List>-->
+													<!--<HBox>-->
+													<!--	<Button text="Cancel" type="Reject" press="onCancelColoum" class="sapUiSizeCompact sapUiSmallMarginEnd" width="70px"/>-->
+													<!--	<Button text="Edit" type="Emphasized" press="onEditColoum" class="sapUiSizeCompact sapUiSmallMarginEnd" width="70px"/>-->
+													<!--</HBox>-->
+												</cells>
+											</ColumnListItem>
+										</items>
+									</Table>
+								</content>
+							</Panel>
+							<Panel visible="{=!!${CSM>/data} !== null }" expandable="true" expanded="true" expandAnimation="true" class="sapUiSizeCompact">
+								<headerToolbar>
+									<Toolbar>
+										<Label text="HFC cut-off START reminder email for ARES - HFC responsibles" design="Bold" class="settingsLabel"/>
+										<ToolbarSpacer/>
+										<!--<Button icon="sap-icon://add" type="Accept" text="Add Entry" press="onaddVideo"/>-->
+									</Toolbar>
+								</headerToolbar>
+								<content>
+									<Table delete="onDeletedata" popinLayout="GridSmall" items="{CSM>/data}">
+										<columns>
+											<Column mergeDuplicates="true">
+												<header>
+													<Text text="Products"/>
+												</header>
+											</Column>
+											<Column mergeDuplicates="true">
+												<header>
+													<Text text="SPS Name"/>
+												</header>
+											</Column>
+											<Column hAlign="Center">
+												<header>
+													<Text text="Scheduler Name"/>
+												</header>
+											</Column>
+											<Column hAlign="Center">
+												<header>
+													<Text text="Schedule Data/Time"/>
+												</header>
+											</Column>
+											<Column hAlign="Center">
+												<header>
+													<Text text="Start Data/Time"/>
+												</header>
+											</Column>
+											<Column hAlign="Center">
+												<header>
+													<Text text="Status"/>
+												</header>
+											</Column>
+											<!--<Column hAlign="Center" demandPopin="true" minScreenWidth="Tablet" popinDisplay="Block">-->
+											<!--	<header>-->
+											<!--		<Text text="DL's In TO"/>-->
+											<!--	</header>-->
+											<!--</Column>-->
+											<!--<Column hAlign="Center" demandPopin="true" minScreenWidth="Tablet" popinDisplay="Block">-->
+											<!--	<header>-->
+											<!--		<Text text="DL's In CC"/>-->
+											<!--	</header>-->
+											<!--</Column>-->
+											<!--<Column hAlign="Center" demandPopin="true" minScreenWidth="Tablet" popinDisplay="Block">-->
+											<!--	<header>-->
+											<!--		<Text text="Action"/>-->
+											<!--	</header>-->
+											<!--</Column>-->
+										</columns>
+										<items>
+											<ColumnListItem type="Active" press=".open_hfc_mail_content($event, 'CSM')">
+												<cells>
+													<Text text="{CSM>ProductName}"/>
+													<Text text="{CSM>SpsName}"/>
+													<Text text="{CSM>SchedulerUser}"/>
+													<Text
+														text="{path:'CSM>ScheduleDate',formatter:'.formatter.setDate'} at {path:'CSM>ScheduleTime', type : 'sap.ui.model.type.Time' ,formatOptions:{ source:{ pattern : '\'PT\'hh\'H\'mm\'M\'ss\'S\'' }, pattern : 'HH:mm'}} CET"/>
+													<Text
+														text="{path:'CSM>StartingDate',formatter:'.formatter.setDate'} at {path:'CSM>StartingTime', type : 'sap.ui.model.type.Time' ,formatOptions:{ source:{ pattern : '\'PT\'hh\'H\'mm\'M\'ss\'S\'' }, pattern : 'HH:mm'}} CET"/>
+													<Text text="{path:'CSM>ScheduleStatus',formatter:'.formatter.schedulestatus'}" class="schedule_status">
+														<customData>
+															<core:CustomData key="grey" value="foo" writeToDom="{= ${CSM>ScheduleStatus} === '01'}"/>
+															<core:CustomData key="yellow" value="foo" writeToDom="{= ${CSM>ScheduleStatus} === '02'}"/>
+															<core:CustomData key="green" value="foo" writeToDom="{= ${CSM>ScheduleStatus} === '03'}"/>
+															<core:CustomData key="red" value="foo" writeToDom="{= ${CSM>ScheduleStatus} === '04'}"/>
+															<core:CustomData key="red" value="foo" writeToDom="{= ${CSM>ScheduleStatus} === '04'}"/>
+														</customData>
+													</Text>
+													<!--<List headerText="" items="{CSMrecipients_to>/recipient}" hAlign="Center">-->
+													<!--	<StandardListItem title="{CSMrecipients_to>DlText}"/>-->
+													<!--</List>-->
+													<!--<List headerText="" items="{CSMrecipients_cc>/recipient}" hAlign="Center">-->
+													<!--	<StandardListItem title="{CSMrecipients_cc>DlText}"/>-->
+													<!--</List>-->
+													<!--<HBox>-->
+													<!--	<Button text="Cancel" type="Reject" press="onCancelColoum" class="sapUiSizeCompact sapUiSmallMarginEnd" width="70px"/>-->
+													<!--	<Button text="Edit" type="Emphasized" press="onEditColoum" class="sapUiSizeCompact sapUiSmallMarginEnd" width="70px"/>-->
+													<!--</HBox>-->
+												</cells>
+											</ColumnListItem>
+										</items>
+									</Table>
+								</content>
+							</Panel>
+							<Panel visible="{=!!${CEM>/data} !== null }" expandable="true" expanded="true" expandAnimation="true" class="sapUiSizeCompact">
+								<headerToolbar>
+									<Toolbar>
+										<Label text="HFC cut-off END reminder email for ARES - HFC responsibles" design="Bold" class="settingsLabel"/>
+										<ToolbarSpacer/>
+										<!--<Button icon="sap-icon://add" type="Accept" text="Add Entry" press="onaddVideo"/>-->
+									</Toolbar>
+								</headerToolbar>
+								<content>
+									<Table delete="onDeletedata" popinLayout="GridSmall" items="{CEM>/data}">
+										<columns>
+											<Column mergeDuplicates="true">
+												<header>
+													<Text text="Products"/>
+												</header>
+											</Column>
+											<Column mergeDuplicates="true">
+												<header>
+													<Text text="SPS Name"/>
+												</header>
+											</Column>
+											<Column hAlign="Center">
+												<header>
+													<Text text="Scheduler Name"/>
+												</header>
+											</Column>
+											<Column hAlign="Center">
+												<header>
+													<Text text="Schedule Data/Time"/>
+												</header>
+											</Column>
+											<Column hAlign="Center">
+												<header>
+													<Text text="Start Data/Time"/>
+												</header>
+											</Column>
+											<Column hAlign="Center">
+												<header>
+													<Text text="Status"/>
+												</header>
+											</Column>
+											<!--<Column hAlign="Center" demandPopin="true" minScreenWidth="Tablet" popinDisplay="Block">-->
+											<!--	<header>-->
+											<!--		<Text text="DL's In TO"/>-->
+											<!--	</header>-->
+											<!--</Column>-->
+											<!--<Column hAlign="Center" demandPopin="true" minScreenWidth="Tablet" popinDisplay="Block">-->
+											<!--	<header>-->
+											<!--		<Text text="DL's In CC"/>-->
+											<!--	</header>-->
+											<!--</Column>-->
+											<!--<Column hAlign="Center" demandPopin="true" minScreenWidth="Tablet" popinDisplay="Block">-->
+											<!--	<header>-->
+											<!--		<Text text="Action"/>-->
+											<!--	</header>-->
+											<!--</Column>-->
+										</columns>
+										<items>
+											<ColumnListItem type="Active" press=".open_hfc_mail_content($event, 'CEM')">
+												<cells>
+													<Text text="{CEM>ProductName}"/>
+													<Text text="{CEM>SpsName}"/>
+													<Text text="{CEM>SchedulerUser}"/>
+													<Text
+														text="{path:'CEM>ScheduleDate',formatter:'.formatter.setDate'} at {path:'CEM>ScheduleTime', type : 'sap.ui.model.type.Time' ,formatOptions:{ source:{ pattern : '\'PT\'hh\'H\'mm\'M\'ss\'S\'' }, pattern : 'HH:mm'}} CET"/>
+													<Text
+														text="{path:'CEM>StartingDate',formatter:'.formatter.setDate'} at {path:'CEM>StartingTime', type : 'sap.ui.model.type.Time' ,formatOptions:{ source:{ pattern : '\'PT\'hh\'H\'mm\'M\'ss\'S\'' }, pattern : 'HH:mm'}} CET"/>
+													<Text text="{path:'CEM>ScheduleStatus',formatter:'.formatter.schedulestatus'}" class="schedule_status">
+														<customData>
+															<core:CustomData key="grey" value="foo" writeToDom="{= ${CEM>ScheduleStatus} === '01'}"/>
+															<core:CustomData key="yellow" value="foo" writeToDom="{= ${CEM>ScheduleStatus} === '02'}"/>
+															<core:CustomData key="green" value="foo" writeToDom="{= ${CEM>ScheduleStatus} === '03'}"/>
+															<core:CustomData key="red" value="foo" writeToDom="{= ${CEM>ScheduleStatus} === '04'}"/>
+															<core:CustomData key="red" value="foo" writeToDom="{= ${CEM>ScheduleStatus} === '04'}"/>
+														</customData>
+													</Text>
+													<!--<List headerText="" items="{CEMrecipients_to>/recipient}" hAlign="Center">-->
+													<!--	<StandardListItem title="{CEMrecipients_to>DlText}"/>-->
+													<!--</List>-->
+													<!--<List headerText="" items="{CEMrecipients_cc>/recipient}" hAlign="Center">-->
+													<!--	<StandardListItem title="{CEMrecipients_cc>DlText}"/>-->
+													<!--</List>-->
+													<!--<HBox>-->
+													<!--	<Button text="Cancel" type="Reject" press="onCancelColoum" class="sapUiSizeCompact sapUiSmallMarginEnd" width="70px"/>-->
+													<!--	<Button text="Edit" type="Emphasized" press="onEditColoum" class="sapUiSizeCompact sapUiSmallMarginEnd" width="70px"/>-->
+													<!--</HBox>-->
+												</cells>
+											</ColumnListItem>
+										</items>
+									</Table>
+								</content>
+							</Panel>
+							<Panel visible="{=${NACM>/data} !== null }" expandable="true" expanded="true" expandAnimation="true" class="sapUiSizeCompact">
+								<headerToolbar>
+									<Toolbar>
+										<Label text="Non-ABAP reminder email " design="Bold" class="settingsLabel"/>
+										<ToolbarSpacer/>
+										<!--<Button icon="sap-icon://add" type="Accept" text="Add Entry" press="onaddVideo"/>-->
+									</Toolbar>
+								</headerToolbar>
+								<content>
+									<Table delete="onDeletedata" popinLayout="GridSmall" items="{NACM>/data}">
+										<columns>
+											<Column mergeDuplicates="true">
+												<header>
+													<Text text="Products"/>
+												</header>
+											</Column>
+											<Column mergeDuplicates="true">
+												<header>
+													<Text text="SPS Name"/>
+												</header>
+											</Column>
+											<Column hAlign="Center">
+												<header>
+													<Text text="Scheduler Name"/>
+												</header>
+											</Column>
+											<Column hAlign="Center">
+												<header>
+													<Text text="Schedule Data/Time"/>
+												</header>
+											</Column>
+											<Column hAlign="Center">
+												<header>
+													<Text text="Start Data/Time"/>
+												</header>
+											</Column>
+											<Column hAlign="Center">
+												<header>
+													<Text text="Status"/>
+												</header>
+											</Column>
+											<!--<Column hAlign="Center" demandPopin="true" minScreenWidth="Tablet" popinDisplay="Block">-->
+											<!--	<header>-->
+											<!--		<Text text="DL's In TO"/>-->
+											<!--	</header>-->
+											<!--</Column>-->
+											<!--<Column hAlign="Center" demandPopin="true" minScreenWidth="Tablet" popinDisplay="Block">-->
+											<!--	<header>-->
+											<!--		<Text text="DL's In CC"/>-->
+											<!--	</header>-->
+											<!--</Column>-->
+											<!--<Column hAlign="Center" demandPopin="true" minScreenWidth="Tablet" popinDisplay="Block">-->
+											<!--	<header>-->
+											<!--		<Text text="Action"/>-->
+											<!--	</header>-->
+											<!--</Column>-->
+										</columns>
+										<items>
+											<ColumnListItem type="Active" press=".open_hfc_mail_content($event, 'NACM')">
+												<cells>
+													<Text text="{NACM>ProductName}"/>
+													<Text text="{NACM>SpsName}"/>
+													<Text text="{NACM>SchedulerUser}"/>
+													<Text
+														text="{path:'NACM>ScheduleDate',formatter:'.formatter.setDate'} at {path:'NACM>ScheduleTime', type : 'sap.ui.model.type.Time' ,formatOptions:{ source:{ pattern : '\'PT\'hh\'H\'mm\'M\'ss\'S\'' }, pattern : 'HH:mm'}} CET"/>
+													<Text
+														text="{path:'NACM>StartingDate',formatter:'.formatter.setDate'} at {path:'NACM>StartingTime', type : 'sap.ui.model.type.Time' ,formatOptions:{ source:{ pattern : '\'PT\'hh\'H\'mm\'M\'ss\'S\'' }, pattern : 'HH:mm'}} CET"/>
+													<Text text="{path:'NACM>ScheduleStatus',formatter:'.formatter.schedulestatus'}" class="schedule_status">
+														<customData>
+															<core:CustomData key="grey" value="foo" writeToDom="{= ${NACM>ScheduleStatus} === '01'}"/>
+															<core:CustomData key="yellow" value="foo" writeToDom="{= ${NACM>ScheduleStatus} === '02'}"/>
+															<core:CustomData key="green" value="foo" writeToDom="{= ${NACM>ScheduleStatus} === '03'}"/>
+															<core:CustomData key="red" value="foo" writeToDom="{= ${NACM>ScheduleStatus} === '04'}"/>
+															<core:CustomData key="red" value="foo" writeToDom="{= ${NACM>ScheduleStatus} === '04'}"/>
+														</customData>
+													</Text>
+													<!--<List headerText="" items="{NACMrecipients_to>/recipient}">-->
+													<!--	<StandardListItem title="{NACMrecipients_to/DlText}"/>-->
+													<!--</List>-->
+													<!--<List headerText="" items="{NACMrecipients_cc>/recipient}">-->
+													<!--	<StandardListItem title="{NACMrecipients_cc>DlText}"/>-->
+													<!--</List>-->
+													<!--<HBox>-->
+													<!--	<Button text="Cancel" type="Reject" press="onCancelColoum" class="sapUiSizeCompact sapUiSmallMarginEnd" width="70px"/>-->
+													<!--	<Button text="Edit" type="Emphasized" press="onEditColoum" class="sapUiSizeCompact sapUiSmallMarginEnd" width="70px"/>-->
+													<!--</HBox>-->
+												</cells>
+											</ColumnListItem>
+										</items>
+									</Table>
+								</content>
+							</Panel>
+						</IconTabFilter>
+					</items>
+				</IconTabBar>
+				<!--<l:DynamicSideContent id="DynamicSideContent" class="sapUiDSCExplored sapUiContentPadding" sideContentFallDown="BelowM"-->
+				<!--	containerQuery="true" breakpointChanged="updateToggleButtonState">-->
+				<!--	<l:mainContent>-->
+				<!--		<smartForm:SmartForm layout="ResponsiveGridLayout" visible="{=${Controls>/data/hfc_mail} === 'Emphasized'}">-->
+				<!--			<smartForm:Group >-->
+				<!--				<smartForm:GroupElement label="Enable Cuttoff Start Mails">-->
+				<!--					<Switch change="globalDisable" state="{global_disable_videoSet>/GlobalDisable}"/>-->
+				<!--				</smartForm:GroupElement>-->
+				<!--				<smartForm:GroupElement label="Enable Cuttoff End Mails">-->
+				<!--					<Switch change="globalDisable" state="{global_disable_videoSet>/GlobalDisable}"/>-->
+				<!--				</smartForm:GroupElement>-->
+				<!--			</smartForm:Group>-->
+				<!--		</smartForm:SmartForm>-->
+				<!--	</l:mainContent>-->
+				<!--	<l:sideContent>-->
+				<!--		<l:VerticalLayout id="containerLayout" width="100%">-->
+				<!--			<l:BlockLayout id="BlockLayout" background="Light">-->
+				<!--				<l:BlockLayoutRow accentCells="Accent1">-->
+				<!--					<l:BlockLayoutCell id="Accent1" width="1" title="">-->
+				<!--						<FlexBox direction="Column" alignItems="Stretch">-->
+				<!--							<items>-->
+				<!--<Button text="HFC Header Info" type="{Controls>/data/hfc_header}" width="100%" press="get_hfc_header"/>-->
+				<!--								<Button />-->
+				<!--								<Button />-->
+				<!--							</items>-->
+				<!--						</FlexBox>-->
+				<!--					</l:BlockLayoutCell>-->
+				<!--				</l:BlockLayoutRow>-->
+				<!--			</l:BlockLayout>-->
+				<!--		</l:VerticalLayout>-->
+				<!--	</l:sideContent>-->
+				<!--</l:DynamicSideContent>-->
+			</content>
+			<footer>
+				<Toolbar>
+					<content>
+						<!--	<Button text="Toggle" type="Accept" press="handleToggleClick" id="toggleButton"/>
+						<Button text="Open Side Content" id="showSideContentButton" press="handleSideContentShow" visible="false"/>
+						<Slider id='DSCWidthSlider' value="100" liveChange="handleSliderChange" visible="{= !${media>/phone}}"/>
+						<Text id='DSCWidthHintText' text="Best view in full screen" visible="{= !${media>/phone}}"/>-->
+					</content>
+				</Toolbar>
+			</footer>
+		</Page>
+	</Shell>
+</mvc:View>

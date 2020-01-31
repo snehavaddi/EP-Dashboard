@@ -1,0 +1,160 @@
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" controllerName="epdash.epdash.external_controller.hfc_admin" displayBlock="true">
+	<Shell>
+		<App>
+			<pages>
+				<Page title="{i18n>title}" showHeader="false" class="sapUiSizeCompact">
+					<html:nav class="navbar navbar-dark bg-dark">
+						<html:a class="navbar-brand" href="#">
+							<Button icon="sap-icon://sys-back-2" type="Transparent" class="btn btn-info" press="back_to_main">
+								<layoutData>
+									<OverflowToolbarLayoutData priority="NeverOverflow"/>
+								</layoutData>
+							</Button>
+							HFC Admin Page</html:a>
+					</html:nav>
+					<content>
+						<VBox class="sapUiSmallMargin">
+							<f:SimpleForm id="SimpleFormChange354wideDual" editable="true" layout="ResponsiveGridLayout" labelSpanXL="2" labelSpanL="2" labelSpanM="2"
+								labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"
+								singleContainerFullSize="true">
+								<f:content>
+									<Label text="Select Product" design="Bold" class="settingsLabel"/>
+									<Select id="AppType" class="settingsSelect" change="onSelectApp" items="{/ProductSet}">
+										<items>
+											<core:Item text="{ProductName}" key="{ProductName}"/>
+										</items>
+									</Select>
+									<Button icon="sap-icon://search" type="Emphasized" text="Get Configured Mail type" press="onSearchCustom"/>
+								</f:content>
+							</f:SimpleForm>
+						</VBox>
+						<Panel id="tablepanel" visible="false">
+							<headerToolbar>
+								<Toolbar>
+									<Label text="Number of Mails for Product" design="Bold" class="settingsLabel"/>
+									<ToolbarSpacer/>
+									<Label text="Disable All Mails" design="Bold" class="settingsLabel"/>
+									<Switch change="globalDisable" state="{global_disable_videoSet>/GlobalDisable}"/>
+									<Button icon="sap-icon://add" type="Accept" text="Edd Entry" press="addMailType"/>
+								</Toolbar>
+							</headerToolbar>
+							<content>
+									<Table id="__table0" items="{mail_type>/data}" mode="SingleSelectLeft" >
+										<items>
+											<ColumnListItem id="__item2" type="Navigation" press="getDls">
+												<cells>
+													<Text text="{mail_type>ProductName}" id="__text1"/>
+													<Text text="{path:'mail_type>MailsType',formatter:'.formatter.mailType'}" id="__text2"/>
+													<Text text="{mail_type>StartBeforeDay}" id="__text3" visible="{= ${mail_type>MailsType} !== '06'}"/>
+													<Text
+														text="{path:'mail_type>StartingTime', type : 'sap.ui.model.type.Time' ,formatOptions:{ source:{ pattern : '\'PT\'hh\'H\'mm\'M\'ss\'S\'' }, pattern : 'HH:mm'}} CET"
+														id="__text4" visible="{= ${mail_type>MailsType} !== '06'}"/>
+													<Text text="{mail_type>HoursCutoffEnd}-Hours" id="__text5" visible="{= ${mail_type>MailsType} === '06'}"/>
+													<Text text="{mail_type>MinutesCutoffEnd}-Min" id="__text6" visible="{= ${mail_type>MailsType} === '06'}"/>
+													<Switch change="globalDisable" state="{path:'mail_type>Enable',formatter:'.formatter.CheckBox'}"/>
+												</cells>
+											</ColumnListItem>
+										</items>
+										<columns>
+											<Column id="__column0" popinDisplay="Block" demandPopin="true" minScreenWidth="Tablet" vAlign="Middle" hAlign="Center">
+												<header>
+													<Label text="Product Name" id="__label1"/>
+												</header>
+											</Column>
+											<Column id="__column1" demandPopin="true" minScreenWidth="Tablet" vAlign="Middle" hAlign="Center">
+												<header>
+													<Label text="Mail Type" id="__label2"/>
+												</header>
+											</Column>
+											<Column id="__column3" demandPopin="true" minScreenWidth="Tablet" vAlign="Middle" hAlign="Center">
+												<header>
+													<Label text="Start Before Days" id="__label4"/>
+												</header>
+											</Column>
+											<Column id="__column2" demandPopin="true"  minScreenWidth="Tablet" vAlign="Middle" hAlign="Center">
+												<header>
+													<Label text="Start Time" id="__label3"/>
+												</header>
+											</Column>
+											<Column id="__column4" demandPopin="true"  minScreenWidth="Tablet" vAlign="Middle" hAlign="Center">
+												<header>
+													<Label text="Start Before Hours" id="__label5"/>
+												</header>
+											</Column>
+											<Column id="__column5" demandPopin="true"  minScreenWidth="Tablet" vAlign="Middle" hAlign="Center">
+												<header>
+													<Label text="Start Before Minutes" id="__label6"/>
+												</header>
+											</Column>
+											<Column id="__column6" demandPopin="true"  minScreenWidth="Tablet" vAlign="Middle" hAlign="Center">
+												<header>
+													<Label text="Mails Enable" id="__label7"/>
+												</header>
+											</Column>
+										</columns>
+									</Table>
+
+								
+							</content>
+						</Panel>
+						
+						<Panel id="mailpanel" visible="false" >
+							<headerToolbar>
+								<Toolbar>
+									<Label text="Number of Recipient's Configured" design="Bold" class="settingsLabel"/>
+									<ToolbarSpacer/>
+									<Button icon="sap-icon://add" type="Accept" text="Edd Entry" press="addMailType"/>
+								</Toolbar>
+							</headerToolbar>
+							<content>
+									<Table  items="{mail_dl>/data}" mode="SingleSelectLeft">
+										<items>
+											<ColumnListItem >
+												<cells>
+													<Text text="{mail_dl>ProductName}" />
+													<Text text="{path:'mail_dl>MailsType',formatter:'.formatter.mailType'}" />
+													<Text text="Recipient in-{path:'mail_dl>RecipientType',formatter:'.formatter.dlrecipient'}" /> 
+													<Text text="{mail_dl>DlText}"/>
+													<Text text="{mail_dl>DlAddress}"/>
+												</cells>
+											</ColumnListItem>
+										</items>
+										<columns>
+											<Column  popinDisplay="Block" demandPopin="true" minScreenWidth="Tablet" vAlign="Middle" hAlign="Center" mergeDuplicates="true">
+												<header>
+													<Label text="Product Name" />
+												</header>
+											</Column>
+											<Column  demandPopin="true" minScreenWidth="Tablet" vAlign="Middle" hAlign="Center" mergeDuplicates="true">
+												<header>
+													<Label text="Mail Type"/>
+												</header>
+											</Column>
+											<Column  demandPopin="true" minScreenWidth="Tablet" vAlign="Middle" hAlign="Center" mergeDuplicates="true">
+												<header>
+													<Label text="Recipients List" />
+												</header>
+											</Column>
+											<Column  demandPopin="true" minScreenWidth="Tablet" vAlign="Middle" hAlign="Center">
+												<header>
+													<Label text="DL Text" />
+												</header>
+											</Column>
+											<Column  demandPopin="true"  minScreenWidth="Tablet" vAlign="Middle" hAlign="Center">
+												<header>
+													<Label text="DL Address" />
+												</header>
+											</Column>
+										</columns>
+									</Table>
+
+								
+							</content>
+						</Panel>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
